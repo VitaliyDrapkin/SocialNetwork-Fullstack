@@ -1,0 +1,126 @@
+.registerPage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-top: 100px;
+  color: #1877f2;
+  font-size: 60px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mainHeadline {
+  font-size: 28px;
+  font-weight: 600;
+  color: #313321;
+}
+
+.loginBTN {
+  width: 510px;
+  margin-top: 20px;
+}
+.loginBTN button {
+  width: 100%;
+  font-size: 25px;
+  border-radius: 5px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 15px;
+}
+.navLinks {
+  margin-top: 20px;
+}
+a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #1877f2;
+  font-size: 18px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.input,
+.inputHalf {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input input,
+.inputHalf input {
+  margin: 0 9px;
+  border: 1px solid #dddfe2;
+  font-size: 25px;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+}
+.input input {
+  width: 480px;
+}
+.inputHalf input {
+  width: 215px;
+}
+
+.birthday,
+.gender {
+  margin-top: 20px;
+  display: flex;
+  font-size: 25px;
+  color: #90949c;
+  align-items: center;
+}
+
+.birthday .headline,
+.gender .headline {
+  margin-right: 35px;
+  font-weight: bold;
+}
+.birthday input,
+.gender > input {
+  border: 1px solid #dddfe2;
+  padding: 15px;
+  font-size: 25px;
+}
+
+.birthday input[type="date"]::-webkit-datetime-edit {
+  color: #757575;
+  width: 200px;
+}
+
+.radioBTNS {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 21px;
+  color: rgb(97, 96, 96);
+}
+.radioBTNS input {
+  margin: 0;
+  padding: 0;
+  margin: 0 5px 0 20px;
+}
+input {
+  outline: none;
+  border-radius: 5px;
+}

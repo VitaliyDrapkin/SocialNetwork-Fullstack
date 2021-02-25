@@ -1,0 +1,31 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  position: fixed;
+  width: 15%;
+}
+
+.navigationItem {
+  display: flex;
+  color: #486f96;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  font-size: 27px;
+  font-weight: bold;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+.navigationItem:hover {
+  background-color: #dce1e5;
+}
+
+.navigationItem span {
+  margin-left: 15px;
+}
+
+.MuiAvatar-img img {
+  border: 1px solid black;
+}

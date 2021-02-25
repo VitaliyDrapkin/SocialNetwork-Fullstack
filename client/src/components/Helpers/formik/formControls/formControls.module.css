@@ -1,0 +1,20 @@
+.formControl {
+  position: relative;
+}
+
+.errorInput,
+.errorInput:focus {
+  border: 3px solid red;
+  outline: none;
+}
+
+.errorField {
+  position: absolute;
+  width: fit-content;
+  padding: 0px 5px;
+  font-size: 14px;
+  top: -10px;
+  left: 15px;
+  background: white;
+  color: red;
+}

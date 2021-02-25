@@ -1,0 +1,137 @@
+.post {
+  margin: 20px 0;
+  border-radius: 10px;
+  border: 1px solid #e0e1e4;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 10px -9px rgba(0, 0, 0, 0.767);
+}
+
+.postTop {
+  display: flex;
+  padding: 20px 20px 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postInformation {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.information {
+  margin-left: 10px;
+}
+
+.name {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+.time {
+  color: grey;
+  font-size: 18px;
+}
+
+.postSetting {
+  padding: 5px 5px 2px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.postSetting:hover {
+  background-color: #eeecec;
+}
+
+.postContent {
+  white-space: pre-line;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 21px;
+}
+
+.postPhoto {
+  overflow: hidden;
+}
+
+.postPhoto img {
+  width: 100%;
+  max-height: 950px;
+  object-fit: cover;
+}
+
+.likesComments {
+  border-bottom: 1px solid #e7e8ec;
+  padding-bottom: 5px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-around;
+}
+.likesComments span {
+  margin-left: 15px;
+}
+.likes,
+.commentsCount {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.likes {
+  margin-left: 20px;
+}
+.commentsCount {
+  margin-right: 20px;
+}
+
+.likes:hover,
+.commentsCount:hover {
+  background-color: #eeecec;
+}
+
+.writeComment {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-left: 20px;
+  margin-right: 30px;
+  height: 40px;
+  flex: 1;
+}
+.input input {
+  padding: 0 10px;
+  font-size: 19px;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  outline-width: 0;
+  background-color: #f0f2f5;
+  box-shadow: 0px 2px 8px -9px rgba(0, 0, 0, 0.616);
+  height: 100%;
+  width: 100%;
+}
+
+.addSmile,
+.sendButton {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.addSmile {
+  position: relative;
+}
+.emojiPicker {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}

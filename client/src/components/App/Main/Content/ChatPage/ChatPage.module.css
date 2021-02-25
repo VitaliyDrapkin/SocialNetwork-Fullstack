@@ -1,0 +1,96 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #e0e1e4;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 10px -9px rgba(0, 0, 0, 0.767);
+  height: 90vh;
+}
+
+.chatTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e7e8ecff;
+}
+
+.backBtn {
+  align-items: center;
+  padding: 15px 20px;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.backBtn div {
+  padding-top: 8px;
+}
+.backBtn:hover {
+  background-color: #e7e7e7;
+}
+
+.chatUserInfo {
+  flex: 1;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.onlineStatus {
+  font-size: 16px;
+  font-weight: 100;
+  color: green;
+}
+.settingsAvatar {
+  margin-right: 25px;
+}
+
+.chatMain {
+  display: flex;
+  flex-direction: column-reverse;
+  flex: 1;
+  height: 100%;
+  border-bottom: 1px solid #e7e8ecff;
+  overflow: auto;
+}
+.chatMain::-webkit-scrollbar {
+  display: none;
+}
+.chatBottom {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.chatInput {
+  margin-left: 10px;
+  flex: 1;
+  margin-right: 50px;
+}
+.chatInput input {
+  border-radius: 10px;
+  padding: 0 15px;
+  height: 40px;
+  width: 100%;
+  font-size: 18px;
+  outline-width: 0;
+  border: none;
+  background-color: #f0f2f5ff;
+  border: 1px solid #d4d4d4;
+}
+
+.chatSmile {
+  margin-right: 15px;
+}
+
+.chatSmile,
+.chatSend {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1400px) {
+  .chat {
+    height: 85vh;
+  }
+}

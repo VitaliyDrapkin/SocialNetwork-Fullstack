@@ -1,0 +1,64 @@
+.friendItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-top: 1px solid #e7e8ec;
+}
+
+.friendsLeft {
+  display: flex;
+}
+
+.main {
+  margin-left: 15px;
+}
+
+.main div {
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.name a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a588d;
+}
+.name a:hover,
+.sendMessage a:hover {
+  text-decoration: underline;
+}
+
+.status {
+  padding-left: 15px;
+  color: #656565;
+}
+
+.sendMessage a {
+  color: #2a588d;
+}
+
+.deleteBTN {
+  cursor: pointer;
+}
+
+.addFriendBTN,
+.cancelBTN,
+.confirmBTN {
+  cursor: pointer;
+}
+
+.newIcons {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+.newIcons .addFriendBTN,
+.cancelBTN,
+.confirmBTN {
+  margin-left: 20px;
+}
+
+.avatar {
+  z-index: 1;
+}

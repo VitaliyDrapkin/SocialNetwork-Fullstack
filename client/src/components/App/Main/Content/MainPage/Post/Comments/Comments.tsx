@@ -1,0 +1,59 @@
+import React, { useState } from "react";
+import s from "./Comments.module.css";
+import { Comment } from "../../../../../../../Model/post";
+import CommentItemContainer from "./CommentItem/CommentItemContainer";
+
+interface CommentsProps {
+  comments: Comment[];
+  postId: string;
+}
+function Comments(props: CommentsProps) {
+  const [viewMoreClicked, setViewMoreClicked] = useState(false);
+
+  return (
+    <div>
+      {viewMoreClicked ? (
+        <div className={s.comments}>
+          {props.comments.length > 1 && (
+            <div
+              className={s.viewMore}
+              onClick={() => setViewMoreClicked(false)}
+            >
+              Hide comments
+            </div>
+          )}
+          {props.comments.map((comment: any) => {
+            return (
+              <CommentItemContainer comment={comment} postId={props.postId} />
+            );
+          })}
+        </div>
+      ) : (
+        <div className={s.comments}>
+          {props.comments.length > 1 &&
+            (props.comments.length === 2 ? (
+              <div
+                className={s.viewMore}
+                onClick={() => setViewMoreClicked(true)}
+              >
+                View 1 more comment
+              </div>
+            ) : (
+              <div
+                className={s.viewMore}
+                onClick={() => setViewMoreClicked(true)}
+              >
+                View {props.comments.length - 1} more comments
+              </div>
+            ))}
+          <CommentItemContainer
+            comment={props.comments[props.comments.length - 1]}
+            postId={props.postId}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Comments;

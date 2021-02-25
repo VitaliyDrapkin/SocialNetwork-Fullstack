@@ -1,0 +1,23 @@
+.ownMessage,
+.notOwnMessage {
+  margin: 10px;
+  display: flex;
+  font-size: 20px;
+}
+
+.ownMessage {
+  justify-content: flex-end;
+}
+
+.ownMessage span {
+  background-color: #0099ff;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.notOwnMessage span {
+  background-color: #f1f0f0;
+  padding: 5px 12px;
+  border-radius: 20px;
+}

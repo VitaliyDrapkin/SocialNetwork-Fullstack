@@ -1,0 +1,164 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileTop {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.profileImage {
+  position: relative;
+  flex: 1;
+}
+.profileImage div {
+  background-color: #19212cb0;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  color: #e1dede;
+  font-size: 20px;
+  bottom: 0;
+  padding: 5px 0;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.profileImage div input {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: black;
+  z-index: 100;
+  opacity: 0;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.profileImage img {
+  box-shadow: 0px 5px 12px -9px rgba(0, 0, 0, 0.616);
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profileInformation {
+  flex: 2;
+  padding: 10px 20px;
+  margin-left: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 12px -9px rgba(0, 0, 0, 0.616);
+}
+
+.profileName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.profileStatus,
+.strangerProfileStatus {
+  margin-top: 5px;
+  padding: 5px 5px 10px 5px;
+  font-size: 18px;
+  border-bottom: 1px solid grey;
+}
+
+.profileBirthday,
+.strangerProfileBirthday,
+.profileRelationship,
+.strangerProfileRelationship,
+.strangerProfileLocation,
+.profileLocation {
+  margin-top: 3px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.profileBirthday span,
+.strangerProfileBirthday span,
+.strangerProfileRelationship span,
+.strangerProfileLocation span,
+.profileRelationship span,
+.profileLocation span {
+  margin-left: 10px;
+}
+
+.relationshipName {
+  margin-left: 0;
+  cursor: pointer;
+  color: blue;
+}
+.buttons {
+  display: flex;
+  margin-top: 10px;
+}
+.editBTN {
+  margin-left: auto;
+  margin-right: 10px;
+  border: none;
+  font-size: 22px;
+  padding: 5px 50px;
+  border-radius: 10px;
+  background-color: #5181b8;
+  color: whitesmoke;
+  outline-width: 0;
+  box-shadow: 0px 8px 15px -9px #0b1118ce;
+  cursor: pointer;
+}
+
+.editBTN:hover {
+  background-color: #6690bf;
+}
+
+.photosField {
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 12px -9px rgba(0, 0, 0, 0.616);
+  margin-bottom: 20px;
+}
+
+.photoHeadline {
+  font-size: 21px;
+}
+
+.photoHeadline span {
+  color: #9a939a;
+  cursor: pointer;
+}
+.photos {
+  margin-top: 10px;
+  display: flex;
+}
+.photo {
+  cursor: pointer;
+  margin: 5px;
+}
+.photo img {
+  width: 100%;
+}
+
+.profileBirthday:hover,
+.profileRelationship:hover,
+.profileLocation:hover,
+.profileStatus:hover {
+  cursor: pointer;
+  background-color: #f1f2f6;
+}
+
+.relationshipName:hover {
+  text-decoration: underline;
+}

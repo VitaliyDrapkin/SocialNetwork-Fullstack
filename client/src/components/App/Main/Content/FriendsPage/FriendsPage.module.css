@@ -1,0 +1,104 @@
+.friendsPage {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid #e0e1e4;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 10px -9px rgba(0, 0, 0, 0.767);
+  overflow: hidden;
+}
+
+.friendsTop {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e7e8ec;
+  align-items: center;
+}
+.requestsHeadline {
+  border-top: 1px solid #e7e8ec;
+}
+.friendsStatistic {
+  display: flex;
+}
+
+.allFriends,
+.onlineFriends,
+.addFriends {
+  padding: 20px;
+  font-size: 20px;
+}
+
+.addFriends {
+  font-weight: bold;
+  font-size: 20px;
+}
+.allFriends {
+  background-color: #658fc5;
+  color: white;
+}
+.allFriends span {
+  font-weight: 500;
+}
+.onlineFriends {
+  cursor: pointer;
+}
+
+.onlineFriends:hover {
+  background-color: #e7e7e7;
+}
+
+.onlineFriends span {
+  margin-left: 5px;
+  font-weight: 500;
+}
+.addFriendsBTN button {
+  outline: none;
+  border: none;
+  box-shadow: 0px 5px 12px -9px rgba(0, 0, 0, 0.767);
+  cursor: pointer;
+  border-radius: 10px;
+  margin-right: 25px;
+  background-color: #5181b8;
+  color: white;
+  font-size: 21px;
+  padding: 7px 12px;
+}
+
+.addFriendsBTN button:hover {
+  background-color: #6690bf;
+}
+
+.friendsSearch {
+  display: flex;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 1;
+}
+.search {
+  flex: 1;
+  z-index: 2;
+}
+.search input {
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+  padding: 20px 60px;
+}
+
+.friendsMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.requestsHeadline {
+  padding: 16px;
+  font-size: 23px;
+  font-weight: bold;
+}

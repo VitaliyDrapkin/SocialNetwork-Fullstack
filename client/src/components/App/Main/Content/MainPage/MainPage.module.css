@@ -1,0 +1,9 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}

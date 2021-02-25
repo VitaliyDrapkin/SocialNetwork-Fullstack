@@ -1,0 +1,35 @@
+.profileLives,
+.strangerProfileLives {
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.profileLives:hover {
+  cursor: pointer;
+  background-color: #f1f2f6;
+}
+
+.livesInput {
+  margin-left: 10px;
+  border: none;
+  width: 95%;
+  padding: 5px;
+  font-size: 18px;
+}
+.profileLives span {
+  margin-left: 10px;
+}
+.flexDiv {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.strangerProfileLives {
+  margin-left: 5px;
+}
+
+.livesDiv {
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+.profileBirthday,
+.strangerProfileBirthday {
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.profileBirthday:hover {
+  cursor: pointer;
+  background-color: #f1f2f6;
+}
+
+.dateInput {
+  margin-left: 10px;
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+}
+.profileBirthday span {
+  margin-left: 10px;
+}
+
+.birthDay {
+  width: 100%;
+}
+
+.flexDiv {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.strangerProfileBirthday {
+  margin-left: 5px;
+}

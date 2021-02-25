@@ -1,0 +1,41 @@
+.profileRelationship,
+.strangerProfileRelationship {
+  font-size: 18px;
+  padding: 5px 5px 5px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.profileRelationship:hover {
+  cursor: pointer;
+  background-color: #f1f2f6;
+}
+
+.relationshipInput {
+  margin-left: 10px;
+  border: none;
+  width: 95%;
+  padding: 5px;
+  font-size: 18px;
+}
+.profileRelationship span {
+  margin-left: 10px;
+}
+
+.relationship {
+  padding: 2px;
+  font-size: 19px;
+  margin-left: 10px;
+}
+.divRelationship {
+  width: 100%;
+}
+
+.flexDiv {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+.strangerProfileRelationship {
+  margin-left: 5px;
+}
