@@ -10,7 +10,7 @@ import {
 } from "../../../../../redux/actionTypes";
 import { RootState } from "../../../../../redux/store";
 import { Dispatch } from "react";
-import { MessengerItem } from "../../../../../Model/message";
+import { MessengerItem } from "../../../../../models/message";
 import { MessagesRequests } from "../../../../../API/MessagesRequests";
 
 interface mapStateToPropsType {

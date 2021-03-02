@@ -1,9 +1,9 @@
-import { Post } from "./../Model/post";
+import { Post } from "./../models/post";
 import { store } from "./../redux/store";
 import {
   ProfileServerResponse,
   ProfileModel,
-} from "./../Model/profileResponse";
+} from "./../models/profileResponse";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const ProfileRequests = {

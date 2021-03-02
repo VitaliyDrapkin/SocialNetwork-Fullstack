@@ -8,7 +8,7 @@ import {
 import { RootState } from "../../../../../redux/store";
 import { Dispatch } from "react";
 import ChatPage from "./ChatPage";
-import { Message } from "../../../../../Model/message";
+import { Message } from "../../../../../models/message";
 import { MessagesRequests } from "../../../../../API/MessagesRequests";
 import { socketRequests } from "../../../../../socketIo/main";
 

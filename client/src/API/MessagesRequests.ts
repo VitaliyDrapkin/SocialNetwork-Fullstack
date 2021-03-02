@@ -4,7 +4,7 @@ import {
   Message,
   MessengerItemResponse,
   MessengerItem,
-} from "../Model/message";
+} from "../models/message";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const MessagesRequests = {

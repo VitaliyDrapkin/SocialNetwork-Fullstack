@@ -9,7 +9,7 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import Box from "@material-ui/core/Box";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
-import { Post } from "../../../../../../Model/post";
+import { Post } from "../../../../../../models/post";
 import MenuPostContainer from "./MenuPost/MenuPostContainer";
 import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
 import Comments from "./Comments/Comments";

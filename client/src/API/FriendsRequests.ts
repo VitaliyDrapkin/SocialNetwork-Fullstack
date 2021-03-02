@@ -1,4 +1,4 @@
-import { FriendsResponse, Friend, FriendsGroup } from "./../Model/friend";
+import { FriendsResponse, Friend, FriendsGroup } from "./../models/friend";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const FriendsRequests = {

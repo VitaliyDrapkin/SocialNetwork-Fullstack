@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import s from "./FriendsPage.module.css";
 import FriendItem from "./FriendItem/FriendItem";
-import { Friend } from "../../../../../Model/friend";
+import { Friend } from "../../../../../models/friend";
 import FriendsSearch from "./FriendsSearch/FriendsSearch";
 import FriendsSearchContainer from "./FriendsSearch/FriendsSearchContainer";
 
@@ -24,7 +24,6 @@ function FriendsPage(props: FriendsPageProps) {
     props.loadFriendsPage();
   }, []); //Only if first load
   return (
-
     <div className={s.friendsPage}>
       <div className={s.friendsTop}>
         {newFriendsPage ? (

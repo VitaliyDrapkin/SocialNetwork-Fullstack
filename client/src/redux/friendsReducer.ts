@@ -1,4 +1,4 @@
-import { Friend } from "./../Model/friend";
+import { Friend } from "./../models/friend";
 import { actionsTypes } from "./actionTypes";
 
 export const START_LOAD_FRIENDS = "START_LOAD_FRIENDS";
@@ -30,10 +30,7 @@ export function friendsReducer(
   oldAppState: initialStateType = initialState,
   action: actionsTypes
 ): initialStateType {
-
-
   switch (action.type) {
-
     case START_LOAD_FRIENDS:
       return {
         ...oldAppState,

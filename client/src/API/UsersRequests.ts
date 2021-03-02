@@ -1,5 +1,8 @@
-import { getAccessTokenResponse, loginResponse } from "./../Model/authResponse";
-import { registrationResponse } from "../Model/authResponse";
+import {
+  getAccessTokenResponse,
+  loginResponse,
+} from "./../models/authResponse";
+import { registrationResponse } from "../models/authResponse";
 import { instance } from "./ApiSettings";
 
 export const UsersRequests = {

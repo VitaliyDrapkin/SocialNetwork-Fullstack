@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import s from "./MessagesPage.module.css";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import MessagesItem from "./MessagesItem/MessagesItem";
-import { MessengerItem } from "../../../../../Model/message";
+import { MessengerItem } from "../../../../../models/message";
 
 interface MessagesPageProps {
   messengers: MessengerItem[];

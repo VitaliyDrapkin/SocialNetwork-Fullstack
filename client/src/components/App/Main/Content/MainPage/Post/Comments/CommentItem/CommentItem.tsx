@@ -5,7 +5,7 @@ import profilePicture from "../../../../../../../../assets/images/profilePicture
 import ClearIcon from "@material-ui/icons/Clear";
 import { dateShowCalculate } from "../../../../../../../Helpers/dateShowCalculate";
 import ModalConfirm from "../../../../../../../Helpers/ModalConfirm/ModalConfirm";
-import { Comment } from "../../../../../../../../Model/post";
+import { Comment } from "../../../../../../../../models/post";
 
 interface CommentItemProps {
   comment: Comment;

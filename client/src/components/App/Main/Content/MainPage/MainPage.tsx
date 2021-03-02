@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AddPostContainer from "./AddPost/AddPostContainer";
 import PostItemContainer from "./Post/PostItemContainer";
 import s from "./MainPage.module.css";
-import { Post } from "../../../../../Model/post";
+import { Post } from "../../../../../models/post";
 import EditPostContainer from "./EditPost/EditPostContainer";
 
 interface MainPageProps {

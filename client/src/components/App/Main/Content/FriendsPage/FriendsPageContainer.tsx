@@ -11,7 +11,7 @@ import {
 } from "../../../../../redux/actionTypes";
 import { RootState } from "../../../../../redux/store";
 import { Dispatch } from "react";
-import { Friend } from "../../../../../Model/friend";
+import { Friend } from "../../../../../models/friend";
 import FriendsPage from "./FriendsPage";
 import { FriendsRequests } from "../../../../../API/FriendsRequests";
 

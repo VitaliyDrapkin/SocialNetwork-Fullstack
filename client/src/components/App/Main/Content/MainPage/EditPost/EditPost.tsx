@@ -3,7 +3,7 @@ import s from "./EditPost.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import { Post } from "../../../../../../Model/post";
+import { Post } from "../../../../../../models/post";
 import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";

@@ -1,5 +1,5 @@
 import { actionsTypes } from "./actionTypes";
-import { Post, Comment } from "./../Model/post";
+import { Post, Comment } from "./../models/post";
 
 export const CHANGE_POST_INPUT = "CHANGE_POST_INPUT";
 export const ADD_EMOJI_INPUT = "ADD_EMOJI_INPUT";

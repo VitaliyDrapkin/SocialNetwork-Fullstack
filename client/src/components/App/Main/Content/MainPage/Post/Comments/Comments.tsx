@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import s from "./Comments.module.css";
-import { Comment } from "../../../../../../../Model/post";
+import { Comment } from "../../../../../../../models/post";
 import CommentItemContainer from "./CommentItem/CommentItemContainer";
 
 interface CommentsProps {

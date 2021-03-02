@@ -1,4 +1,4 @@
-import { Post } from "../Model/post";
+import { Post } from "../models/post";
 import { actionsTypes } from "./actionTypes";
 
 export const START_LOAD_PROFILE = "START_LOAD_PROFILE";

@@ -1,5 +1,5 @@
-import { MessengerItem } from "./../Model/message";
-import { Message } from "../Model/message";
+import { MessengerItem } from "./../models/message";
+import { Message } from "../models/message";
 import { actionsTypes } from "./actionTypes";
 
 export const START_LOAD_CHAT = "START_LOAD_CHAT";

@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
-import { Friend } from "../../../../../../Model/friend";
+import { Friend } from "../../../../../../models/friend";
 import { useRequestFriends } from "./useRequestFriends";
 import { FriendsRequests } from "../../../../../../API/FriendsRequests";
 import ModalConfirm from "../../../../../Helpers/ModalConfirm/ModalConfirm";

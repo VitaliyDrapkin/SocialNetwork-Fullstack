@@ -1,4 +1,4 @@
-import { MessengerItem } from "./../Model/message";
+import { MessengerItem } from "./../models/message";
 import {
   CHANGE_POST_INPUT,
   ADD_EMOJI_INPUT,
@@ -31,7 +31,7 @@ import {
   CHANGE_PROFILE_BIRTHDAY,
   CHANGE_PROFILE_RELATIONSHIP,
 } from "./profileReducer";
-import { Post } from "../Model/post";
+import { Post } from "../models/post";
 
 import {
   START_LOAD_FRIENDS,
@@ -41,7 +41,7 @@ import {
   SET_FRIENDS_SEARCH_DATA,
   DELETE_FRIEND,
 } from "./friendsReducer";
-import { Friend } from "../Model/friend";
+import { Friend } from "../models/friend";
 
 import {
   START_LOAD_CHAT,
@@ -52,7 +52,7 @@ import {
   START_LOAD_MESSENGER,
   SET_MESSENGER_DATA,
 } from "./chatReducer";
-import { Message } from "../Model/message";
+import { Message } from "../models/message";
 
 export type actionsTypes =
   | addPostType

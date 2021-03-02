@@ -1,5 +1,5 @@
-import { Post } from "../Model/post";
-import { PostsServerResponse } from "../Model/postsServerResponse";
+import { Post } from "../models/post";
+import { PostsServerResponse } from "../models/postsServerResponse";
 import { store } from "../redux/store";
 import { getValidToken, instance } from "./ApiSettings";
 

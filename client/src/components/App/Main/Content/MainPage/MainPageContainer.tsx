@@ -4,7 +4,7 @@ import { PostsRequests } from "../../../../../API/PostsRequests";
 import { actionsTypes, setPostsAC } from "../../../../../redux/actionTypes";
 import { RootState } from "../../../../../redux/store";
 import { Dispatch } from "react";
-import { Post } from "../../../../../Model/post";
+import { Post } from "../../../../../models/post";
 
 interface mapStateToPropsType {
   posts: Post[];
@@ -13,8 +13,6 @@ interface mapStateToPropsType {
 interface mapDispatchToPropsType {
   setPosts(): Promise<void>;
 }
-
-
 
 let mapStateToProps = (state: RootState): mapStateToPropsType => {
   return {
@@ -33,9 +31,6 @@ let mapDispatchToProps = (
     },
   };
 };
-
-
-
 
 const MainPageContainer = connect<
   mapStateToPropsType,

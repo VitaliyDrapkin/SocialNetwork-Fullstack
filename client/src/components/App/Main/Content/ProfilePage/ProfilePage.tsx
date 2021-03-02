@@ -7,7 +7,7 @@ import LivesContainer from "./Lives/Lives";
 import BirthdayContainer from "./Birthday/Birthday";
 import RelationshipContainer from "./Relationship/Relationship";
 import StatusContainer from "./Status/Status";
-import { Post } from "../../../../../Model/post";
+import { Post } from "../../../../../models/post";
 import EditPostContainer from "../MainPage/EditPost/EditPostContainer";
 import PostItemContainer from "../MainPage/Post/PostItemContainer";
 import { NavLink } from "react-router-dom";
