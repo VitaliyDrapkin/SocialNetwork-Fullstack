@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { UsersRequests } from "../../../API/UsersRequests";
-import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
-import { RootState } from "../../../redux/store";
+import { UsersRequests } from "../../API/UsersRequests";
+import { actionsTypes, authorizationAC } from "../../redux/actionTypes";
+import { RootState } from "../../redux/store";
+
 import LoginPage from "./LoginPage";
 
 interface mapDispatchToPropsType {

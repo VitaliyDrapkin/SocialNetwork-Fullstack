@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import s from "./App.module.css";
 
 import Main from "./components/App/Main/Main";
-import LoginPageContainer from "./components/App/LoginPage/LoginPageContainer";
+import LoginPageContainer from "./modules/login/LoginPageContainer";
 import RegisterPageContainer from "./components/App/RegisterPage/RegisterPageContainer";
 import RestorePageContainer from "./components/App/RestorePage/RestorePageContainer";
 import { withUnauthorizedRedirect } from "./components/Helpers/hoc/withUnauthorizedRedirect";
@@ -42,7 +42,6 @@ function App(props: AppPropsType) {
               path="/restore"
               component={withAuthorizedRedirect(RestorePageContainer)}
             />
-            {/* <Route component={LoginPageContainer} /> */}
           </Switch>
         ) : null}
       </div>

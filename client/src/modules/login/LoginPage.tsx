@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./LoginPage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../Helpers/formik/formControls/formControls";
+import CustomInputComponent from "../../components/Helpers/formik/formControls/formControls";
 import {
-  validatePassword,
   validateEmail,
-} from "../../Helpers/formik/validators/validators";
+  validatePassword,
+} from "../../components/Helpers/formik/validators/validators";
 
 //-------------types--------------
 type LoginFormikProps = {
