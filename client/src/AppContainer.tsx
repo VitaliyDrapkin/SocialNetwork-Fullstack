@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import App from "./App";
 import { Dispatch } from "react";
-import { RootState } from "../../redux/store";
+import { RootState } from "./redux/store";
 import {
   actionsTypes,
   initializeAC,
   authorizationAC,
-} from "../../redux/actionTypes";
-import { UsersRequests } from "../../API/UsersRequests";
+} from "./redux/actionTypes";
+import { UsersRequests } from "./API/UsersRequests";
 
 interface mapStateToPropsType {
   isInitialized: Boolean;

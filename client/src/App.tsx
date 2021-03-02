@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import s from "./App.module.css";
 
-import Main from "./Main/Main";
-import LoginPageContainer from "./LoginPage/LoginPageContainer";
-import RegisterPageContainer from "./RegisterPage/RegisterPageContainer";
-import RestorePageContainer from "./RestorePage/RestorePageContainer";
-import { withUnauthorizedRedirect } from "../Helpers/hoc/withUnauthorizedRedirect";
-import { withAuthorizedRedirect } from "../Helpers/hoc/withAuthorizedRedirect";
+import Main from "./components/App/Main/Main";
+import LoginPageContainer from "./components/App/LoginPage/LoginPageContainer";
+import RegisterPageContainer from "./components/App/RegisterPage/RegisterPageContainer";
+import RestorePageContainer from "./components/App/RestorePage/RestorePageContainer";
+import { withUnauthorizedRedirect } from "./components/Helpers/hoc/withUnauthorizedRedirect";
+import { withAuthorizedRedirect } from "./components/Helpers/hoc/withAuthorizedRedirect";
 
 interface AppPropsType {
   isInitialized: Boolean;
