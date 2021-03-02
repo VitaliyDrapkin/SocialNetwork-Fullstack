@@ -2,17 +2,31 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./LoginPage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../components/Helpers/formik/formControls/formControls";
+import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
 import {
   validateEmail,
   validatePassword,
-} from "../../components/Helpers/formik/validators/validators";
+} from "../../../components/Helpers/formik/validators/validators";
 
-//-------------types--------------
-type LoginFormikProps = {
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { UsersRequests } from "../../../API/UsersRequests";
+import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
+import { RootState } from "../../../redux/store";
+
+interface OwnProps {
   onLogin(login: string, password: string): void;
-};
+}
 
+interface PropsFromState {}
+
+interface PropsFromDispatch {
+  onLogin(login: string, password: string): void;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+//Formik types
 type initialValuesType = {
   email: string;
   password: string;
@@ -24,7 +38,7 @@ type setErrorsType = {
 
 type setSubmittingType = { (isSubmit: boolean): void };
 
-function LoginPage(props: LoginFormikProps) {
+function LoginPage(props: OwnProps) {
   //Formik values state
   const initialValues: initialValuesType = { email: "", password: "" };
 
@@ -98,4 +112,41 @@ function LoginPage(props: LoginFormikProps) {
   );
 }
 
-export default LoginPage;
+const mapStateToProps = (state: RootState): {} => {
+  return {};
+};
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    onLogin: async (email: string, password: string) => {
+      try {
+        const responseData = await UsersRequests.login(email, password);
+        dispatch(
+          authorizationAC(
+            responseData._id,
+            responseData.firstName,
+            responseData.lastName,
+            responseData.birthday,
+            responseData.gender,
+            responseData.accessToken,
+            responseData.profileImg
+          )
+        );
+      } catch (error) {
+        if (error.message === "Request failed with status code 401") {
+          throw error;
+        }
+        alert("server error");
+      }
+    },
+  };
+};
+
+const LoginFormContainer = connect<{}, PropsFromDispatch, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);
+
+export default LoginFormContainer;
