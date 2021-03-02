@@ -13,6 +13,7 @@ import { Dispatch } from "redux";
 import { UsersRequests } from "../../../API/UsersRequests";
 import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
+import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
 
 interface OwnProps {
   onLogin(login: string, password: string): void;
@@ -38,7 +39,7 @@ type setErrorsType = {
 
 type setSubmittingType = { (isSubmit: boolean): void };
 
-function LoginPage(props: OwnProps) {
+function LoginPage(props: AllProps) {
   //Formik values state
   const initialValues: initialValuesType = { email: "", password: "" };
 
@@ -144,9 +145,9 @@ const mapDispatchToProps = (
   };
 };
 
-const LoginFormContainer = connect<{}, PropsFromDispatch, {}, RootState>(
+const connectLoginPage = connect<{}, PropsFromDispatch, {}, RootState>(
   mapStateToProps,
   mapDispatchToProps
 )(LoginPage);
 
-export default LoginFormContainer;
+export default withAuthorizedRedirect(connectLoginPage);

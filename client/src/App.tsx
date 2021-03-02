@@ -29,11 +29,7 @@ function App(props: AppPropsType) {
               path={["/main", "/profile", "/friends", "/messages", "/chat"]}
               component={withUnauthorizedRedirect(Main)}
             />
-
-            <Route
-              path="/login"
-              component={withAuthorizedRedirect(LoginPage)}
-            />
+            <Route path="/login" component={LoginPage} />
             <Route
               path="/registration"
               component={withAuthorizedRedirect(RegisterPageContainer)}
