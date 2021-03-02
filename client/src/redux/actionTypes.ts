@@ -130,6 +130,7 @@ type setChatDataType = {
   lastName: string;
   profileImg: string;
   messages: Message[];
+  companionId: string;
 };
 
 type deleteFriendType = {
@@ -170,6 +171,7 @@ type addEmojiInputType = {
 type addPostType = {
   type: typeof ADD_NEW_POST;
   postId: string;
+  userId: string;
   firstName: string;
   lastName: string;
   profileImage: string;
@@ -177,7 +179,7 @@ type addPostType = {
 
 type setPostsType = {
   type: typeof SET_POSTS;
-  posts: any[];
+  posts: Post[];
 };
 
 type deletePostType = {
@@ -278,6 +280,8 @@ type setProfileDataType = {
   relationship: string;
   lives: string;
   posts: Post[];
+  isFriend: boolean;
+  isRequestSent: boolean;
 };
 
 type changeProfileImageType = {
@@ -411,16 +415,24 @@ export const endLoadProfileAC = (): endLoadProfileType => {
   };
 };
 
-export const setPostsAC = (posts: any): setPostsType => {
+export const setPostsAC = (posts: Post[]): setPostsType => {
   return { type: SET_POSTS, posts };
 };
 export const addPostAC = (
   postId: string,
+  userId: string,
   firstName: string,
   lastName: string,
   profileImage: string
 ): addPostType => {
-  return { type: ADD_NEW_POST, postId, firstName, lastName, profileImage };
+  return {
+    type: ADD_NEW_POST,
+    postId,
+    userId,
+    firstName,
+    lastName,
+    profileImage,
+  };
 };
 export const deletePostAC = (postId: string): deletePostType => {
   return { type: DELETE_POST, postId };
@@ -530,7 +542,9 @@ export const setProfileDataAC = (
   status: string,
   birthDay: number,
   relationship: string,
-  posts: Post[]
+  posts: Post[],
+  isFriend: boolean,
+  isRequestSent: boolean
 ): setProfileDataType => {
   return {
     type: SET_PROFILE_DATA,
@@ -544,6 +558,8 @@ export const setProfileDataAC = (
     relationship,
     lives,
     posts,
+    isFriend,
+    isRequestSent,
   };
 };
 
@@ -584,10 +600,12 @@ export const setChatDataAC = (
   firstName: string,
   lastName: string,
   profileImg: string,
-  messages: Message[]
+  messages: Message[],
+  companionId: string
 ): setChatDataType => {
   return {
     type: SET_CHAT_DATA,
+    companionId,
     conversationId,
     firstName,
     lastName,

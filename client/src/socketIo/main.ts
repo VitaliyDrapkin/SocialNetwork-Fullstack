@@ -32,16 +32,6 @@ export const addSocketEvents = () => {
     );
   });
 
-  socket.on("addVacation", (vacation: any) => {});
-
-  socket.on("editVacation", (vacation: any) => {});
-
-  // Some one followed vacation
-  socket.on("follow", async (obj: any) => {});
-
-  // Some one unfollowed vacation
-  socket.on("unfollow", async (obj: any) => {});
-
   socket.on("connect_error", async () => {
     alert("Lost connection to the server. Trying to reconnect");
   });

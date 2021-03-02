@@ -10,6 +10,8 @@ import StatusContainer from "./Status/Status";
 import { Post } from "../../../../../Model/post";
 import EditPostContainer from "../MainPage/EditPost/EditPostContainer";
 import PostItemContainer from "../MainPage/Post/PostItemContainer";
+import { NavLink } from "react-router-dom";
+import { useRequestFriends } from "../FriendsPage/FriendItem/useRequestFriends";
 
 interface profilePagePropsType {
   ownId: string;
@@ -19,8 +21,13 @@ interface profilePagePropsType {
   lastName: string;
   profileImg: string;
   posts: Post[];
+  isFriend: boolean;
+  isRequestSent: boolean;
   loadProfile(userId: string, ownId: string): Promise<void>;
   addProfileImage(image: File): Promise<void>;
+  deleteFriend(friendId: string): Promise<void>;
+  addFriend(friendId: string): Promise<void>;
+  cancelRequest(friendId: string): Promise<void>;
 }
 function ProfilePage(props: profilePagePropsType) {
   const [profileImgHover, setProfileImgHover] = useState(false);
@@ -28,7 +35,7 @@ function ProfilePage(props: profilePagePropsType) {
 
   useEffect(() => {
     props.loadProfile(location.pathname.slice("/profile/".length), props.ownId);
-  }, []);
+  }, [location.pathname.slice("/profile/".length)]);
   return (
     <div className={s.profilePage}>
       {props.isLoaded ? (
@@ -62,9 +69,54 @@ function ProfilePage(props: profilePagePropsType) {
               <BirthdayContainer />
               <RelationshipContainer />
               <LivesContainer />
+              {!props.isOwnProfile && (
+                <div className={s.actionsButtons}>
+                  {props.isFriend ? (
+                    <div
+                      className={s.addToFriendsBTN}
+                      onClick={() =>
+                        props.deleteFriend(
+                          location.pathname.slice("/profile/".length)
+                        )
+                      }
+                    >
+                      Remove friend
+                    </div>
+                  ) : props.isRequestSent ? (
+                    <div
+                      className={s.addToFriendsBTN}
+                      onClick={() =>
+                        props.cancelRequest(
+                          location.pathname.slice("/profile/".length)
+                        )
+                      }
+                    >
+                      Cancel request
+                    </div>
+                  ) : (
+                    <div
+                      className={s.addToFriendsBTN}
+                      onClick={() =>
+                        props.addFriend(
+                          location.pathname.slice("/profile/".length)
+                        )
+                      }
+                    >
+                      Add as friend
+                    </div>
+                  )}
+                  <NavLink
+                    to={`/chat/${location.pathname.slice("/profile/".length)}`}
+                    className={s.sendMessageBTN}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Send Message
+                  </NavLink>
+                </div>
+              )}
             </div>
           </div>
-          <div className={s.photosField}>
+          {/* <div className={s.photosField}>
             <div className={s.photoHeadline}>
               My photo : <span>40</span>
             </div>
@@ -82,7 +134,7 @@ function ProfilePage(props: profilePagePropsType) {
                 <img src={props.profileImg || noAvatar} alt="" />
               </div>
             </div>
-          </div>
+          </div> */}
           {props.isOwnProfile && <AddPostContainer />}
           <div className={s.posts}>
             {props.posts.map((post) => {

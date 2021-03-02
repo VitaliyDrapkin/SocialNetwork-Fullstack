@@ -82,6 +82,7 @@
 
 .chatSmile {
   margin-right: 15px;
+  position: relative;
 }
 
 .chatSmile,
@@ -93,4 +94,29 @@
   .chat {
     height: 85vh;
   }
+}
+
+.backBtnNav {
+  display: flex;
+  align-items: center;
+  color: black;
+  margin-left: 0;
+}
+.backBtnNav:hover {
+  text-decoration: none;
+}
+
+.userName {
+  margin-right: 35px;
+  text-align: center;
+}
+
+.emojiPicker {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  right: 0;
+  bottom: 0;
+  position: absolute;
 }

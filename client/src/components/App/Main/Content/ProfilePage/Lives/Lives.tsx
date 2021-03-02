@@ -30,6 +30,7 @@ function Lives(props: LivesProps) {
               className={s.livesInput}
               type="text"
               value={value}
+              maxLength={40}
               onChange={(e) => setValue(e.target.value)}
               onBlur={() => {
                 props.onEditLives(value, props.lives);

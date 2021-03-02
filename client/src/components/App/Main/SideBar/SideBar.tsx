@@ -31,10 +31,10 @@ function SideBar(props: sideBarPropsType) {
         <PeopleIcon fontSize="large" />
         <span>Friends</span>
       </NavLink>
-      <NavLink to="/photos" className={s.navigationItem}>
+      {/* <NavLink to="/photos" className={s.navigationItem}>
         <PhotoLibraryIcon fontSize="large" />
         <span>Photo</span>
-      </NavLink>
+      </NavLink> */}
     </div>
   );
 }

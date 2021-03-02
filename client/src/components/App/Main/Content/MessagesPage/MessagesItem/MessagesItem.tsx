@@ -5,20 +5,27 @@ import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { NavLink } from "react-router-dom";
 
-function MessagesItem() {
+interface MessageItemProps {
+  firstName: string;
+  lastName: string;
+  profileImg: string;
+  userId: string;
+  lastMessage: string;
+}
+function MessagesItem(props: MessageItemProps) {
   const [showDeleteBTN, setsHowDeleteBTN] = useState(false);
   const [hoverColor, setHoverColor] = useState(false);
   return (
     <NavLink
       style={{ textDecoration: "none" }}
-      to="/chat"
+      to={`/chat/${props.userId}`}
       className={s.messageItem}
       onMouseEnter={() => setsHowDeleteBTN(true)}
       onMouseLeave={() => setsHowDeleteBTN(false)}
     >
       <div className={s.avatar}>
         <Avatar
-          src={profilePicture}
+          src={props.profileImg}
           style={{
             width: "60px",
             height: "60px",
@@ -27,8 +34,10 @@ function MessagesItem() {
         />
       </div>
       <div className={s.main}>
-        <div className={s.userName}>Alex Vasiliev</div>
-        <div className={s.lastMessage}>Hello my friend how are you?</div>
+        <div className={s.userName}>
+          {props.firstName} {props.lastName}
+        </div>
+        <div className={s.lastMessage}>{props.lastMessage}</div>
       </div>
       <div
         className={s.deleteBTN}

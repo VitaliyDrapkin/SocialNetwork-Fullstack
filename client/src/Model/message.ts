@@ -45,6 +45,19 @@ export class MessengerItem {
     public userId: string,
     public userFirstName: string,
     public userLastName: string,
+    public profileImg: string,
+    public lastMessage: string
+  ) {}
+}
+
+export class MessengerItemResponse {
+  public constructor(
+    public companion: {
+      _id: string;
+      firstName: string;
+      lastName: string;
+      profileImage: string;
+    },
     public lastMessage: string
   ) {}
 }

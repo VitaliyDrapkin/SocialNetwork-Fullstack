@@ -3,6 +3,7 @@ import ProfilePage from "./ProfilePage";
 import {
   actionsTypes,
   changeProfileImageAC,
+  deleteFriendAC,
   endLoadProfileAC,
   setProfileDataAC,
   startLoadProfileAC,
@@ -12,6 +13,7 @@ import { Dispatch } from "react";
 import { ProfileRequests } from "../../../../../API/ProfileRequests";
 import { addFileServer } from "../../../../Helpers/uploadFiles";
 import { Post } from "../../../../../Model/post";
+import { FriendsRequests } from "../../../../../API/FriendsRequests";
 
 interface mapStateToPropsType {
   ownId: string;
@@ -21,11 +23,16 @@ interface mapStateToPropsType {
   lastName: string;
   profileImg: string;
   posts: Post[];
+  isFriend: boolean;
+  isRequestSent: boolean;
 }
 
 interface mapDispatchToPropsType {
   loadProfile(userId: string, ownId: string): Promise<void>;
   addProfileImage(image: File): Promise<void>;
+  deleteFriend(friendId: string): Promise<void>;
+  addFriend(friendId: string): Promise<void>;
+  cancelRequest(friendId: string): Promise<void>;
 }
 
 let mapStateToProps = (state: RootState): mapStateToPropsType => {
@@ -36,7 +43,9 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
     firstName: state.profileData.firstName,
     lastName: state.profileData.lastName,
     profileImg: state.profileData.profileImg,
-    posts: state.profileData.posts,
+    posts: state.postsData.posts,
+    isFriend: state.profileData.isFriend,
+    isRequestSent: state.profileData.isRequestSent,
   };
 };
 
@@ -58,7 +67,9 @@ let mapDispatchToProps = (
           profile.status,
           profile.birthDay,
           profile.relationship,
-          profile.posts
+          profile.posts,
+          profile.isFriend,
+          profile.isRequestSent
         )
       );
       dispatch(endLoadProfileAC());
@@ -76,6 +87,19 @@ let mapDispatchToProps = (
       } catch (error) {
         console.log(error);
       }
+    },
+
+    deleteFriend: async (friendId: string) => {
+      await FriendsRequests.removeFriend(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+    addFriend: async (friendId: string) => {
+      await FriendsRequests.sendRequest(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+    cancelRequest: async (friendId: string) => {
+      await FriendsRequests.cancelRequest(friendId);
+      dispatch(deleteFriendAC(friendId));
     },
   };
 };

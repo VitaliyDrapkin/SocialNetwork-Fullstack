@@ -7,17 +7,26 @@ import EmojiPicker from "../../../../../Helpers/EmojiPicker/EmojiPicker";
 
 interface AddPostProps {
   postInputValue: string;
-  addPost(): Promise<void>;
+  addPost(
+    text: string,
+    userId: string,
+    userFirstName: string,
+    userLastName: string,
+    profileImage: string,
+    file?: File
+  ): Promise<void>;
   changePostInput(text: string): void;
   addEmoji(emoji: string): void;
   addPostImage(file: File): void;
   postImage: string;
+  postImageFile: File;
+  userId: string;
   userFirstName: string;
+  userLastName: string;
   profileImage: string;
 }
 
 function AddPost(props: AddPostProps) {
-  console.log(props);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const onAddImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +49,7 @@ function AddPost(props: AddPostProps) {
         </div>
         <textarea
           name="postText"
+          maxLength={350}
           placeholder={"Whats on your mind, " + props.userFirstName + "?"}
           onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
             props.changePostInput(event.target.value)
@@ -79,7 +89,20 @@ function AddPost(props: AddPostProps) {
           </div>
         </div>
         <div className={s.button}>
-          <button onClick={props.addPost}>Post</button>
+          <button
+            onClick={() =>
+              props.addPost(
+                props.postInputValue,
+                props.userId,
+                props.userFirstName,
+                props.userLastName,
+                props.profileImage,
+                props.postImageFile
+              )
+            }
+          >
+            Post
+          </button>
         </div>
       </div>
     </div>

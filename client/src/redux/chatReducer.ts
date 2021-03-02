@@ -11,7 +11,9 @@ export const SET_MESSENGER_DATA = "SET_MESSENGER_DATA";
 export const ADD_MESSAGE = "ADD_MESSAGE";
 
 export interface initialStateType {
+  companionId: string;
   isChatLoaded: boolean;
+  isMessengerLoaded: boolean;
   conversationId: string;
   firstName: string;
   lastName: string;
@@ -21,7 +23,9 @@ export interface initialStateType {
 }
 
 let initialState: initialStateType = {
+  companionId: "",
   isChatLoaded: false,
+  isMessengerLoaded: false,
   conversationId: "",
   firstName: "",
   lastName: "",
@@ -40,19 +44,35 @@ export function chatReducer(
         ...oldAppState,
         isChatLoaded: false,
       };
+    case START_LOAD_MESSENGER:
+      return {
+        ...oldAppState,
+        isMessengerLoaded: false,
+      };
     case CHAT_LOADED:
       return {
         ...oldAppState,
         isChatLoaded: true,
       };
+    case MESSENGER_LOADED:
+      return {
+        ...oldAppState,
+        isMessengerLoaded: true,
+      };
     case SET_CHAT_DATA:
       return {
         ...oldAppState,
+        companionId: action.companionId,
         conversationId: action.conversationId,
         firstName: action.firstName,
         lastName: action.lastName,
         profileImg: action.profileImg,
         messages: action.messages,
+      };
+    case SET_MESSENGER_DATA:
+      return {
+        ...oldAppState,
+        messengers: action.messengers,
       };
     case ADD_MESSAGE:
       const newMessage = new Message(

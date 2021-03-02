@@ -11,18 +11,22 @@ export const UsersRequests = {
     birthday: number,
     gender: string
   ) => {
-    const response = await instance.post<registrationResponse>(
-      "/users/registration",
-      {
-        firstName,
-        lastName,
-        email,
-        password,
-        birthday,
-        gender,
-      }
-    );
-    return response.data; //userId + access token
+    try {
+      const response = await instance.post<registrationResponse>(
+        "/users/registration",
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+          birthday,
+          gender,
+        }
+      );
+      return response.data; //userId + access token
+    } catch (error) {
+      throw error;
+    }
   },
 
   login: async (email: string, password: string) => {

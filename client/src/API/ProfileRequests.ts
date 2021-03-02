@@ -19,6 +19,7 @@ export const ProfileRequests = {
     const newPosts = response.data.posts.map((postResponse) => {
       return new Post(
         postResponse._id,
+        postResponse.userId._id,
         postResponse.userId.profileImage,
         postResponse.userId.firstName,
         postResponse.userId.lastName,
@@ -28,7 +29,8 @@ export const ProfileRequests = {
         postResponse.likes.includes(postResponse.userId._id),
         postResponse.comments,
         postResponse.imgUrl,
-        false
+        false,
+        postResponse.userId._id === store.getState().authData.id
       );
     });
 
@@ -43,6 +45,8 @@ export const ProfileRequests = {
       relationship: response.data.relationship,
       lives: response.data.address,
       posts: newPosts,
+      isFriend: response.data.isFriend,
+      isRequestSent: response.data.isRequestSent,
     };
     return profileResponse;
   },

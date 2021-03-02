@@ -22,7 +22,7 @@ function Comments(props: CommentsProps) {
               Hide comments
             </div>
           )}
-          {props.comments.map((comment: any) => {
+          {props.comments.map((comment: Comment) => {
             return (
               <CommentItemContainer comment={comment} postId={props.postId} />
             );

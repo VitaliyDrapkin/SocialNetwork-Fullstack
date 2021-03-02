@@ -1,26 +1,24 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import s from "./Header.module.css";
 import logo from "../../../../assets/images/vkIcon.svg";
 import SearchIcon from "@material-ui/icons/Search";
 import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MenuHeader from "./MenuHeader/MenuHeader";
-import { getValidToken } from "../../../../API/ApiSettings";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import ChatIcon from "@material-ui/icons/Chat";
-import { addSocketEvents } from "../../../../socketIo/main";
-import io from "socket.io-client";
 
 interface HeaderPropsType {
+  userId: string;
   userFirstName: string;
   userLastName: string;
   profileImg: string;
+  onClickLogout(): Promise<void>;
 }
 function Header(props: HeaderPropsType) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
 

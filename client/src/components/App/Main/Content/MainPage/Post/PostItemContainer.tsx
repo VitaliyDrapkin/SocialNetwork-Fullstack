@@ -1,6 +1,8 @@
+import { Dispatch } from "react";
 import { connect } from "react-redux";
 import { PostsRequests } from "../../../../../../API/PostsRequests";
 import {
+  actionsTypes,
   addCommentAC,
   deletePostAC,
   likePostAC,
@@ -18,7 +20,7 @@ let mapStateToProps = (state: RootState) => {
   };
 };
 
-let mapDispatchToProps = (dispatch: any) => {
+let mapDispatchToProps = (dispatch: Dispatch<actionsTypes>) => {
   return {
     deletePost: async (postId: string) => {
       await PostsRequests.deletePost(postId);
@@ -32,6 +34,9 @@ let mapDispatchToProps = (dispatch: any) => {
       userLastName: string,
       profileImage: string
     ) => {
+      if (!text) {
+        return;
+      }
       const date = new Date().getTime();
       const commentId = await PostsRequests.addComment(text, date, postId);
       dispatch(

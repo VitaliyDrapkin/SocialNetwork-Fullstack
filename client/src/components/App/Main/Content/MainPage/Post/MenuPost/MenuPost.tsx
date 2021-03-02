@@ -5,13 +5,20 @@ import Menu from "@material-ui/core/Menu";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
+interface styledMenuProps {
+  id: string;
+  anchorEl: Element;
+  keepMounted: boolean;
+  open: boolean;
+  onClose: () => void;
+}
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
     display: "flex",
     flexDirection: "column",
   },
-})((props: any) => (
+})((props: styledMenuProps) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
@@ -31,7 +38,7 @@ interface CustomizedMenusProps {
   postId: string;
   onCLose(): void;
   onDelete(): void;
-  anchorEl: string;
+  anchorEl: Element;
   startEditPost(postId: string): void;
 }
 

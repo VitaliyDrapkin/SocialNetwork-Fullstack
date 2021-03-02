@@ -11,4 +11,3 @@ export const addFileServer = async (file: File): Promise<string> => {
   const formData = createFormDataImage(file);
   return await PostsRequests.addImage(formData);
 };
-//

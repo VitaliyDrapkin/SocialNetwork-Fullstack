@@ -9,11 +9,12 @@ export class ProfileServerResponse {
     public status: string,
     public birthday: number,
     public relationship: string,
-    public relationshipUser: any,
     public address: string,
     public posts: PostsServerResponse[],
     public photo?: string[],
-    public photoCount?: number
+    public photoCount?: number,
+    public isFriend?: boolean,
+    public isRequestSent?: boolean
   ) {}
 }
 
@@ -28,8 +29,8 @@ export class ProfileModel {
     public birthDay: number,
     public relationship: string,
     public posts: Post[],
-    // public relationshipUser: any,
-    public lives: string // public photo?: string[],
-  ) // public photoCount?: number
-  {}
+    public lives: string,
+    public isFriend?: boolean,
+    public isRequestSent?: boolean
+  ) {}
 }

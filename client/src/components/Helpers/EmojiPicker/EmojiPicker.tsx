@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { RefObject, useEffect, useRef } from "react";
 import s from "./EmojiPicker.module.css";
-import Picker, { SKIN_TONE_MEDIUM_DARK } from "emoji-picker-react";
+import Picker, { IEmojiData, SKIN_TONE_MEDIUM_DARK } from "emoji-picker-react";
 
 interface EmojiPickerProps {
   closePicker(): void;
@@ -10,7 +10,7 @@ function EmojiPicker(props: EmojiPickerProps) {
   const ref = useRef();
   useOnClickOutside(ref, props.closePicker);
 
-  const onEmojiClick = (event: any, emojiObject: any) => {
+  const onEmojiClick = (event: MouseEvent, emojiObject: IEmojiData) => {
     props.onAddEmoji(emojiObject.emoji);
   };
 
@@ -23,7 +23,10 @@ function EmojiPicker(props: EmojiPickerProps) {
 
 export default EmojiPicker;
 
-function useOnClickOutside(ref: any, handler: any) {
+function useOnClickOutside<T extends HTMLElement = HTMLElement>(
+  ref: RefObject<T>,
+  handler: () => void
+) {
   useEffect(() => {
     const listener = (event: any) => {
       if (!ref.current || ref.current.contains(event.target)) {

@@ -132,7 +132,7 @@ function RegisterPage(props: RegisterPageProps) {
                   max={new Date().toISOString().slice(0, 10)}
                   type="date"
                   name="birthday"
-                  value={values.birthday}
+                  value={new Date(values.birthday).toISOString().slice(0, 10)} 
                   onChange={handleChange}
                   validate={validateBirthday}
                   component={CustomInputComponent}

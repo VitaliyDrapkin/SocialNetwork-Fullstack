@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, MouseEvent } from "react";
+import { NavLink } from "react-router-dom";
 import s from "./Post.module.css";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
@@ -53,7 +53,7 @@ function PostItem(props: PostProps) {
     );
     setInputCommentValue("");
   };
-  const handleClick = (event: any) => {
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const [sendHover, setSendHover] = useState(false);
@@ -72,15 +72,21 @@ function PostItem(props: PostProps) {
             />
           </div>
           <div className={s.information}>
-            <div className={s.name}>
+            <NavLink
+              to={`/profile/${props.post.userId}`}
+              className={s.name}
+              style={{ margin: 0, outline: "none" }}
+            >
               {props.post.userFirstName} {props.post.userLastName}
-            </div>
+            </NavLink>
             <div className={s.time}>{dateShowCalculate(props.post.date)}</div>
           </div>
         </div>
-        <div className={s.postSetting} onClick={handleClick}>
-          <ExpandMoreIcon fontSize="large" style={{ color: "#C1C5CC" }} />
-        </div>
+        {props.post.ownPost && (
+          <div className={s.postSetting} onClick={handleClick}>
+            <ExpandMoreIcon fontSize="large" style={{ color: "#C1C5CC" }} />
+          </div>
+        )}
       </div>
       <div className={s.postContent}>{props.post.text}</div>
       {props.post.postImgUrl && (
@@ -131,6 +137,7 @@ function PostItem(props: PostProps) {
             ref={inputEl}
             type="text"
             placeholder="Write a comment..."
+            maxLength={150}
             value={inputCommentValue}
             onChange={(e) => setInputCommentValue(e.target.value)}
             onKeyDown={(e) => e.keyCode === 13 && addComment()}

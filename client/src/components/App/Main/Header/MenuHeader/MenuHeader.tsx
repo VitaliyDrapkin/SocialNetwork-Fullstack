@@ -6,14 +6,22 @@ import Avatar from "@material-ui/core/Avatar";
 import SettingsIcon from "@material-ui/icons/Settings";
 import HelpIcon from "@material-ui/icons/Help";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { NavLink } from "react-router-dom";
 
+interface styledMenuProps {
+  id: string;
+  anchorEl: Element;
+  keepMounted: boolean;
+  open: boolean;
+  onClose: () => void;
+}
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid #d3d4d5",
     display: "flex",
     flexDirection: "column",
   },
-})((props: any) => (
+})((props: styledMenuProps) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
@@ -29,7 +37,16 @@ const StyledMenu = withStyles({
   />
 ));
 
-export default function MenuHeader(props: any) {
+interface MenuHeaderProps {
+  userId: string;
+  profileImg: string;
+  userFirstName: string;
+  userLastName: string;
+  onCLose(): void;
+  anchorEl: Element;
+  onClickLogout(): Promise<void>;
+}
+export default function MenuHeader(props: MenuHeaderProps) {
   const handleClose = () => {
     props.onCLose();
   };
@@ -43,14 +60,20 @@ export default function MenuHeader(props: any) {
         open={Boolean(props.anchorEl)}
         onClose={handleClose}
       >
-        <div className={s.profile}>
-          <div className={s.avatar}>
-            <Avatar src={props.profileImg} />
+        <NavLink
+          to={`/profile/${props.userId}`}
+          style={{ textDecoration: "none", margin: 0, outline: "none" }}
+          onClick={props.onCLose}
+        >
+          <div className={s.profile}>
+            <div className={s.avatar}>
+              <Avatar src={props.profileImg} />
+            </div>
+            <div className={s.name}>
+              {props.userFirstName} {props.userLastName}
+            </div>
           </div>
-          <div className={s.name}>
-            {props.userFirstName} {props.userLastName}
-          </div>
-        </div>
+        </NavLink>
         <div className={s.more}>
           <div className={s.setting}>
             <SettingsIcon />

@@ -1,4 +1,10 @@
-import { ChatResponse, ConversationResponse, Message } from "../Model/message";
+import {
+  ChatResponse,
+  ConversationResponse,
+  Message,
+  MessengerItemResponse,
+  MessengerItem,
+} from "../Model/message";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const MessagesRequests = {
@@ -28,5 +34,23 @@ export const MessagesRequests = {
       companion,
     };
     return conversation;
+  },
+
+  getMessengerData: async (): Promise<MessengerItem[]> => {
+    const response = await instance.get<MessengerItemResponse[]>(`/messages/`, {
+      headers: {
+        Authorization: `Bearer ${await getValidToken()}`,
+      },
+    });
+    const messengers = response.data.map((messenger) => {
+      return new MessengerItem(
+        messenger.companion._id,
+        messenger.companion.firstName,
+        messenger.companion.lastName,
+        messenger.companion.profileImage,
+        messenger.lastMessage
+      );
+    });
+    return messengers;
   },
 };

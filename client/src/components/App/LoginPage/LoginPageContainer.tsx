@@ -3,7 +3,6 @@ import { Dispatch } from "redux";
 import { UsersRequests } from "../../../API/UsersRequests";
 import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
-import { addSocketEvents } from "../../../socketIo/main";
 import LoginPage from "./LoginPage";
 
 interface mapDispatchToPropsType {
@@ -19,19 +18,25 @@ const mapDispatchToProps = (
 ): mapDispatchToPropsType => {
   return {
     onLogin: async (email: string, password: string) => {
-      addSocketEvents();
-      const responseData = await UsersRequests.login(email, password);
-      dispatch(
-        authorizationAC(
-          responseData._id,
-          responseData.firstName,
-          responseData.lastName,
-          responseData.birthday,
-          responseData.gender,
-          responseData.accessToken,
-          responseData.profileImg
-        )
-      );
+      try {
+        const responseData = await UsersRequests.login(email, password);
+        dispatch(
+          authorizationAC(
+            responseData._id,
+            responseData.firstName,
+            responseData.lastName,
+            responseData.birthday,
+            responseData.gender,
+            responseData.accessToken,
+            responseData.profileImg
+          )
+        );
+      } catch (error) {
+        if (error.message === "Request failed with status code 401") {
+          throw error;
+        }
+        alert("server error");
+      }
     },
   };
 };

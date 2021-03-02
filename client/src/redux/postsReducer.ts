@@ -14,6 +14,7 @@ export const UNLIKE_POST = "UNLIKE_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const ADD_POST_IMAGE = "ADD_POST_IMAGE";
+export const SET_PROFILE_DATA = "SET_PROFILE_DATA";
 
 export interface initialStateType {
   posts: Post[];
@@ -42,6 +43,7 @@ export function postPageReducer(
     case ADD_NEW_POST:
       const newPost: Post = {
         id: action.postId,
+        userId: action.userId,
         userProfileImg: action.profileImage,
         userFirstName: action.firstName,
         userLastName: action.lastName,
@@ -51,6 +53,8 @@ export function postPageReducer(
         likes: 0,
         liked: false,
         comments: [],
+        ownPost: true,
+        editMode: false,
       };
       return {
         ...oldAppState,
@@ -185,6 +189,11 @@ export function postPageReducer(
         ...oldAppState,
         postImage: action.image,
         postImageFile: action.imageFile,
+      };
+    case SET_PROFILE_DATA:
+      return {
+        ...oldAppState,
+        posts: action.posts,
       };
     default:
       return oldAppState;

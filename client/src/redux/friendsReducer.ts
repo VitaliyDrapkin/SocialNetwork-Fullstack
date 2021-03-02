@@ -30,7 +30,10 @@ export function friendsReducer(
   oldAppState: initialStateType = initialState,
   action: actionsTypes
 ): initialStateType {
+
+
   switch (action.type) {
+
     case START_LOAD_FRIENDS:
       return {
         ...oldAppState,

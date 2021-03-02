@@ -42,6 +42,7 @@ function App(props: AppPropsType) {
               path="/restore"
               component={withAuthorizedRedirect(RestorePageContainer)}
             />
+            {/* <Route component={LoginPageContainer} /> */}
           </Switch>
         ) : null}
       </div>

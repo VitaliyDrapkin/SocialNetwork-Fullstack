@@ -19,7 +19,6 @@ function Birthday(props: BirthdayProps) {
   const [editor, setEditor] = useState(false);
   const [value, setValue] = useState(props.birthday);
   const ref = useRef(null);
-  // alert(new Date(value).toLocaleString());
   return (
     <>
       {props.isOwnProfile ? (

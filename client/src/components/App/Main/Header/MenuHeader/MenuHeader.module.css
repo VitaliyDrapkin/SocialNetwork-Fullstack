@@ -43,3 +43,8 @@
 .logout span {
   margin-left: 10px;
 }
+
+.profileNav {
+  padding: 0;
+  margin: 0;
+}

@@ -19,6 +19,7 @@ interface mapStateToPropsType {
   postInputValue: string;
   postImage: string;
   postImageFile: File;
+  userId: string;
   userFirstName: string;
   userLastName: string;
   profileImage: string;
@@ -26,6 +27,7 @@ interface mapStateToPropsType {
 interface mapDispatchToPropsType {
   addPost(
     text: string,
+    userId: string,
     userFirstName: string,
     userLastName: string,
     profileImage: string,
@@ -41,6 +43,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
     postInputValue: state.postsData.postInputValue,
     postImage: state.postsData.postImage,
     postImageFile: state.postsData.postImageFile,
+    userId: state.authData.id,
     userFirstName: state.authData.firstName,
     userLastName: state.authData.lastName,
     profileImage: state.authData.profileImage,
@@ -59,18 +62,24 @@ let mapDispatchToProps = (
     },
     addPost: async (
       text: string,
+      userId: string,
       userFirstName: string,
       userLastName: string,
       profileImage: string,
       file?: File
     ) => {
+      if (!text) {
+        return;
+      }
       const date = new Date().getTime();
       let fileURL: string = "";
       if (file) {
         fileURL = await addFileServer(file);
       }
       const postId = await PostsRequests.addPost(text, date, fileURL);
-      dispatch(addPostAC(postId, userFirstName, userLastName, profileImage));
+      dispatch(
+        addPostAC(postId, userId, userFirstName, userLastName, profileImage)
+      );
     },
     addPostImage: (file: File) => {
       //add image to redux
@@ -80,37 +89,6 @@ let mapDispatchToProps = (
   };
 };
 
-interface mergePropsType {
-  postInputValue: string;
-  addPost(): void;
-  changePostInput(text: string): void;
-  addEmoji(emoji: string): void;
-}
-
-let mergeProps = (
-  stateProps: mapStateToPropsType,
-  dispatchProps: mapDispatchToPropsType,
-  ownProps: any
-): mapStateToPropsType | mapDispatchToPropsType | mergePropsType => {
-  return {
-    ...stateProps,
-    ...dispatchProps,
-    addPost: () => {
-      dispatchProps.addPost(
-        stateProps.postInputValue,
-        stateProps.userFirstName,
-        stateProps.userLastName,
-        stateProps.profileImage,
-        stateProps.postImageFile
-      );
-    },
-  };
-};
-
-const AddPostContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(AddPost);
+const AddPostContainer = connect(mapStateToProps, mapDispatchToProps)(AddPost);
 
 export default AddPostContainer;

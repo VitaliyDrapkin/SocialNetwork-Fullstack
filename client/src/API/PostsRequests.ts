@@ -1,5 +1,6 @@
 import { Post } from "../Model/post";
 import { PostsServerResponse } from "../Model/postsServerResponse";
+import { store } from "../redux/store";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const PostsRequests = {
@@ -13,16 +14,18 @@ export const PostsRequests = {
     const newPosts = response.data.map((postResponse) => {
       return new Post(
         postResponse._id,
+        postResponse.userId._id,
         postResponse.userId.profileImage,
         postResponse.userId.firstName,
         postResponse.userId.lastName,
         postResponse.date,
         postResponse.text,
         postResponse.likes.length,
-        postResponse.likes.includes(postResponse.userId._id),
+        postResponse.likes.includes(store.getState().authData.id),
         postResponse.comments,
         postResponse.imgUrl,
-        false
+        false,
+        postResponse.userId._id === store.getState().authData.id
       );
     });
     return newPosts;

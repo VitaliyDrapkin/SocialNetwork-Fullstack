@@ -32,24 +32,31 @@ const mapDispatchToProps = (
       birthday: number,
       gender: string
     ) => {
-      const responseData = await UsersRequests.registration(
-        firstName,
-        lastName,
-        email,
-        password,
-        new Date(birthday).getTime(),
-        gender
-      );
-      dispatch(
-        authorizationAC(
-          responseData._id,
+      try {
+        const responseData = await UsersRequests.registration(
           firstName,
           lastName,
+          email,
+          password,
           new Date(birthday).getTime(),
-          gender,
-          responseData.accessToken
-        )
-      );
+          gender
+        );
+        dispatch(
+          authorizationAC(
+            responseData._id,
+            firstName,
+            lastName,
+            new Date(birthday).getTime(),
+            gender,
+            responseData.accessToken
+          )
+        );
+      } catch (error) {
+        if (error.message === "Request failed with status code 601") {
+          throw error;
+        }
+        alert("Server error");
+      }
     },
   };
 };

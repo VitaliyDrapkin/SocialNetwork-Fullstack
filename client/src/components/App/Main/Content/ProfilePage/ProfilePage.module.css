@@ -11,6 +11,7 @@
 .profileImage {
   position: relative;
   flex: 1;
+  max-height: 300px;
 }
 .profileImage div {
   background-color: #19212cb0;
@@ -161,4 +162,21 @@ input[type="file"]::-webkit-file-upload-button {
 
 .relationshipName:hover {
   text-decoration: underline;
+}
+
+.actionsButtons {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.addToFriendsBTN,
+.sendMessageBTN {
+  background-color: #5181b8;
+  color: white;
+  font-size: 22px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }

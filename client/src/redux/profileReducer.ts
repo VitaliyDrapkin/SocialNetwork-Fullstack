@@ -22,9 +22,10 @@ export interface initialStateType {
   relationship: string;
   relationshipUser?: { _id: number; firstName: string; lastName: string };
   lives: string;
-  posts: Post[];
   photo?: string[];
   photoCount?: number;
+  isFriend: boolean;
+  isRequestSent: boolean;
 }
 
 let initialState: initialStateType = {
@@ -39,9 +40,10 @@ let initialState: initialStateType = {
   relationship: "",
   relationshipUser: null,
   lives: "",
-  posts: [],
   photo: [],
   photoCount: 0,
+  isFriend: false,
+  isRequestSent: false,
 };
 
 export function profileReducer(
@@ -72,7 +74,8 @@ export function profileReducer(
         lives: action.lives,
         relationship: action.relationship,
         profileImg: action.profileImg,
-        posts: action.posts,
+        isFriend: action.isFriend,
+        isRequestSent: action.isRequestSent,
       };
 
     case CHANGE_PROFILE_IMAGE:

@@ -1,6 +1,7 @@
 export class Post {
   public constructor(
     public id: string,
+    public userId: string,
     public userProfileImg: string,
     public userFirstName: string,
     public userLastName: string,
@@ -9,8 +10,9 @@ export class Post {
     public likes: number,
     public liked: boolean,
     public comments: Comment[],
-    public postImgUrl?: string,
-    public editMode?: boolean
+    public postImgUrl: string,
+    public editMode: boolean,
+    public ownPost: boolean
   ) {}
 }
 

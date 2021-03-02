@@ -1,43 +1,51 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import s from "./ChatPage.module.css";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../assets/images/profilePicture.jpg";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
 import ChatItem from "./ChatItem/ChatItem";
 import { useLocation } from "react-router";
 import { Message } from "../../../../../Model/message";
-import { socketRequests } from "../../../../../socketIo/main";
+import { NavLink } from "react-router-dom";
+import EmojiPicker from "../../../../Helpers/EmojiPicker/EmojiPicker";
 
 interface ChatPageProps {
   ownId: string;
+  previousId: string;
   conversationId: string;
   firstName: string;
   lastName: string;
   profileImg: string;
   messages: Message[];
-  loadChat(userId: string): Promise<void>;
+  loaded: boolean;
+  loadChat(userId: string, previousId: string): Promise<void>;
   sendMessage(text: string, conversationId: string): Promise<void>;
 }
 function ChatPage(props: ChatPageProps) {
   const [sendHover, setSendHover] = useState(false);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
   const [value, setValue] = useState("");
   const location = useLocation();
 
   useEffect(() => {
-    props.loadChat(location.pathname.slice("/chat/".length));
+    props.loadChat(location.pathname.slice("/chat/".length), props.previousId);
   }, []); //Only in first load
 
-  return (
+  return props.loaded ? (
     <div className={s.chat}>
       <div className={s.chatTop}>
-        <div className={s.backBtn}>
-          <div>
-            <ArrowBackIosIcon />
+        <NavLink to="/messages" className={s.backBtnNav}>
+          <div className={s.backBtn}>
+            <div>
+              <ArrowBackIosIcon />
+            </div>
+
+            <span>Back</span>
           </div>
-          <span>Back</span>
-        </div>
+        </NavLink>
         <div className={s.chatUserInfo}>
           <div className={s.userName}>
             {props.firstName} {props.lastName}
@@ -67,8 +75,16 @@ function ChatPage(props: ChatPageProps) {
             }
           />
         </div>
-        <div className={s.chatSmile}>
+        <div className={s.chatSmile} onClick={() => setShowEmojiPicker(true)}>
           <InsertEmoticonIcon fontSize="large" style={{ color: "gold" }} />
+          {showEmojiPicker && (
+            <div className={s.emojiPicker}>
+              <EmojiPicker
+                closePicker={() => setShowEmojiPicker(false)}
+                onAddEmoji={(emoji) => setValue(value + emoji)}
+              />
+            </div>
+          )}
         </div>
         <div
           className={s.chatSend}
@@ -87,7 +103,7 @@ function ChatPage(props: ChatPageProps) {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default ChatPage;

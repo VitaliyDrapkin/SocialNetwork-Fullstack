@@ -23,8 +23,8 @@ function FriendsPage(props: FriendsPageProps) {
   useEffect(() => {
     props.loadFriendsPage();
   }, []); //Only if first load
-
   return (
+
     <div className={s.friendsPage}>
       <div className={s.friendsTop}>
         {newFriendsPage ? (

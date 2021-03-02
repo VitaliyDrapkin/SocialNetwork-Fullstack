@@ -28,6 +28,7 @@ function Status(props: StatusProps) {
               className={s.statusInput}
               type="text"
               value={value}
+              maxLength={50}
               onChange={(e) => setValue(e.target.value)}
               onBlur={() => {
                 props.onEditStatus(value, props.status);

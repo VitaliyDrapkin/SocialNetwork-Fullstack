@@ -13,6 +13,9 @@ interface mapStateToPropsType {
 interface mapDispatchToPropsType {
   setPosts(): Promise<void>;
 }
+
+
+
 let mapStateToProps = (state: RootState): mapStateToPropsType => {
   return {
     posts: state.postsData.posts,
@@ -30,6 +33,9 @@ let mapDispatchToProps = (
     },
   };
 };
+
+
+
 
 const MainPageContainer = connect<
   mapStateToPropsType,
