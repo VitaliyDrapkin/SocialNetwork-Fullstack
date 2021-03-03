@@ -9,10 +9,14 @@ import {
   validatePassword,
 } from "../../../components/Helpers/formik/validators/validators";
 import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { UsersRequests } from "../../../API/UsersRequests";
+import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
+import { RootState } from "../../../redux/store";
+import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
 
-//--------------types-----------------
-
-type RegisterPageProps = {
+interface OwnProps {
   onRegistration(
     firstName: string,
     lastName: string,
@@ -21,7 +25,22 @@ type RegisterPageProps = {
     birthday: number,
     gender: string
   ): void;
-};
+}
+
+interface PropsFromState {}
+
+interface PropsFromDispatch {
+  onRegistration(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    birthday: number,
+    gender: string
+  ): void;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
 
 type initialValuesType = {
   firstName: string;
@@ -38,7 +57,7 @@ type setErrorsType = {
 
 type setSubmittingType = { (isSubmit: boolean): void };
 
-function RegisterPage(props: RegisterPageProps) {
+function RegisterPage(props: AllProps) {
   //Formik Values state
   const initialValues: initialValuesType = {
     firstName: "",
@@ -177,4 +196,54 @@ function RegisterPage(props: RegisterPageProps) {
   );
 }
 
-export default RegisterPage;
+const mapStateToProps = (state: RootState): {} => {
+  return {};
+};
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    onRegistration: async (
+      firstName: string,
+      lastName: string,
+      email: string,
+      password: string,
+      birthday: number,
+      gender: string
+    ) => {
+      try {
+        const responseData = await UsersRequests.registration(
+          firstName,
+          lastName,
+          email,
+          password,
+          new Date(birthday).getTime(),
+          gender
+        );
+        dispatch(
+          authorizationAC(
+            responseData._id,
+            firstName,
+            lastName,
+            new Date(birthday).getTime(),
+            gender,
+            responseData.accessToken
+          )
+        );
+      } catch (error) {
+        if (error.message === "Request failed with status code 601") {
+          throw error;
+        }
+        alert("Server error");
+      }
+    },
+  };
+};
+
+const connectRegisterPage = connect<{}, PropsFromDispatch, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterPage);
+
+export default withAuthorizedRedirect(connectRegisterPage);
