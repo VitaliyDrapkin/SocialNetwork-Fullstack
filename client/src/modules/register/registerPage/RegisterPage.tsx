@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./RegisterPage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../Helpers/formik/formControls/formControls";
 import {
-  validateEmail,
   simpleValidateNames,
-  validatePassword,
   validateBirthday,
-} from "../../Helpers/formik/validators/validators";
+  validateEmail,
+  validatePassword,
+} from "../../../components/Helpers/formik/validators/validators";
+import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
 
 //--------------types-----------------
 
@@ -132,7 +132,7 @@ function RegisterPage(props: RegisterPageProps) {
                   max={new Date().toISOString().slice(0, 10)}
                   type="date"
                   name="birthday"
-                  value={new Date(values.birthday).toISOString().slice(0, 10)} 
+                  value={new Date(values.birthday).toISOString().slice(0, 10)}
                   onChange={handleChange}
                   validate={validateBirthday}
                   component={CustomInputComponent}

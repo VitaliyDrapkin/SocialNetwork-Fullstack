@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import s from "./App.module.css";
 
 import Main from "./components/App/Main/Main";
-import RegisterPageContainer from "./components/App/RegisterPage/RegisterPageContainer";
+import RegisterPageContainer from "./modules/register/registerPage/RegisterPageContainer";
 import RestorePageContainer from "./components/App/RestorePage/RestorePageContainer";
 import { withUnauthorizedRedirect } from "./components/Helpers/hoc/withUnauthorizedRedirect";
 import { withAuthorizedRedirect } from "./components/Helpers/hoc/withAuthorizedRedirect";
