@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./PhotosPage.module.css";
-import profilePicture from "../../../../../assets/images/profilePicture.jpg";
+import profilePicture from "../../../../assets/images/profilePicture.jpg";
 
 function PhotosPage() {
   return (

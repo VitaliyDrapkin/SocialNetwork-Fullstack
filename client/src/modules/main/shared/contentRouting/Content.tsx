@@ -4,7 +4,7 @@ import { Route } from "react-router";
 import FriendsPage from "../../pages/FriendsPage";
 import MainPageContainer from "../../../../components/App/Main/Content/MessagesPage/MessagesPageContainer";
 import MessagesPageContainer from "../../../../components/App/Main/Content/MessagesPage/MessagesPageContainer";
-import PhotosPage from "../../../../components/App/Main/Content/PhotosPage/PhotosPage";
+import PhotosPage from "../../pages/PhotosPage/PhotosPage";
 import ProfilePageContainer from "../../../../components/App/Main/Content/ProfilePage/ProfilePageContainer";
 import ChatPage from "../../pages/ChatPage/ChatPage";
 import s from "./Content.module.css";
