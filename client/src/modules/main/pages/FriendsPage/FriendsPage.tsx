@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FriendItem from "../../components/FriendItem/";
-import FriendsSearchContainer from "../../components/FriendsSearch/FriendsSearchContainer";
+import FriendsSearch from "../../components/FriendsSearch";
 import s from "./FriendsPage.module.css";
 import { Dispatch } from "react";
 import { connect } from "react-redux";
@@ -95,7 +95,7 @@ function FriendsPage(props: AllProps) {
         )}
       </div>
       {!showRequests && (
-        <FriendsSearchContainer newFriendsPage={newFriendsPage} />
+        <FriendsSearch newFriendsPage={newFriendsPage} />
       )}
       {newFriendsPage ? (
         <div className={s.friendsMain}>

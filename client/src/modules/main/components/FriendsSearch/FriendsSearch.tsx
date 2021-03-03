@@ -1,14 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import s from "./FriendsSearch.module.css";
+import { connect } from "react-redux";
+import { RootState } from "../../../../redux/store";
+import { Dispatch } from "react";
+import {
+  actionsTypes,
+  changeFilterValueAC,
+  setFriendsSearchDataAC,
+} from "../../../../redux/actionTypes";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
 
-interface FriendsSearchProps {
+interface OwnProps {
   newFriendsPage: boolean;
   filter: string;
   onChangeFilter(value: string): Promise<void>;
   onNewFriendsSearch(value: string): Promise<void>;
 }
-function FriendsSearch(props: FriendsSearchProps) {
+
+interface PropsFromState {
+  filter: string;
+}
+
+interface PropsFromDispatch {
+  onChangeFilter(value: string): Promise<void>;
+  onNewFriendsSearch(value: string): Promise<void>;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function FriendsSearch(props: AllProps) {
   return (
     <div className={s.friendsSearch}>
       <div className={s.searchIcon}>
@@ -30,4 +51,28 @@ function FriendsSearch(props: FriendsSearchProps) {
   );
 }
 
-export default FriendsSearch;
+let mapStateToProps = (state: RootState): PropsFromState => {
+  return {
+    filter: state.friendsData.filter,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    onChangeFilter: async (value: string) => {
+      dispatch(changeFilterValueAC(value));
+    },
+    onNewFriendsSearch: async (value: string) => {
+      dispatch(changeFilterValueAC(value));
+      const friends = await FriendsRequests.getNewFriends(value);
+      dispatch(setFriendsSearchDataAC(friends));
+    },
+  };
+};
+
+export default connect<PropsFromState, PropsFromDispatch, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(FriendsSearch);
