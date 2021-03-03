@@ -5,13 +5,24 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import Avatar from "@material-ui/core/Avatar";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
-import ChatItem from "./ChatItem/ChatItem";
 import { useLocation } from "react-router";
-import { Message } from "../../../../../models/message";
 import { NavLink } from "react-router-dom";
-import EmojiPicker from "../../../../Helpers/EmojiPicker/EmojiPicker";
+import ChatItem from "../../../../components/App/Main/Content/ChatPage/ChatItem/ChatItem";
+import EmojiPicker from "../../../../components/Helpers/EmojiPicker/EmojiPicker";
+import { connect } from "react-redux";
+import { Message } from "../../../../models/message";
+import { RootState } from "../../../../redux/store";
+import { Dispatch } from "react";
+import { MessagesRequests } from "../../../../API/MessagesRequests";
+import { socketRequests } from "../../../../socketIo/main";
+import {
+  actionsTypes,
+  endLoadChatAC,
+  setChatDataAC,
+  startLoadChatAC,
+} from "../../../../redux/actionTypes";
 
-interface ChatPageProps {
+interface OwnProps {
   ownId: string;
   previousId: string;
   conversationId: string;
@@ -23,7 +34,25 @@ interface ChatPageProps {
   loadChat(userId: string, previousId: string): Promise<void>;
   sendMessage(text: string, conversationId: string): Promise<void>;
 }
-function ChatPage(props: ChatPageProps) {
+
+interface PropsFromState {
+  ownId: string;
+  previousId: string;
+  conversationId: string;
+  firstName: string;
+  lastName: string;
+  profileImg: string;
+  messages: Message[];
+  loaded: boolean;
+}
+interface PropsFromDispatch {
+  loadChat(userId: string, previousId: string): Promise<void>;
+  sendMessage(text: string, conversationId: string): Promise<void>;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function ChatPage(props: AllProps) {
   const [sendHover, setSendHover] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -106,4 +135,60 @@ function ChatPage(props: ChatPageProps) {
   ) : null;
 }
 
-export default ChatPage;
+let mapStateToProps = (state: RootState): PropsFromState => {
+  return {
+    ownId: state.authData.id,
+    previousId: state.chatData.companionId,
+    conversationId: state.chatData.conversationId,
+    firstName: state.chatData.firstName,
+    lastName: state.chatData.lastName,
+    profileImg: state.chatData.profileImg,
+    messages: state.chatData.messages,
+    loaded: state.chatData.isChatLoaded,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    loadChat: async (userId: string, previousId: string) => {
+      if (userId === previousId) {
+        return;
+      }
+      const conversation = await MessagesRequests.getConversation(userId);
+      dispatch(startLoadChatAC());
+      console.log(conversation.messages);
+      dispatch(
+        setChatDataAC(
+          conversation._id,
+          conversation.companion.firstName,
+          conversation.companion.lastName,
+          conversation.companion.profileImg,
+          conversation.messages,
+          conversation.companion._id
+        )
+      );
+      dispatch(endLoadChatAC());
+    },
+
+    sendMessage: async (text: string, conversationId: string) => {
+      if (!text) {
+        return;
+      }
+      socketRequests.sendMessage(text, conversationId);
+    },
+  };
+};
+
+const ChatPageContainer = connect<
+  PropsFromState,
+  PropsFromDispatch,
+  {},
+  RootState
+>(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChatPage);
+
+export default ChatPageContainer;
