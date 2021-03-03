@@ -1,14 +1,14 @@
 import React, { Dispatch, useState, useRef } from "react";
 import { connect } from "react-redux";
-import { ProfileRequests } from "../../../../../../API/ProfileRequests";
+import { ProfileRequests } from "../../../../API/ProfileRequests";
 import {
   actionsTypes,
   changeProfileBirthdayAC,
-} from "../../../../../../redux/actionTypes";
-import { RootState } from "../../../../../../redux/store";
+} from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 import s from "./Birthday.module.css";
 import CakeIcon from "@material-ui/icons/Cake";
-import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
+import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
 
 interface BirthdayProps {
   isOwnProfile: boolean;

@@ -1,12 +1,12 @@
 import React, { Dispatch, useState, useRef } from "react";
 import { connect } from "react-redux";
 import { idText } from "typescript";
-import { ProfileRequests } from "../../../../../../API/ProfileRequests";
+import { ProfileRequests } from "../../../../API/ProfileRequests";
 import {
   actionsTypes,
   changeProfileStatusAC,
-} from "../../../../../../redux/actionTypes";
-import { RootState } from "../../../../../../redux/store";
+} from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 import s from "./Status.module.css";
 
 interface StatusProps {

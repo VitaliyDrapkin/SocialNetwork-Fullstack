@@ -1,11 +1,11 @@
 import React, { Dispatch, useState, useRef } from "react";
 import { connect } from "react-redux";
-import { ProfileRequests } from "../../../../../../API/ProfileRequests";
+import { ProfileRequests } from "../../../../API/ProfileRequests";
 import {
   actionsTypes,
   changeProfileRelationshipAC,
-} from "../../../../../../redux/actionTypes";
-import { RootState } from "../../../../../../redux/store";
+} from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 import s from "./Relationship.module.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 

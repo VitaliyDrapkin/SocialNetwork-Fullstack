@@ -1,11 +1,11 @@
 import React, { Dispatch, useState, useRef } from "react";
 import { connect } from "react-redux";
-import { ProfileRequests } from "../../../../../../API/ProfileRequests";
+import { ProfileRequests } from "../../../../API/ProfileRequests";
 import {
   actionsTypes,
   changeProfileLivesAC,
-} from "../../../../../../redux/actionTypes";
-import { RootState } from "../../../../../../redux/store";
+} from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 import s from "./Lives.module.css";
 import HomeIcon from "@material-ui/icons/Home";
 

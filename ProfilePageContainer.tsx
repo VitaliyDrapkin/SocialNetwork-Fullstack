@@ -12,7 +12,7 @@ import { RootState } from "../../../../../redux/store";
 import { Dispatch } from "react";
 import { ProfileRequests } from "../../../../../API/ProfileRequests";
 import { addFileServer } from "../../../../Helpers/uploadFiles";
-import { Post } from "../../../../../models/post";
+import { Post } from "../../../../../Model/post";
 import { FriendsRequests } from "../../../../../API/FriendsRequests";
 
 interface mapStateToPropsType {

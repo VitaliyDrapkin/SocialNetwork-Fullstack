@@ -1,17 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch } from "react";
 import s from "./ProfilePage.module.css";
-import AddPostContainer from "../MainPage/AddPost/AddPostContainer";
-import noAvatar from "../../../../../assets/images/noAvatar.svg";
+import noAvatar from "../../../../assets/images/noAvatar.svg";
 import { useLocation } from "react-router";
-import LivesContainer from "./Lives/Lives";
-import BirthdayContainer from "./Birthday/Birthday";
-import RelationshipContainer from "./Relationship/Relationship";
-import StatusContainer from "./Status/Status";
-import { Post } from "../../../../../models/post";
-import EditPostContainer from "../MainPage/EditPost/EditPostContainer";
-import PostItemContainer from "../MainPage/Post/PostItemContainer";
 import { NavLink } from "react-router-dom";
-import { useRequestFriends } from "../../../../../modules/main/components/FriendItem/useRequestFriends";
+import { connect } from "react-redux";
+import { Post } from "../../../../models/post";
+import AddPostContainer from "../../../../components/App/Main/Content/MainPage/AddPost/AddPostContainer";
+import EditPostContainer from "../../../../components/App/Main/Content/MainPage/EditPost/EditPostContainer";
+import PostItemContainer from "../../../../components/App/Main/Content/MainPage/Post/PostItemContainer";
+import StatusContainer from "../../components/Status/Status";
+import BirthdayContainer from "../../components/Birthday/Birthday";
+import RelationshipContainer from "../../components/Relationship/Relationship";
+import LivesContainer from "../../components/Lives/Lives";
+import { RootState } from "../../../../redux/store";
+import {
+  actionsTypes,
+  changeProfileImageAC,
+  deleteFriendAC,
+  endLoadProfileAC,
+  setProfileDataAC,
+  startLoadProfileAC,
+} from "../../../../redux/actionTypes";
+import { ProfileRequests } from "../../../../API/ProfileRequests";
+import { addFileServer } from "../../../../components/Helpers/uploadFiles";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
 
 interface profilePagePropsType {
   ownId: string;
@@ -150,4 +162,101 @@ function ProfilePage(props: profilePagePropsType) {
   );
 }
 
-export default ProfilePage;
+interface mapStateToPropsType {
+  ownId: string;
+  isLoaded: boolean;
+  isOwnProfile: boolean;
+  firstName: string;
+  lastName: string;
+  profileImg: string;
+  posts: Post[];
+  isFriend: boolean;
+  isRequestSent: boolean;
+}
+
+interface mapDispatchToPropsType {
+  loadProfile(userId: string, ownId: string): Promise<void>;
+  addProfileImage(image: File): Promise<void>;
+  deleteFriend(friendId: string): Promise<void>;
+  addFriend(friendId: string): Promise<void>;
+  cancelRequest(friendId: string): Promise<void>;
+}
+
+let mapStateToProps = (state: RootState): mapStateToPropsType => {
+  return {
+    ownId: state.authData.id,
+    isLoaded: state.profileData.isLoaded,
+    isOwnProfile: state.profileData.isOwnProfile,
+    firstName: state.profileData.firstName,
+    lastName: state.profileData.lastName,
+    profileImg: state.profileData.profileImg,
+    posts: state.postsData.posts,
+    isFriend: state.profileData.isFriend,
+    isRequestSent: state.profileData.isRequestSent,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): mapDispatchToPropsType => {
+  return {
+    loadProfile: async (userId: string, ownId: string) => {
+      dispatch(startLoadProfileAC());
+      const profile = await ProfileRequests.getProfile(userId, ownId);
+      dispatch(
+        setProfileDataAC(
+          profile.isOwnProfile,
+          profile._id,
+          profile.firstName,
+          profile.lastName,
+          profile.profileImg,
+          profile.lives,
+          profile.status,
+          profile.birthDay,
+          profile.relationship,
+          profile.posts,
+          profile.isFriend,
+          profile.isRequestSent
+        )
+      );
+      dispatch(endLoadProfileAC());
+    },
+    addProfileImage: async (image: File) => {
+      try {
+        if (!image) {
+          return;
+        }
+        const fileURL = await addFileServer(image);
+        const blobURL = URL.createObjectURL(image);
+        await ProfileRequests.editProfileImage(fileURL);
+
+        dispatch(changeProfileImageAC(blobURL));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    deleteFriend: async (friendId: string) => {
+      await FriendsRequests.removeFriend(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+    addFriend: async (friendId: string) => {
+      await FriendsRequests.sendRequest(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+    cancelRequest: async (friendId: string) => {
+      await FriendsRequests.cancelRequest(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+  };
+};
+
+export default connect<
+  mapStateToPropsType,
+  mapDispatchToPropsType,
+  {},
+  RootState
+>(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfilePage);
