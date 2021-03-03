@@ -3,14 +3,23 @@ import s from "./EditPost.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import { Post } from "../../../../../../models/post";
-import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
+import { Post } from "../../../../models/post";
+import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";
+import EmojiPicker from "../EmojiPicker/EmojiPicker";
+import { connect } from "react-redux";
+import { actionsTypes } from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
+import { Dispatch } from "react";
+import {
+  cancelEditPostModeAC,
+  endEditPostModeAC,
+} from "../../../../redux/actionTypes";
+import { addFileServer } from "../../../../components/Helpers/uploadFiles";
+import { PostsRequests } from "../../../../API/PostsRequests";
 
-import EmojiPicker from "../../../../../../modules/main/components/EmojiPicker/EmojiPicker";
-
-interface EditPostProps {
+interface OwnProps {
   post: Post;
   cancelEditMode(postId: string): void;
   savePostChange(
@@ -21,7 +30,26 @@ interface EditPostProps {
     newFile: File
   ): void;
 }
-function EditPost(props: EditPostProps) {
+
+interface PropsFromState {
+  posts: Post[];
+  profileImage: string;
+}
+
+interface PropsFromDispatch {
+  cancelEditMode(postId: string): void;
+  savePostChange(
+    postId: string,
+    text: string,
+    postImage: string,
+    oldPostImage: string,
+    newFile: File
+  ): void;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function EditPost(props: AllProps) {
   const [postText, setPostText] = useState(props.post.text);
   const [postImage, setPostImage] = useState(props.post.postImgUrl);
   const [newImageFile, setNewImageFile] = useState(null);
@@ -127,4 +155,37 @@ function EditPost(props: EditPostProps) {
   );
 }
 
-export default EditPost;
+let mapStateToProps = (state: RootState): PropsFromState => {
+  return {
+    posts: state.postsData.posts,
+    profileImage: state.authData.profileImage,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    cancelEditMode: (postId: string) => {
+      dispatch(cancelEditPostModeAC(postId));
+    },
+    savePostChange: async (
+      postId: string,
+      text: string,
+      postImage: string,
+      oldPostImage: string,
+      newFile: File
+    ) => {
+      let fileURL = "-1";
+      if (postImage && oldPostImage !== postImage) {
+        fileURL = await addFileServer(newFile);
+      } else if (oldPostImage !== postImage) {
+        fileURL = "";
+      }
+      PostsRequests.editPost(postId, text, fileURL);
+      dispatch(endEditPostModeAC(postId, text, postImage));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPost);

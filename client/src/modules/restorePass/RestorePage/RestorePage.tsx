@@ -2,14 +2,24 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./RestorePage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../Helpers/formik/formControls/formControls";
-import { validateEmail } from "../../Helpers/formik/validators/validators";
+import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
+import { validateEmail } from "../../../components/Helpers/formik/validators/validators";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { actionsTypes } from "../../../redux/actionTypes";
+import { RootState } from "../../../redux/store";
+import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
 
-//--------------types-----------------
-
-type RestorePageProps = {
+interface OwnProps {
   onRestorePassword(email: string): void;
-};
+}
+
+interface PropsFromState {}
+interface PropsFromDispatch {
+  onRestorePassword(email: string): void;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
 
 type initialValuesType = {
   email: string;
@@ -21,7 +31,7 @@ type setErrorsType = {
 
 type setSubmittingType = { (isSubmit: boolean): void };
 
-function RestorePage(props: RestorePageProps) {
+function RestorePage(props: AllProps) {
   //Formik Values state
   const initialValues: initialValuesType = {
     email: "",
@@ -82,4 +92,23 @@ function RestorePage(props: RestorePageProps) {
   );
 }
 
-export default RestorePage;
+const mapStateToProps = (state: RootState): {} => {
+  return {};
+};
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    onRestorePassword: async (email: string) => {
+      alert(email);
+    },
+  };
+};
+
+const ConnectRestorePage = connect<{}, PropsFromDispatch, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(RestorePage);
+
+export default withAuthorizedRedirect(ConnectRestorePage);

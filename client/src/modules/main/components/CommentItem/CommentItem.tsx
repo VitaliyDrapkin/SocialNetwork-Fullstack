@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import s from "./CommentItem.module.css";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../../../../assets/images/profilePicture.jpg";
 import ClearIcon from "@material-ui/icons/Clear";
-import { dateShowCalculate } from "../../../../../../../Helpers/dateShowCalculate";
-import ModalConfirm from "../../../../../../../Helpers/ModalConfirm/ModalConfirm";
-import { Comment } from "../../../../../../../../models/post";
+import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
+import ModalConfirm from "../../../../components/Helpers/ModalConfirm/ModalConfirm";
+import { Comment } from "../../../../models/post";
+import { Dispatch } from "react";
+import { connect } from "react-redux";
+import { PostsRequests } from "../../../../API/PostsRequests";
+import { deleteCommentAC, actionsTypes } from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 
 interface CommentItemProps {
   comment: Comment;
@@ -54,4 +58,21 @@ function CommentItem(props: CommentItemProps) {
   );
 }
 
-export default CommentItem;
+let mapStateToProps = (state: RootState) => {
+  return {};
+};
+
+let mapDispatchToProps = (dispatch: Dispatch<actionsTypes>) => {
+  return {
+    deleteComment: async (postId: string, commentId: string) => {
+      await PostsRequests.deleteComment(postId, commentId);
+      dispatch(deleteCommentAC(postId, commentId));
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CommentItem);
+

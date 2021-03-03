@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import s from "./Comments.module.css";
-import { Comment } from "../../../../../../../models/post";
-import CommentItemContainer from "./CommentItem/CommentItemContainer";
+import { Comment } from "../../../../models/post";
+import CommentItem from "../CommentItem";
 
-interface CommentsProps {
+interface OwnProps {
   comments: Comment[];
   postId: string;
 }
-function Comments(props: CommentsProps) {
+function Comments(props: OwnProps) {
   const [viewMoreClicked, setViewMoreClicked] = useState(false);
 
   return (
@@ -23,9 +23,7 @@ function Comments(props: CommentsProps) {
             </div>
           )}
           {props.comments.map((comment: Comment) => {
-            return (
-              <CommentItemContainer comment={comment} postId={props.postId} />
-            );
+            return <CommentItem comment={comment} postId={props.postId} />;
           })}
         </div>
       ) : (
@@ -46,7 +44,7 @@ function Comments(props: CommentsProps) {
                 View {props.comments.length - 1} more comments
               </div>
             ))}
-          <CommentItemContainer
+          <CommentItem
             comment={props.comments[props.comments.length - 1]}
             postId={props.postId}
           />

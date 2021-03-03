@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import { addSocketEvents } from "../../socketIo/main";
 import s from "./Main.module.css";
 import Content from "./Content-routing";
+import { withUnauthorizedRedirect } from "../../components/Helpers/hoc/withUnauthorizedRedirect";
 
 export class Main extends Component {
   componentDidMount() {
@@ -23,4 +24,4 @@ export class Main extends Component {
   }
 }
 
-export default Main;
+export default  withUnauthorizedRedirect(Main);

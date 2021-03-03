@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import s from "./MessagesItem.module.css";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { NavLink } from "react-router-dom";
 
-interface MessageItemProps {
+interface OwnProps {
   firstName: string;
   lastName: string;
   profileImg: string;
   userId: string;
   lastMessage: string;
 }
-function MessagesItem(props: MessageItemProps) {
+function MessagesItem(props: OwnProps) {
   const [showDeleteBTN, setsHowDeleteBTN] = useState(false);
   const [hoverColor, setHoverColor] = useState(false);
   return (

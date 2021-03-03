@@ -5,9 +5,9 @@ import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { Post } from "../../../../models/post";
-import AddPostContainer from "../../../../components/App/Main/Content/MainPage/AddPost/AddPostContainer";
-import EditPostContainer from "../../../../components/App/Main/Content/MainPage/EditPost/EditPostContainer";
-import PostItemContainer from "../../../../components/App/Main/Content/MainPage/Post/PostItemContainer";
+import AddPost from "../../components/AddPost";
+import EditPost from "../../components/EditPost";
+import PostItem from "../../components/PostItem";
 import StatusContainer from "../../components/Status/Status";
 import BirthdayContainer from "../../components/Birthday/Birthday";
 import RelationshipContainer from "../../components/Relationship/Relationship";
@@ -147,13 +147,13 @@ function ProfilePage(props: profilePagePropsType) {
               </div>
             </div>
           </div> */}
-          {props.isOwnProfile && <AddPostContainer />}
+          {props.isOwnProfile && <AddPost />}
           <div className={s.posts}>
             {props.posts.map((post) => {
               if (post.editMode) {
-                return <EditPostContainer post={post} key={post.id} />;
+                return <EditPost post={post} key={post.id} />;
               }
-              return <PostItemContainer post={post} key={post.id} />;
+              return <PostItem post={post} key={post.id} />;
             })}
           </div>
         </>

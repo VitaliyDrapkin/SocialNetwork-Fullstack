@@ -7,12 +7,12 @@ import PhotosPage from "../pages/PhotosPage/PhotosPage";
 import ProfilePage from "../pages/ProfilePage";
 import ChatPage from "../pages/ChatPage/ChatPage";
 import s from "./Content.module.css";
-import MainPageContainer from "../../../components/App/Main/Content/MainPage/MainPageContainer";
+import MainPage from "../pages/MainPage";
 
 function Content() {
   return (
     <div className={s.content}>
-      <Route path="/main" render={() => <MainPageContainer />} />
+      <Route path="/main" render={() => <MainPage />} />
       <Route path="/profile" render={() => <ProfilePage />} />
       <Route path="/messages" render={() => <MessagesPage />} />
       <Route path="/chat" render={() => <ChatPage />} />

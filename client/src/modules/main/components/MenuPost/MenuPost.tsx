@@ -4,6 +4,11 @@ import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import { actionsTypes } from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
+import { Dispatch } from "react";
+import { startEditPostModeAC } from "../../../../redux/actionTypes";
 
 interface styledMenuProps {
   id: string;
@@ -42,7 +47,7 @@ interface CustomizedMenusProps {
   startEditPost(postId: string): void;
 }
 
-export default function CustomizedMenus(props: CustomizedMenusProps) {
+function CustomizedMenus(props: CustomizedMenusProps) {
   const handleClose = () => {
     props.onCLose();
   };
@@ -77,3 +82,17 @@ export default function CustomizedMenus(props: CustomizedMenusProps) {
     </div>
   );
 }
+
+let mapStateToProps = (state: RootState) => {
+  return {};
+};
+
+let mapDispatchToProps = (dispatch: Dispatch<actionsTypes>) => {
+  return {
+    startEditPost: (postId: string) => {
+      dispatch(startEditPostModeAC(postId));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomizedMenus);

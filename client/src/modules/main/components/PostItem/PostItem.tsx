@@ -1,4 +1,4 @@
-import React, { useState, useRef, MouseEvent } from "react";
+import React, { useState, useRef, MouseEvent, Dispatch } from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Post.module.css";
 import Avatar from "@material-ui/core/Avatar";
@@ -9,17 +9,36 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import Box from "@material-ui/core/Box";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
-import { Post } from "../../../../../../models/post";
-import MenuPostContainer from "./MenuPost/MenuPostContainer";
-import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
-import Comments from "./Comments/Comments";
-import ModalConfirm from "../../../../../Helpers/ModalConfirm/ModalConfirm";
-import EmojiPicker from "../../../../../../modules/main/components/EmojiPicker/EmojiPicker";
+import { Post } from "../../../../models/post";
+import EmojiPicker from "../EmojiPicker/EmojiPicker";
+import ModalConfirm from "../../../../components/Helpers/ModalConfirm/ModalConfirm";
+import MenuPost from "../MenuPost";
+import Comments from "../Comments/Comments";
+import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
+import {
+  actionsTypes,
+  addCommentAC,
+  deletePostAC,
+  likePostAC,
+  unlikePostAC,
+} from "../../../../redux/actionTypes";
+import { PostsRequests } from "../../../../API/PostsRequests";
+import { connect } from "react-redux";
+import { RootState } from "../../../../redux/store";
 
-interface PostProps {
+interface OwnProps {
   post: Post;
+}
+
+interface PropsFromState {
+  userId: string;
+  userFirstName: string;
+  userLastName: string;
   profileImg: string;
-  deletePost(postId: string): Promise<void>;
+}
+
+interface PropsFromDispatch {
+  deletePost(postId: string): void;
   addComment(
     postId: string,
     text: string,
@@ -27,14 +46,14 @@ interface PostProps {
     userFirstName: string,
     userLastName: string,
     profileImage: string
-  ): Promise<void>;
-  likePost(postId: string): Promise<void>;
-  unlikePost(postId: string): Promise<void>;
-  userId: string;
-  userFirstName: string;
-  userLastName: string;
+  ): void;
+  likePost: (postId: string) => void;
+  unlikePost: (postId: string) => void;
 }
-function PostItem(props: PostProps) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function PostItem(props: AllProps) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openConfirmWindow, setOpenConfirmWindow] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
@@ -169,7 +188,7 @@ function PostItem(props: PostProps) {
           )}
         </div>
       </div>
-      <MenuPostContainer
+      <MenuPost
         anchorEl={anchorEl}
         onCLose={() => setAnchorEl(null)}
         onDelete={() => setOpenConfirmWindow(true)}
@@ -187,4 +206,58 @@ function PostItem(props: PostProps) {
   );
 }
 
-export default PostItem;
+let mapStateToProps = (state: RootState): PropsFromState => {
+  return {
+    userId: state.authData.id,
+    userFirstName: state.authData.firstName,
+    userLastName: state.authData.lastName,
+    profileImg: state.authData.profileImage,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    deletePost: async (postId: string) => {
+      await PostsRequests.deletePost(postId);
+      dispatch(deletePostAC(postId));
+    },
+    addComment: async (
+      postId: string,
+      text: string,
+      userId: string,
+      userFirstName: string,
+      userLastName: string,
+      profileImage: string
+    ) => {
+      if (!text) {
+        return;
+      }
+      const date = new Date().getTime();
+      const commentId = await PostsRequests.addComment(text, date, postId);
+      dispatch(
+        addCommentAC(
+          postId,
+          text,
+          date,
+          commentId,
+          userId,
+          userFirstName,
+          userLastName,
+          profileImage
+        )
+      );
+    },
+    likePost: async (postId: string) => {
+      await PostsRequests.addLike(postId);
+      dispatch(likePostAC(postId));
+    },
+    unlikePost: async (postId: string) => {
+      await PostsRequests.removeLike(postId);
+      dispatch(unlikePostAC(postId));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostItem);
