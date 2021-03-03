@@ -1,11 +1,11 @@
 import React from "react";
 import s from "./ChatItem.module.css";
 
-interface ChatItemProps {
+interface OwnProps {
   ownMessage: boolean;
   message: string;
 }
-function ChatItem(props: ChatItemProps) {
+function ChatItem(props: OwnProps) {
   return (
     <div className={s.chatItem}>
       {props.ownMessage ? (

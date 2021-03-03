@@ -7,7 +7,7 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import ChatItem from "../../components/ChatItem/ChatItem";
+import ChatItem from "../../components/ChatItem";
 import EmojiPicker from "../../../../components/Helpers/EmojiPicker/EmojiPicker";
 import { connect } from "react-redux";
 import { Message } from "../../../../models/message";

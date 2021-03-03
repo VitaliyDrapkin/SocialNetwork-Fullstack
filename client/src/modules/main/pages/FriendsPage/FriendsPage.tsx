@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
+import FriendItem from "../../../../components/App/Main/Content/FriendsPage/FriendItem/FriendItem";
+import FriendsSearchContainer from "../../../../components/App/Main/Content/FriendsPage/FriendsSearch/FriendsSearchContainer";
 import s from "./FriendsPage.module.css";
-import FriendItem from "./FriendItem/FriendItem";
-import { Friend } from "../../../../../models/friend";
-import FriendsSearch from "./FriendsSearch/FriendsSearch";
-import FriendsSearchContainer from "./FriendsSearch/FriendsSearchContainer";
+import { Dispatch } from "react";
+import { connect } from "react-redux";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
+import { Friend } from "../../../../models/friend";
+import {
+  actionsTypes,
+  deleteFriendAC,
+  endLoadMyFriendsAC,
+  setFriendsDataAC,
+  setFriendsSearchDataAC,
+  startLoadMyFriendsAC,
+} from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 
-interface FriendsPageProps {
+interface OwnProps {
   friends: Friend[];
   requestsSent: Friend[];
   requestsReceived: Friend[];
@@ -16,13 +27,31 @@ interface FriendsPageProps {
   loadFriendsPage(): void;
   filterOwnFriends(friends: Friend[], filter: string): Friend[];
 }
-function FriendsPage(props: FriendsPageProps) {
+interface PropsFromState {
+  friends: Friend[];
+  requestsSent: Friend[];
+  requestsReceived: Friend[];
+  filter: string;
+  friendsSearch: Friend[];
+}
+
+interface PropsFromDispatch {
+  loadFriendsPage(): Promise<void>;
+  filterOwnFriends(friends: Friend[], filter: string): Friend[];
+  onClickSearchFriends(value: string): Promise<void>;
+  deleteFriend(friendId: string): Promise<void>;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function FriendsPage(props: AllProps) {
   const [newFriendsPage, setNewFriendsPage] = useState(false);
   const [showRequests, setShowRequests] = useState(false);
 
   useEffect(() => {
     props.loadFriendsPage();
   }, []); //Only if first load
+
   return (
     <div className={s.friendsPage}>
       <div className={s.friendsTop}>
@@ -105,4 +134,55 @@ function FriendsPage(props: FriendsPageProps) {
   );
 }
 
-export default FriendsPage;
+let mapStateToProps = (state: RootState): PropsFromState => {
+  return {
+    friends: state.friendsData.friends,
+    requestsSent: state.friendsData.requestsSent,
+    requestsReceived: state.friendsData.requestsReceived,
+    filter: state.friendsData.filter,
+    friendsSearch: state.friendsData.friendsSearch,
+  };
+};
+
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
+  return {
+    loadFriendsPage: async () => {
+      const friends = await FriendsRequests.getFriends();
+      dispatch(startLoadMyFriendsAC());
+      dispatch(
+        setFriendsDataAC(
+          friends.friends,
+          friends.friendsRequestsSent,
+          friends.friendsRequestsReceived
+        )
+      );
+      dispatch(endLoadMyFriendsAC());
+    },
+    onClickSearchFriends: async (value: string) => {
+      const friends = await FriendsRequests.getNewFriends(value);
+      dispatch(setFriendsSearchDataAC(friends));
+    },
+
+    deleteFriend: async (friendId: string) => {
+      await FriendsRequests.removeFriend(friendId);
+      dispatch(deleteFriendAC(friendId));
+    },
+
+    filterOwnFriends: (friends: Friend[], filter: string): Friend[] => {
+      const newFriends = friends.filter((friend) => {
+        const firstLastName = friend.firstName + " " + friend.lastName;
+        return firstLastName
+          .toLocaleLowerCase()
+          .includes(filter.toLocaleLowerCase());
+      });
+      return newFriends;
+    },
+  };
+};
+
+export default connect<PropsFromState, PropsFromDispatch, {}, RootState>(
+  mapStateToProps,
+  mapDispatchToProps
+)(FriendsPage);
