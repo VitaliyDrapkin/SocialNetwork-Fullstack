@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
-import { RootState } from "../../../../../../redux/store";
+import { RootState } from "../../../../redux/store";
 import { Dispatch } from "react";
 import FriendsSearch from "./FriendsSearch";
 import {
   actionsTypes,
   changeFilterValueAC,
   setFriendsSearchDataAC,
-} from "../../../../../../redux/actionTypes";
-import { FriendsRequests } from "../../../../../../API/FriendsRequests";
+} from "../../../../redux/actionTypes";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
 
 interface mapStateToPropsType {
   filter: string;

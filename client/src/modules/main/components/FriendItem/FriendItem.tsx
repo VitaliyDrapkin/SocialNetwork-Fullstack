@@ -6,17 +6,17 @@ import { NavLink } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
-import { Friend } from "../../../../../../models/friend";
+import { Friend } from "../../../../models/friend";
 import { useRequestFriends } from "./useRequestFriends";
-import { FriendsRequests } from "../../../../../../API/FriendsRequests";
-import ModalConfirm from "../../../../../Helpers/ModalConfirm/ModalConfirm";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
+import ModalConfirm from "../../../../components/Helpers/ModalConfirm/ModalConfirm";
 
-interface FriendItemProps {
+interface OwnProps {
   friend: Friend;
   type: string;
   deleteFriend?(friendId: string): Promise<void>;
 }
-function FriendItem(props: FriendItemProps) {
+function FriendItem(props: OwnProps) {
   const [showDeleteBTN, setsHowDeleteBTN] = useState(false);
   const [hoverColor, setHoverColor] = useState(false);
   const [hoverColorSecond, setHoverColorSecond] = useState(false);

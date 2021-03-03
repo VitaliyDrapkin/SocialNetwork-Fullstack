@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import FriendItem from "../../../../components/App/Main/Content/FriendsPage/FriendItem/FriendItem";
-import FriendsSearchContainer from "../../../../components/App/Main/Content/FriendsPage/FriendsSearch/FriendsSearchContainer";
+import FriendItem from "../../components/FriendItem/";
+import FriendsSearchContainer from "../../components/FriendsSearch/FriendsSearchContainer";
 import s from "./FriendsPage.module.css";
 import { Dispatch } from "react";
 import { connect } from "react-redux";

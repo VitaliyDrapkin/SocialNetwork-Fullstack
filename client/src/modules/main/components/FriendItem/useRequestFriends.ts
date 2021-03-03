@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FriendsRequests } from "./../../../../../../API/FriendsRequests";
+import { FriendsRequests } from "../../../../API/FriendsRequests";
 
 export const useRequestFriends = (startedValue: boolean) => {
   const [requestSent, setRequestFriends] = useState(startedValue);

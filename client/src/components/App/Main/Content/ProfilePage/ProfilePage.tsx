@@ -11,7 +11,7 @@ import { Post } from "../../../../../models/post";
 import EditPostContainer from "../MainPage/EditPost/EditPostContainer";
 import PostItemContainer from "../MainPage/Post/PostItemContainer";
 import { NavLink } from "react-router-dom";
-import { useRequestFriends } from "../FriendsPage/FriendItem/useRequestFriends";
+import { useRequestFriends } from "../../../../../modules/main/components/FriendItem/useRequestFriends";
 
 interface profilePagePropsType {
   ownId: string;
