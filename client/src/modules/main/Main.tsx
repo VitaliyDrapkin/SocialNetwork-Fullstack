@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Header from "./shared/header";
-import SideBar from "./shared/sideBar";
+import Header from "./Header";
+import SideBar from "./SideBar";
 import { addSocketEvents } from "../../socketIo/main";
 import s from "./Main.module.css";
-import Content from "./shared/contentRouting";
+import Content from "./Content-routing";
 
 export class Main extends Component {
   componentDidMount() {

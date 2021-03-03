@@ -8,8 +8,8 @@ import PeopleIcon from "@material-ui/icons/People";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { actionsTypes } from "../../../../redux/actionTypes";
-import { RootState } from "../../../../redux/store";
+import { actionsTypes } from "../../../redux/actionTypes";
+import { RootState } from "../../../redux/store";
 
 interface OwnProps {
   userProfileImage?: string;

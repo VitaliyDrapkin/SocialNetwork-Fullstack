@@ -8,7 +8,7 @@ import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";
 
-import EmojiPicker from "../../../../../Helpers/EmojiPicker/EmojiPicker";
+import EmojiPicker from "../../../../../../modules/main/components/EmojiPicker/EmojiPicker";
 
 interface EditPostProps {
   post: Post;

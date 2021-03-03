@@ -14,7 +14,7 @@ import MenuPostContainer from "./MenuPost/MenuPostContainer";
 import { dateShowCalculate } from "../../../../../Helpers/dateShowCalculate";
 import Comments from "./Comments/Comments";
 import ModalConfirm from "../../../../../Helpers/ModalConfirm/ModalConfirm";
-import EmojiPicker from "../../../../../Helpers/EmojiPicker/EmojiPicker";
+import EmojiPicker from "../../../../../../modules/main/components/EmojiPicker/EmojiPicker";
 
 interface PostProps {
   post: Post;

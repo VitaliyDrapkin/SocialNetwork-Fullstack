@@ -3,7 +3,7 @@ import s from "./AddPost.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
-import EmojiPicker from "../../../../../Helpers/EmojiPicker/EmojiPicker";
+import EmojiPicker from "../../../../../../modules/main/components/EmojiPicker/EmojiPicker";
 
 interface AddPostProps {
   postInputValue: string;
