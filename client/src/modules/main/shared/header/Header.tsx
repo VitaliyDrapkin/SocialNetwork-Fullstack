@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatIcon from "@material-ui/icons/Chat";
-import MenuHeader from "../../../../components/App/Main/Header/MenuHeader/MenuHeader";
+import MenuHeader from "../../components/MenuHeader/MenuHeader";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { UsersRequests } from "../../../../API/UsersRequests";

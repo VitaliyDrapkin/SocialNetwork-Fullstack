@@ -6,13 +6,23 @@ import Avatar from "@material-ui/core/Avatar";
 import MessageIcon from "@material-ui/icons/Message";
 import PeopleIcon from "@material-ui/icons/People";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { actionsTypes } from "../../../../redux/actionTypes";
+import { RootState } from "../../../../redux/store";
 
-interface sideBarPropsType {
+interface OwnProps {
   userProfileImage?: string;
   userId: string;
   profileImg: string;
 }
-function SideBar(props: sideBarPropsType) {
+
+interface PropsFromState {}
+interface PropsFromDispatch {}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function SideBar(props: AllProps) {
   return (
     <div className={s.sideBar}>
       <NavLink to="/main" className={s.navigationItem}>
@@ -39,4 +49,32 @@ function SideBar(props: sideBarPropsType) {
   );
 }
 
-export default SideBar;
+interface mapStateToPropsType {
+  userId: string;
+  userProfileImage?: string;
+  profileImg: string;
+}
+interface mapDispatchToPropsType {}
+
+const mapStateToProps = (state: RootState): mapStateToPropsType => {
+  return {
+    userId: state.authData.id,
+    profileImg: state.authData.profileImage,
+  };
+};
+
+const mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): mapDispatchToPropsType => {
+  return {};
+};
+
+export default connect<
+  mapStateToPropsType,
+  mapDispatchToPropsType,
+  {},
+  RootState
+>(
+  mapStateToProps,
+  mapDispatchToProps
+)(SideBar);

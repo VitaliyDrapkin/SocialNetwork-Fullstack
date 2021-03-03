@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Content from "../../components/App/Main/Content/Content";
-import HeaderContainer from "./shared/header";
-import SideBarContainer from "../../components/App/Main/SideBar/SideBarContainer";
+import Header from "./shared/header";
+import SideBar from "./shared/sideBar";
 import { addSocketEvents } from "../../socketIo/main";
 import s from "./Main.module.css";
+import Content from "./shared/contentRouting";
 
 export class Main extends Component {
   componentDidMount() {
@@ -13,9 +13,9 @@ export class Main extends Component {
   render() {
     return (
       <div className={s.main}>
-        <HeaderContainer />
+        <Header />
         <div className={s.body}>
-          <SideBarContainer />
+          <SideBar />
           <Content />
         </div>
       </div>
