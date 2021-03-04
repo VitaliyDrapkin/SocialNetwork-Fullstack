@@ -1,6 +1,5 @@
 import React, { Dispatch, useState, useRef } from "react";
 import { connect } from "react-redux";
-import { idText } from "typescript";
 import { ProfileRequests } from "../../../../API/ProfileRequests";
 import {
   actionsTypes,
@@ -9,12 +8,20 @@ import {
 import { RootState } from "../../../../redux/store";
 import s from "./Status.module.css";
 
-interface StatusProps {
+interface OwnProps {}
+
+interface PropsFromState {
   isOwnProfile: boolean;
   status: string;
+}
+
+interface PropsFromDispatch {
   onEditStatus(status: string, oldStatus: string): Promise<void>;
 }
-function Status(props: StatusProps) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function Status(props: AllProps) {
   const [editor, setEditor] = useState(false);
   const [value, setValue] = useState(props.status);
   const ref = useRef(null);
@@ -58,16 +65,7 @@ function Status(props: StatusProps) {
   );
 }
 
-interface mapStateToPropsType {
-  isOwnProfile: boolean;
-  status: string;
-}
-
-interface mapDispatchToPropsType {
-  onEditStatus(status: string, oldStatus: string): Promise<void>;
-}
-
-let mapStateToProps = (state: RootState): mapStateToPropsType => {
+let mapStateToProps = (state: RootState): PropsFromState => {
   return {
     isOwnProfile: state.profileData.isOwnProfile,
     status: state.profileData.status,
@@ -76,7 +74,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
 
 let mapDispatchToProps = (
   dispatch: Dispatch<actionsTypes>
-): mapDispatchToPropsType => {
+): PropsFromDispatch => {
   return {
     onEditStatus: async (status: string, oldStatus: string) => {
       try {
@@ -93,8 +91,8 @@ let mapDispatchToProps = (
 };
 
 const StatusContainer = connect<
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+  PropsFromState,
+  PropsFromDispatch,
   {},
   RootState
 >(

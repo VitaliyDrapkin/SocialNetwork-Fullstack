@@ -9,12 +9,20 @@ import { RootState } from "../../../../redux/store";
 import s from "./Lives.module.css";
 import HomeIcon from "@material-ui/icons/Home";
 
-interface LivesProps {
+interface OwnProps {}
+
+interface PropsFromState {
   isOwnProfile: boolean;
   lives: string;
+}
+
+interface PropsFromDispatch {
   onEditLives(lives: string, oldLives: string): Promise<void>;
 }
-function Lives(props: LivesProps) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function Lives(props: AllProps) {
   const [editor, setEditor] = useState(false);
   const [value, setValue] = useState(props.lives);
   const ref = useRef(null);
@@ -68,16 +76,7 @@ function Lives(props: LivesProps) {
   );
 }
 
-interface mapStateToPropsType {
-  isOwnProfile: boolean;
-  lives: string;
-}
-
-interface mapDispatchToPropsType {
-  onEditLives(lives: string, oldLives: string): Promise<void>;
-}
-
-let mapStateToProps = (state: RootState): mapStateToPropsType => {
+let mapStateToProps = (state: RootState): PropsFromState => {
   return {
     isOwnProfile: state.profileData.isOwnProfile,
     lives: state.profileData.lives,
@@ -86,7 +85,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
 
 let mapDispatchToProps = (
   dispatch: Dispatch<actionsTypes>
-): mapDispatchToPropsType => {
+): PropsFromDispatch => {
   return {
     onEditLives: async (lives: string, oldLives: string) => {
       try {
@@ -103,8 +102,8 @@ let mapDispatchToProps = (
 };
 
 const LivesContainer = connect<
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+  PropsFromState,
+  PropsFromDispatch,
   {},
   RootState
 >(

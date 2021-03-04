@@ -6,6 +6,7 @@ import s from "./Main.module.css";
 import Content from "./Content-routing";
 import { withUnauthorizedRedirect } from "../../hocs/withUnauthorizedRedirect";
 
+
 export class Main extends Component {
   componentDidMount() {
     addSocketEvents();

@@ -9,10 +9,7 @@ import { actionsTypes, setPostsAC } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
 import s from "./MainPage.module.css";
 
-interface OwnProps {
-  posts: Post[];
-  setPosts(): Promise<void>;
-}
+interface OwnProps {}
 
 interface PropsFromState {
   posts: Post[];

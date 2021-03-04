@@ -25,7 +25,9 @@ import { ProfileRequests } from "../../../../API/ProfileRequests";
 import { addFileServer } from "../../../../services/uploadFiles";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
 
-interface profilePagePropsType {
+interface OwnProps {}
+
+interface PropsFromState {
   ownId: string;
   isLoaded: boolean;
   isOwnProfile: boolean;
@@ -35,13 +37,19 @@ interface profilePagePropsType {
   posts: Post[];
   isFriend: boolean;
   isRequestSent: boolean;
+}
+
+interface PropsFromDispatch {
   loadProfile(userId: string, ownId: string): Promise<void>;
   addProfileImage(image: File): Promise<void>;
   deleteFriend(friendId: string): Promise<void>;
   addFriend(friendId: string): Promise<void>;
   cancelRequest(friendId: string): Promise<void>;
 }
-function ProfilePage(props: profilePagePropsType) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function ProfilePage(props: AllProps) {
   const [profileImgHover, setProfileImgHover] = useState(false);
   const location = useLocation();
 
@@ -162,27 +170,7 @@ function ProfilePage(props: profilePagePropsType) {
   );
 }
 
-interface mapStateToPropsType {
-  ownId: string;
-  isLoaded: boolean;
-  isOwnProfile: boolean;
-  firstName: string;
-  lastName: string;
-  profileImg: string;
-  posts: Post[];
-  isFriend: boolean;
-  isRequestSent: boolean;
-}
-
-interface mapDispatchToPropsType {
-  loadProfile(userId: string, ownId: string): Promise<void>;
-  addProfileImage(image: File): Promise<void>;
-  deleteFriend(friendId: string): Promise<void>;
-  addFriend(friendId: string): Promise<void>;
-  cancelRequest(friendId: string): Promise<void>;
-}
-
-let mapStateToProps = (state: RootState): mapStateToPropsType => {
+let mapStateToProps = (state: RootState): PropsFromState => {
   return {
     ownId: state.authData.id,
     isLoaded: state.profileData.isLoaded,
@@ -198,7 +186,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
 
 let mapDispatchToProps = (
   dispatch: Dispatch<actionsTypes>
-): mapDispatchToPropsType => {
+): PropsFromDispatch => {
   return {
     loadProfile: async (userId: string, ownId: string) => {
       dispatch(startLoadProfileAC());
@@ -252,8 +240,8 @@ let mapDispatchToProps = (
 };
 
 export default connect<
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+PropsFromState,
+PropsFromDispatch,
   {},
   RootState
 >(

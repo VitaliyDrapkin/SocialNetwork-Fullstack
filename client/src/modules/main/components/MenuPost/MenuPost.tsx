@@ -10,7 +10,7 @@ import { RootState } from "../../../../redux/store";
 import { Dispatch } from "react";
 import { startEditPostModeAC } from "../../../../redux/actionTypes";
 
-interface styledMenuProps {
+interface OwnProps {
   id: string;
   anchorEl: Element;
   keepMounted: boolean;
@@ -23,7 +23,7 @@ const StyledMenu = withStyles({
     display: "flex",
     flexDirection: "column",
   },
-})((props: styledMenuProps) => (
+})((props: OwnProps) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}

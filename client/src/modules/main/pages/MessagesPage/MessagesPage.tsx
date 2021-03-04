@@ -3,7 +3,7 @@ import s from "./MessagesPage.module.css";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { connect } from "react-redux";
 import { MessengerItem } from "../../../../models/message";
-import MessagesItem from "../../components/MessagesItem/MessagesItem";
+import MessagesItem from "../../components/MessagesItem";
 import { RootState } from "../../../../redux/store";
 import {
   actionsTypes,
@@ -13,11 +13,7 @@ import {
 } from "../../../../redux/actionTypes";
 import { MessagesRequests } from "../../../../API/MessagesRequests";
 
-interface OwnProps {
-  messengers: MessengerItem[];
-  setMessengers(): Promise<void>;
-  loaded: boolean;
-}
+interface OwnProps {}
 
 interface PropsFromState {
   messengers: MessengerItem[];

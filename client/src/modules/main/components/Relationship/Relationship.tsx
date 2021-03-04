@@ -9,7 +9,7 @@ import { RootState } from "../../../../redux/store";
 import s from "./Relationship.module.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-interface RelationshipProps {
+interface OwnProps {
   isOwnProfile: boolean;
   relationship: string;
   onEditRelationship(
@@ -17,7 +17,22 @@ interface RelationshipProps {
     oldRelationship: string
   ): Promise<void>;
 }
-function Relationship(props: RelationshipProps) {
+
+interface PropsFromState {
+  isOwnProfile: boolean;
+  relationship: string;
+}
+
+interface PropsFromDispatch {
+  onEditRelationship(
+    relationship: string,
+    oldRelationship: string
+  ): Promise<void>;
+}
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function Relationship(props: AllProps) {
   const [editor, setEditor] = useState(false);
   const [value, setValue] = useState(props.relationship);
   const ref = useRef(null);
@@ -73,19 +88,7 @@ function Relationship(props: RelationshipProps) {
   );
 }
 
-interface mapStateToPropsType {
-  isOwnProfile: boolean;
-  relationship: string;
-}
-
-interface mapDispatchToPropsType {
-  onEditRelationship(
-    relationship: string,
-    oldRelationship: string
-  ): Promise<void>;
-}
-
-let mapStateToProps = (state: RootState): mapStateToPropsType => {
+let mapStateToProps = (state: RootState): PropsFromState => {
   return {
     isOwnProfile: state.profileData.isOwnProfile,
     relationship: state.profileData.relationship,
@@ -94,7 +97,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
 
 let mapDispatchToProps = (
   dispatch: Dispatch<actionsTypes>
-): mapDispatchToPropsType => {
+): PropsFromDispatch => {
   return {
     onEditRelationship: async (
       relationship: string,
@@ -114,8 +117,8 @@ let mapDispatchToProps = (
 };
 
 const RelationshipContainer = connect<
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+  PropsFromState,
+  PropsFromDispatch,
   {},
   RootState
 >(

@@ -5,7 +5,6 @@ import HomeIcon from "@material-ui/icons/Home";
 import Avatar from "@material-ui/core/Avatar";
 import MessageIcon from "@material-ui/icons/Message";
 import PeopleIcon from "@material-ui/icons/People";
-import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { actionsTypes } from "../../../redux/actionTypes";

@@ -6,7 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatIcon from "@material-ui/icons/Chat";
-import MenuHeader from "../components/MenuHeader/MenuHeader";
+import MenuHeader from "../components/MenuHeader";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { UsersRequests } from "../../../API/UsersRequests";
@@ -14,13 +14,7 @@ import { actionsTypes, logoutAC } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
 import { socketRequests } from "../../../socketIo/main";
 
-interface OwnProps {
-  userId: string;
-  userFirstName: string;
-  userLastName: string;
-  profileImg: string;
-  onClickLogout(): Promise<void>;
-}
+interface OwnProps {}
 
 interface PropsFromState {
   userId: string;

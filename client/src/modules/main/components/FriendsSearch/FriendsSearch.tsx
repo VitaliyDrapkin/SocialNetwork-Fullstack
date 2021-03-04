@@ -13,9 +13,6 @@ import { FriendsRequests } from "../../../../API/FriendsRequests";
 
 interface OwnProps {
   newFriendsPage: boolean;
-  filter: string;
-  onChangeFilter(value: string): Promise<void>;
-  onNewFriendsSearch(value: string): Promise<void>;
 }
 
 interface PropsFromState {

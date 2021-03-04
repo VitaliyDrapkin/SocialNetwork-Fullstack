@@ -8,7 +8,7 @@ import SendRoundedIcon from "@material-ui/icons/SendRounded";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import ChatItem from "../../components/ChatItem";
-import EmojiPicker from "../../components/EmojiPicker/EmojiPicker";
+import EmojiPicker from "../../components/EmojiPicker";
 import { connect } from "react-redux";
 import { Message } from "../../../../models/message";
 import { RootState } from "../../../../redux/store";
@@ -22,18 +22,7 @@ import {
   startLoadChatAC,
 } from "../../../../redux/actionTypes";
 
-interface OwnProps {
-  ownId: string;
-  previousId: string;
-  conversationId: string;
-  firstName: string;
-  lastName: string;
-  profileImg: string;
-  messages: Message[];
-  loaded: boolean;
-  loadChat(userId: string, previousId: string): Promise<void>;
-  sendMessage(text: string, conversationId: string): Promise<void>;
-}
+interface OwnProps {}
 
 interface PropsFromState {
   ownId: string;

@@ -16,17 +16,8 @@ import {
 } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
 
-interface OwnProps {
-  friends: Friend[];
-  requestsSent: Friend[];
-  requestsReceived: Friend[];
-  friendsSearch: Friend[];
-  filter: string;
-  onClickSearchFriends(value: string): Promise<void>;
-  deleteFriend(friendId: string): Promise<void>;
-  loadFriendsPage(): void;
-  filterOwnFriends(friends: Friend[], filter: string): Friend[];
-}
+interface OwnProps {}
+
 interface PropsFromState {
   friends: Friend[];
   requestsSent: Friend[];
@@ -94,9 +85,7 @@ function FriendsPage(props: AllProps) {
           </div>
         )}
       </div>
-      {!showRequests && (
-        <FriendsSearch newFriendsPage={newFriendsPage} />
-      )}
+      {!showRequests && <FriendsSearch newFriendsPage={newFriendsPage} />}
       {newFriendsPage ? (
         <div className={s.friendsMain}>
           {props.friendsSearch.map((friend) => (
