@@ -2,11 +2,12 @@ import React, { RefObject, useEffect, useRef } from "react";
 import s from "./EmojiPicker.module.css";
 import Picker, { IEmojiData, SKIN_TONE_MEDIUM_DARK } from "emoji-picker-react";
 
-interface EmojiPickerProps {
+interface OwnProps {
   closePicker(): void;
   onAddEmoji(emoji: string): void;
 }
-function EmojiPicker(props: EmojiPickerProps) {
+
+function EmojiPicker(props: OwnProps) {
   const ref = useRef();
   useOnClickOutside(ref, props.closePicker);
 

@@ -1,13 +1,12 @@
 import React, { ChangeEvent, useState } from "react";
 import s from "./EditPost.module.css";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import { Post } from "../../../../models/post";
 import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";
-import EmojiPicker from "../EmojiPicker/EmojiPicker";
+import EmojiPicker from "../EmojiPicker";
 import { connect } from "react-redux";
 import { actionsTypes } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
@@ -21,14 +20,6 @@ import { PostsRequests } from "../../../../API/PostsRequests";
 
 interface OwnProps {
   post: Post;
-  cancelEditMode(postId: string): void;
-  savePostChange(
-    postId: string,
-    text: string,
-    postImage: string,
-    oldPostImage: string,
-    newFile: File
-  ): void;
 }
 
 interface PropsFromState {

@@ -2,14 +2,14 @@ import React, { MouseEvent, useEffect } from "react";
 import s from "./ModalConfirm.module.css";
 import ClearIcon from "@material-ui/icons/Clear";
 
-interface ModalConfirmProps {
+interface OwnProps {
   questionText: string;
   secondaryText: string;
   confirm(): void;
   cancel(): void;
 }
 
-function ModalConfirm(props: ModalConfirmProps) {
+function ModalConfirm(props: OwnProps) {
   const onClickOutside = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (e.target === e.currentTarget) {
@@ -36,10 +36,7 @@ function ModalConfirm(props: ModalConfirmProps) {
   }, []);
 
   return (
-    <div
-      className={s.modalWindow}
-      onClick={onClickOutside}
-    >
+    <div className={s.modalWindow} onClick={onClickOutside}>
       <div className={s.modalField}>
         <div className={s.modalTop}>
           <div className={s.mainText}>{props.questionText}</div>

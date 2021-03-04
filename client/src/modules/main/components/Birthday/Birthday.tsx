@@ -10,12 +10,22 @@ import s from "./Birthday.module.css";
 import CakeIcon from "@material-ui/icons/Cake";
 import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 
-interface BirthdayProps {
+interface OwnProps {
+}
+
+interface PropsFromState {
   isOwnProfile: boolean;
   birthday: number;
+}
+
+interface PropsFromDispatch {
   onEditBirthday(birthday: number, oldBirthday: number): Promise<void>;
 }
-function Birthday(props: BirthdayProps) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+
+function Birthday(props: AllProps) {
   const [editor, setEditor] = useState(false);
   const [value, setValue] = useState(props.birthday);
   const ref = useRef(null);
@@ -69,16 +79,9 @@ function Birthday(props: BirthdayProps) {
   );
 }
 
-interface mapStateToPropsType {
-  isOwnProfile: boolean;
-  birthday: number;
-}
 
-interface mapDispatchToPropsType {
-  onEditBirthday(birthday: number, oldBirthday: number): Promise<void>;
-}
 
-let mapStateToProps = (state: RootState): mapStateToPropsType => {
+let mapStateToProps = (state: RootState): PropsFromState => {
   return {
     isOwnProfile: state.profileData.isOwnProfile,
     birthday: state.profileData.birthDay,
@@ -87,7 +90,7 @@ let mapStateToProps = (state: RootState): mapStateToPropsType => {
 
 let mapDispatchToProps = (
   dispatch: Dispatch<actionsTypes>
-): mapDispatchToPropsType => {
+): PropsFromDispatch => {
   return {
     onEditBirthday: async (birthday: number, oldBirthday: number) => {
       try {
@@ -104,8 +107,8 @@ let mapDispatchToProps = (
 };
 
 const BirthdayContainer = connect<
-  mapStateToPropsType,
-  mapDispatchToPropsType,
+  PropsFromState,
+  PropsFromDispatch,
   {},
   RootState
 >(

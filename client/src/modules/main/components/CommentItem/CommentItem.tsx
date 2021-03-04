@@ -11,12 +11,20 @@ import { PostsRequests } from "../../../../API/PostsRequests";
 import { deleteCommentAC, actionsTypes } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
 
-interface CommentItemProps {
+interface OwnProps {
   comment: Comment;
   postId: string;
+}
+
+interface PropsFromState {}
+
+interface PropsFromDispatch {
   deleteComment(postId: string, commentId: string): Promise<void>;
 }
-function CommentItem(props: CommentItemProps) {
+
+type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
+
+function CommentItem(props: AllProps) {
   const [openConfirmWindow, setOpenConfirmWindow] = useState(false);
   return (
     <div className={s.comment}>
@@ -62,7 +70,9 @@ let mapStateToProps = (state: RootState) => {
   return {};
 };
 
-let mapDispatchToProps = (dispatch: Dispatch<actionsTypes>) => {
+let mapDispatchToProps = (
+  dispatch: Dispatch<actionsTypes>
+): PropsFromDispatch => {
   return {
     deleteComment: async (postId: string, commentId: string) => {
       await PostsRequests.deleteComment(postId, commentId);
@@ -71,8 +81,4 @@ let mapDispatchToProps = (dispatch: Dispatch<actionsTypes>) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CommentItem);
-
+export default connect(mapStateToProps, mapDispatchToProps)(CommentItem);

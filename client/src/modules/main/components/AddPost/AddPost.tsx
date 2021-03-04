@@ -17,26 +17,7 @@ import {
 } from "../../../../redux/actionTypes";
 import { addFileServer } from "../../../../services/uploadFiles";
 
-interface OwnProps {
-  postInputValue: string;
-  addPost(
-    text: string,
-    userId: string,
-    userFirstName: string,
-    userLastName: string,
-    profileImage: string,
-    file?: File
-  ): Promise<void>;
-  changePostInput(text: string): void;
-  addEmoji(emoji: string): void;
-  addPostImage(file: File): void;
-  postImage: string;
-  postImageFile: File;
-  userId: string;
-  userFirstName: string;
-  userLastName: string;
-  profileImage: string;
-}
+interface OwnProps {}
 
 interface PropsFromState {
   postInputValue: string;
