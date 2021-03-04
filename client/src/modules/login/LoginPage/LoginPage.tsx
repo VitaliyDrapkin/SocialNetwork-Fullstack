@@ -2,18 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./LoginPage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
+import CustomInputComponent from "../../shared/CustomInput/formControls";
 import {
   validateEmail,
   validatePassword,
-} from "../../../components/Helpers/formik/validators/validators";
+} from "../../../services/validators";
 
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { UsersRequests } from "../../../API/UsersRequests";
 import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
-import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
+import { withAuthorizedRedirect } from "../../../hocs/withAuthorizedRedirect";
 
 interface OwnProps {
   onLogin(login: string, password: string): void;

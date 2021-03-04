@@ -1,4 +1,4 @@
-import { PostsRequests } from "./../../API/PostsRequests";
+import { PostsRequests } from "../API/PostsRequests";
 
 //add file helpers functions
 const createFormDataImage = (image: File): FormData => {

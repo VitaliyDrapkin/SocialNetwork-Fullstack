@@ -15,7 +15,7 @@ import {
   changePostInputAC,
   addEmojiInputAC,
 } from "../../../../redux/actionTypes";
-import { addFileServer } from "../../../../components/Helpers/uploadFiles";
+import { addFileServer } from "../../../../services/uploadFiles";
 
 interface OwnProps {
   postInputValue: string;

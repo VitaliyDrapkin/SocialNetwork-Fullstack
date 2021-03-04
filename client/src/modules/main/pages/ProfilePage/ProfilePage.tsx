@@ -22,7 +22,7 @@ import {
   startLoadProfileAC,
 } from "../../../../redux/actionTypes";
 import { ProfileRequests } from "../../../../API/ProfileRequests";
-import { addFileServer } from "../../../../components/Helpers/uploadFiles";
+import { addFileServer } from "../../../../services/uploadFiles";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
 
 interface profilePagePropsType {

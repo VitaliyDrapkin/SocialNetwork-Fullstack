@@ -9,7 +9,7 @@ import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
 import { Friend } from "../../../../models/friend";
 import { useRequestFriends } from "./useRequestFriends";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
-import ModalConfirm from "../../../../components/Helpers/ModalConfirm/ModalConfirm";
+import ModalConfirm from "../../../shared/ModalConfirm/ModalConfirm";
 
 interface OwnProps {
   friend: Friend;

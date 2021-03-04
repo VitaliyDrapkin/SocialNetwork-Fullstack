@@ -7,14 +7,14 @@ import {
   validateBirthday,
   validateEmail,
   validatePassword,
-} from "../../../components/Helpers/formik/validators/validators";
-import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
+} from "../../../services/validators";
+import CustomInputComponent from "../../shared/CustomInput/formControls";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { UsersRequests } from "../../../API/UsersRequests";
 import { actionsTypes, authorizationAC } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
-import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
+import { withAuthorizedRedirect } from "../../../hocs/withAuthorizedRedirect";
 
 interface OwnProps {
   onRegistration(

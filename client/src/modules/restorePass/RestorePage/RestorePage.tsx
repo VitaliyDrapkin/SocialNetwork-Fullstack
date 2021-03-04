@@ -2,13 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./RestorePage.module.css";
 import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../../../components/Helpers/formik/formControls/formControls";
-import { validateEmail } from "../../../components/Helpers/formik/validators/validators";
+import CustomInputComponent from "../../shared/CustomInput/formControls";
+import { validateEmail } from "../../../services/validators";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { actionsTypes } from "../../../redux/actionTypes";
 import { RootState } from "../../../redux/store";
-import { withAuthorizedRedirect } from "../../../components/Helpers/hoc/withAuthorizedRedirect";
+import { withAuthorizedRedirect } from "../../../hocs/withAuthorizedRedirect";
 
 interface OwnProps {
   onRestorePassword(email: string): void;

@@ -4,8 +4,8 @@ import s from "./App.module.css";
 
 import Main from "./modules/main/Main";
 import RestorePage from "./modules/restorePass/RestorePage";
-import { withUnauthorizedRedirect } from "./components/Helpers/hoc/withUnauthorizedRedirect";
-import { withAuthorizedRedirect } from "./components/Helpers/hoc/withAuthorizedRedirect";
+import { withUnauthorizedRedirect } from "./hocs/withUnauthorizedRedirect";
+import { withAuthorizedRedirect } from "./hocs/withAuthorizedRedirect";
 import LoginPage from "./modules/login/LoginPage";
 import RegisterPage from "./modules/register/registerPage";
 

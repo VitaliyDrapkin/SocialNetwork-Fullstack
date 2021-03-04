@@ -4,7 +4,7 @@ import Avatar from "@material-ui/core/Avatar";
 import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import { Post } from "../../../../models/post";
-import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
+import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
@@ -16,7 +16,7 @@ import {
   cancelEditPostModeAC,
   endEditPostModeAC,
 } from "../../../../redux/actionTypes";
-import { addFileServer } from "../../../../components/Helpers/uploadFiles";
+import { addFileServer } from "../../../../services/uploadFiles";
 import { PostsRequests } from "../../../../API/PostsRequests";
 
 interface OwnProps {

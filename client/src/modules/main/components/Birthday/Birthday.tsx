@@ -8,7 +8,7 @@ import {
 import { RootState } from "../../../../redux/store";
 import s from "./Birthday.module.css";
 import CakeIcon from "@material-ui/icons/Cake";
-import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
+import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 
 interface BirthdayProps {
   isOwnProfile: boolean;

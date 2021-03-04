@@ -11,10 +11,10 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
 import { Post } from "../../../../models/post";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
-import ModalConfirm from "../../../../components/Helpers/ModalConfirm/ModalConfirm";
+import ModalConfirm from "../../../shared/ModalConfirm/ModalConfirm";
 import MenuPost from "../MenuPost";
 import Comments from "../Comments/Comments";
-import { dateShowCalculate } from "../../../../components/Helpers/dateShowCalculate";
+import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 import {
   actionsTypes,
   addCommentAC,
