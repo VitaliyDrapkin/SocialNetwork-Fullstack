@@ -40,8 +40,9 @@ function FriendsPage(props: AllProps) {
   const [showRequests, setShowRequests] = useState(false);
 
   useEffect(() => {
-    props.loadFriendsPage();
-  }, []); //Only if first load
+    let pageLoad = props.loadFriendsPage;
+    pageLoad()
+  }, [props.loadFriendsPage]); 
 
   return (
     <div className={s.friendsPage}>

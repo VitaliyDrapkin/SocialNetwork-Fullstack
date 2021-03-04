@@ -23,8 +23,9 @@ type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
 
 function MainPage(props: AllProps) {
   useEffect(() => {
-    props.setPosts();
-  }, []); //Only if first load
+    let loadPosts = props.setPosts;
+    loadPosts()
+  }, [props.setPosts]); //Only if first load
 
   return (
     <div className={s.mainPage}>

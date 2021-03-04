@@ -28,8 +28,9 @@ type AllProps = OwnProps & PropsFromState & PropsFromDispatch;
 
 function MessagesPage(props: AllProps) {
   useEffect(() => {
-    props.setMessengers();
-  }, []); //Only if first load
+    let loadMessages = props.setMessengers;
+    loadMessages();
+  }, [props.setMessengers]);
 
   return props.loaded ? (
     <div className={s.messagesPage}>

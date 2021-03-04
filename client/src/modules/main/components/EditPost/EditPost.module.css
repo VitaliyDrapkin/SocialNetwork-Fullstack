@@ -16,7 +16,6 @@
 .postInformation {
   display: flex;
   align-items: center;
-  justify-content: start;
 }
 
 .information {

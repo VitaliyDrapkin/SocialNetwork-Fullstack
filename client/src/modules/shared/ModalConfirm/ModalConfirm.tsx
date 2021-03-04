@@ -17,23 +17,24 @@ function ModalConfirm(props: OwnProps) {
     }
   };
 
-  const downHandler = ({ key }: KeyboardEvent) => {
-    if (key === "Enter") {
-      props.confirm();
-    }
-    if (key === "Escape") {
-      props.cancel();
-    }
-  };
-
   // Add event listeners
   useEffect(() => {
+    let downHandler = ({ key }: KeyboardEvent) => {
+      if (key === "Enter") {
+        let confirm = props.confirm;
+        confirm();
+      }
+      if (key === "Escape") {
+        let cancel = props.cancel;
+        cancel();
+      }
+    };
+
     window.addEventListener("keydown", downHandler);
-    // Remove event listeners on cleanup
     return () => {
       window.removeEventListener("keydown", downHandler);
     };
-  }, []);
+  }, [props.confirm, props.cancel]);
 
   return (
     <div className={s.modalWindow} onClick={onClickOutside}>

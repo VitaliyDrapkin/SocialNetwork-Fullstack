@@ -54,8 +54,10 @@ function ProfilePage(props: AllProps) {
   const location = useLocation();
 
   useEffect(() => {
-    props.loadProfile(location.pathname.slice("/profile/".length), props.ownId);
-  }, [location.pathname.slice("/profile/".length)]);
+    let loadProfile = props.loadProfile;
+    loadProfile(location.pathname.slice("/profile/".length), props.ownId);
+  }, [location.pathname, props.ownId, props.loadProfile]);
+  
   return (
     <div className={s.profilePage}>
       {props.isLoaded ? (
@@ -239,12 +241,7 @@ let mapDispatchToProps = (
   };
 };
 
-export default connect<
-PropsFromState,
-PropsFromDispatch,
-  {},
-  RootState
->(
+export default connect<PropsFromState, PropsFromDispatch, {}, RootState>(
   mapStateToProps,
   mapDispatchToProps
 )(ProfilePage);
