@@ -1,4 +1,4 @@
-export class Post {
+export class PostVM {
   public constructor(
     public id: string,
     public userId: string,
@@ -9,23 +9,23 @@ export class Post {
     public text: string,
     public likes: number,
     public liked: boolean,
-    public comments: Comment[],
+    public comments: CommentVM[],
     public postImgUrl: string,
     public editMode: boolean,
     public ownPost: boolean
   ) {}
 }
 
-export class Comment {
+export class CommentVM {
   public constructor(
     public _id: string,
     public text: string,
     public date: number,
-    public userId: UserComment //Для того чтоб спокойно добовлять
+    public userId: UserWM
   ) {}
 }
 
-class UserComment {
+export class UserWM {
   public constructor(
     public _id: string,
     public firstName: string,

@@ -4,8 +4,6 @@ import s from "./App.module.css";
 
 import Main from "./modules/main/Main";
 import RestorePage from "./modules/restorePass/RestorePage";
-import { withUnauthorizedRedirect } from "./hocs/withUnauthorizedRedirect";
-import { withAuthorizedRedirect } from "./hocs/withAuthorizedRedirect";
 import LoginPage from "./modules/login/LoginPage";
 import RegisterPage from "./modules/register/registerPage";
 
@@ -16,8 +14,9 @@ interface AppPropsType {
 
 function App(props: AppPropsType) {
   useEffect(() => {
-    props.initialize();
-  }, []); //Only if first load
+    let init = props.initialize;
+    init();
+  }, [props.initialize]);
 
   return (
     <BrowserRouter>

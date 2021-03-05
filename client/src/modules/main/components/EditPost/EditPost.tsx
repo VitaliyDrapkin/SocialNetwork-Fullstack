@@ -2,8 +2,6 @@ import React, { ChangeEvent, useState } from "react";
 import s from "./EditPost.module.css";
 import Avatar from "@material-ui/core/Avatar";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
-import { Post } from "../../../../models/post";
-import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import ClearIcon from "@material-ui/icons/Clear";
 import EmojiPicker from "../EmojiPicker";
@@ -17,13 +15,15 @@ import {
 } from "../../../../redux/actionTypes";
 import { addFileServer } from "../../../../services/uploadFiles";
 import { PostsRequests } from "../../../../API/PostsRequests";
+import { PostVM } from "../../../../models/view-models/post.vm";
+import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 
 interface OwnProps {
-  post: Post;
+  post: PostVM;
 }
 
 interface PropsFromState {
-  posts: Post[];
+  posts: PostVM[];
   profileImage: string;
 }
 

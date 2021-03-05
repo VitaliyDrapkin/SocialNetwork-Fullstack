@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 import ChatItem from "../../components/ChatItem";
 import EmojiPicker from "../../components/EmojiPicker";
 import { connect } from "react-redux";
-import { Message } from "../../../../models/message";
 import { RootState } from "../../../../redux/store";
 import { Dispatch } from "react";
 import { MessagesRequests } from "../../../../API/MessagesRequests";
@@ -21,6 +20,7 @@ import {
   setChatDataAC,
   startLoadChatAC,
 } from "../../../../redux/actionTypes";
+import { MessageVM } from "../../../../models/view-models/message.vm";
 
 interface OwnProps {}
 
@@ -31,7 +31,7 @@ interface PropsFromState {
   firstName: string;
   lastName: string;
   profileImg: string;
-  messages: Message[];
+  messages: MessageVM[];
   loaded: boolean;
 }
 interface PropsFromDispatch {

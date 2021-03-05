@@ -1,4 +1,6 @@
-import { MessengerItem } from "./../models/message";
+import { MessengerItemVM } from './../models/view-models/conversation.vm';
+import { PostVM } from "./../models/view-models/post.vm";
+import { MessageVM } from "./../models/view-models/message.vm";
 import {
   CHANGE_POST_INPUT,
   ADD_EMOJI_INPUT,
@@ -31,7 +33,6 @@ import {
   CHANGE_PROFILE_BIRTHDAY,
   CHANGE_PROFILE_RELATIONSHIP,
 } from "./profileReducer";
-import { Post } from "../models/post";
 
 import {
   START_LOAD_FRIENDS,
@@ -41,7 +42,6 @@ import {
   SET_FRIENDS_SEARCH_DATA,
   DELETE_FRIEND,
 } from "./friendsReducer";
-import { Friend } from "../models/friend";
 
 import {
   START_LOAD_CHAT,
@@ -52,7 +52,7 @@ import {
   START_LOAD_MESSENGER,
   SET_MESSENGER_DATA,
 } from "./chatReducer";
-import { Message } from "../models/message";
+import { FriendVM } from "../models/view-models/friend.vm";
 
 export type actionsTypes =
   | addPostType
@@ -121,7 +121,7 @@ type endLoadMessengerType = {
 };
 type setMessengerDataType = {
   type: typeof SET_MESSENGER_DATA;
-  messengers: MessengerItem[];
+  messengers: MessengerItemVM[];
 };
 type setChatDataType = {
   type: typeof SET_CHAT_DATA;
@@ -129,7 +129,7 @@ type setChatDataType = {
   firstName: string;
   lastName: string;
   profileImg: string;
-  messages: Message[];
+  messages: MessageVM[];
   companionId: string;
 };
 
@@ -149,13 +149,13 @@ type endLoadMyFriendsType = {
 };
 type setFriendsDataType = {
   type: typeof SET_FRIENDS_DATA;
-  friends: Friend[];
-  requestsSent: Friend[];
-  requestsReceived: Friend[];
+  friends: FriendVM[];
+  requestsSent: FriendVM[];
+  requestsReceived: FriendVM[];
 };
 type setFriendsSearchDataType = {
   type: typeof SET_FRIENDS_SEARCH_DATA;
-  friendsSearch: Friend[];
+  friendsSearch: FriendVM[];
 };
 
 type changePostInputType = {
@@ -179,7 +179,7 @@ type addPostType = {
 
 type setPostsType = {
   type: typeof SET_POSTS;
-  posts: Post[];
+  posts: PostVM[];
 };
 
 type deletePostType = {
@@ -279,7 +279,7 @@ type setProfileDataType = {
   birthDay: number;
   relationship: string;
   lives: string;
-  posts: Post[];
+  posts: PostVM[];
   isFriend: boolean;
   isRequestSent: boolean;
 };
@@ -334,9 +334,9 @@ export const endLoadMyFriendsAC = (): endLoadMyFriendsType => {
 };
 
 export const setFriendsDataAC = (
-  friends: Friend[],
-  requestsSent: Friend[],
-  requestsReceived: Friend[]
+  friends: FriendVM[],
+  requestsSent: FriendVM[],
+  requestsReceived: FriendVM[]
 ): setFriendsDataType => {
   return {
     type: "SET_FRIENDS_DATA",
@@ -346,7 +346,7 @@ export const setFriendsDataAC = (
   };
 };
 export const setFriendsSearchDataAC = (
-  friendsSearch: Friend[]
+  friendsSearch: FriendVM[]
 ): setFriendsSearchDataType => {
   return {
     type: "SET_FRIENDS_SEARCH_DATA",
@@ -415,7 +415,7 @@ export const endLoadProfileAC = (): endLoadProfileType => {
   };
 };
 
-export const setPostsAC = (posts: Post[]): setPostsType => {
+export const setPostsAC = (posts: PostVM[]): setPostsType => {
   return { type: SET_POSTS, posts };
 };
 export const addPostAC = (
@@ -542,7 +542,7 @@ export const setProfileDataAC = (
   status: string,
   birthDay: number,
   relationship: string,
-  posts: Post[],
+  posts: PostVM[],
   isFriend: boolean,
   isRequestSent: boolean
 ): setProfileDataType => {
@@ -587,7 +587,7 @@ export const endLoadMessengerAC = (): endLoadMessengerType => {
   };
 };
 export const setMessengerDataAC = (
-  messengers: MessengerItem[]
+  messengers: MessengerItemVM[]
 ): setMessengerDataType => {
   return {
     type: "SET_MESSENGER_DATA",
@@ -600,7 +600,7 @@ export const setChatDataAC = (
   firstName: string,
   lastName: string,
   profileImg: string,
-  messages: Message[],
+  messages: MessageVM[],
   companionId: string
 ): setChatDataType => {
   return {

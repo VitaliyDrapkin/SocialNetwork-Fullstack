@@ -5,7 +5,6 @@ import s from "./FriendsPage.module.css";
 import { Dispatch } from "react";
 import { connect } from "react-redux";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
-import { Friend } from "../../../../models/friend";
 import {
   actionsTypes,
   deleteFriendAC,
@@ -15,20 +14,21 @@ import {
   startLoadMyFriendsAC,
 } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
+import { FriendVM } from "../../../../models/view-models/friend.vm";
 
 interface OwnProps {}
 
 interface PropsFromState {
-  friends: Friend[];
-  requestsSent: Friend[];
-  requestsReceived: Friend[];
+  friends: FriendVM[];
+  requestsSent: FriendVM[];
+  requestsReceived: FriendVM[];
   filter: string;
-  friendsSearch: Friend[];
+  friendsSearch: FriendVM[];
 }
 
 interface PropsFromDispatch {
   loadFriendsPage(): Promise<void>;
-  filterOwnFriends(friends: Friend[], filter: string): Friend[];
+  filterOwnFriends(friends: FriendVM[], filter: string): FriendVM[];
   onClickSearchFriends(value: string): Promise<void>;
   deleteFriend(friendId: string): Promise<void>;
 }
@@ -41,8 +41,8 @@ function FriendsPage(props: AllProps) {
 
   useEffect(() => {
     let pageLoad = props.loadFriendsPage;
-    pageLoad()
-  }, [props.loadFriendsPage]); 
+    pageLoad();
+  }, [props.loadFriendsPage]);
 
   return (
     <div className={s.friendsPage}>
@@ -160,7 +160,7 @@ let mapDispatchToProps = (
       dispatch(deleteFriendAC(friendId));
     },
 
-    filterOwnFriends: (friends: Friend[], filter: string): Friend[] => {
+    filterOwnFriends: (friends: FriendVM[], filter: string): FriendVM[] => {
       const newFriends = friends.filter((friend) => {
         const firstLastName = friend.firstName + " " + friend.lastName;
         return firstLastName

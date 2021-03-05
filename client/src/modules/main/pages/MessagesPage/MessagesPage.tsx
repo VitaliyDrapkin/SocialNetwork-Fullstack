@@ -2,7 +2,6 @@ import React, { Dispatch, useEffect } from "react";
 import s from "./MessagesPage.module.css";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { connect } from "react-redux";
-import { MessengerItem } from "../../../../models/message";
 import MessagesItem from "../../components/MessagesItem";
 import { RootState } from "../../../../redux/store";
 import {
@@ -12,11 +11,11 @@ import {
   startLoadMessengerAC,
 } from "../../../../redux/actionTypes";
 import { MessagesRequests } from "../../../../API/MessagesRequests";
-
+import { MessengerItemVM } from "../../../../models/view-models/conversation.vm";
 interface OwnProps {}
 
 interface PropsFromState {
-  messengers: MessengerItem[];
+  messengers: MessengerItemVM[];
   loaded: boolean;
 }
 

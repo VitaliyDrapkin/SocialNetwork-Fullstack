@@ -4,15 +4,15 @@ import { PostsRequests } from "../../../../API/PostsRequests";
 import AddPost from "../../components/AddPost";
 import EditPost from "../../components/EditPost";
 import PostItem from "../../components/PostItem";
-import { Post } from "../../../../models/post";
 import { actionsTypes, setPostsAC } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
 import s from "./MainPage.module.css";
+import { PostVM } from "../../../../models/view-models/post.vm";
 
 interface OwnProps {}
 
 interface PropsFromState {
-  posts: Post[];
+  posts: PostVM[];
 }
 
 interface PropsFromDispatch {

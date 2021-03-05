@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import s from "./Comments.module.css";
-import { Comment } from "../../../../models/post";
 import CommentItem from "../CommentItem";
+import { CommentVM } from "../../../../models/view-models/post.vm";
 
 interface OwnProps {
-  comments: Comment[];
+  comments: CommentVM[];
   postId: string;
 }
 function Comments(props: OwnProps) {
@@ -22,7 +22,7 @@ function Comments(props: OwnProps) {
               Hide comments
             </div>
           )}
-          {props.comments.map((comment: Comment) => {
+          {props.comments.map((comment: CommentVM) => {
             return <CommentItem comment={comment} postId={props.postId} />;
           })}
         </div>

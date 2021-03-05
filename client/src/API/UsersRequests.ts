@@ -1,8 +1,8 @@
 import {
-  getAccessTokenResponse,
-  loginResponse,
-} from "./../models/authResponse";
-import { registrationResponse } from "../models/authResponse";
+  registration,
+  login,
+  accessToken,
+} from "./../models/server-models/auth.model";
 import { instance } from "./ApiSettings";
 
 export const UsersRequests = {
@@ -15,7 +15,7 @@ export const UsersRequests = {
     gender: string
   ) => {
     try {
-      const response = await instance.post<registrationResponse>(
+      const response = await instance.post<registration>(
         "/users/registration",
         {
           firstName,
@@ -33,7 +33,7 @@ export const UsersRequests = {
   },
 
   login: async (email: string, password: string) => {
-    const response = await instance.post<loginResponse>("/users/auth", {
+    const response = await instance.post<login>("/users/auth", {
       email,
       password,
     });
@@ -45,14 +45,12 @@ export const UsersRequests = {
   },
 
   getAccessToken: async () => {
-    const response = await instance.get<getAccessTokenResponse>(
-      "/users/refresh"
-    );
+    const response = await instance.get<accessToken>("/users/refresh");
     return response.data.accessToken;
   },
 
   autoLogin: async () => {
-    const response = await instance.get<loginResponse>("/users/autoLogin");
+    const response = await instance.get<login>("/users/autoLogin");
     return response.data;
   },
 };

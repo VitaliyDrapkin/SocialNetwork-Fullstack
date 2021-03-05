@@ -1,18 +1,18 @@
-import { Post } from "../models/post";
-import { PostsServerResponse } from "../models/postsServerResponse";
+import { PostVM } from './../models/view-models/post.vm';
+import { Post } from "../models/server-models/post.model";
 import { store } from "../redux/store";
 import { getValidToken, instance } from "./ApiSettings";
 
 export const PostsRequests = {
   getAllPosts: async () => {
-    const response = await instance.get<PostsServerResponse[]>(`/posts`, {
+    const response = await instance.get<Post[]>(`/posts`, {
       headers: {
         Authorization: `Bearer ${await getValidToken()}`,
       },
     });
 
     const newPosts = response.data.map((postResponse) => {
-      return new Post(
+      return new PostVM(
         postResponse._id,
         postResponse.userId._id,
         postResponse.userId.profileImage,

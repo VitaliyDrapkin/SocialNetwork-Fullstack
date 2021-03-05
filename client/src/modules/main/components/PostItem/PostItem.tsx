@@ -9,7 +9,6 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import Box from "@material-ui/core/Box";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
-import { Post } from "../../../../models/post";
 import EmojiPicker from "../EmojiPicker";
 import ModalConfirm from "../../../shared/ModalConfirm";
 import MenuPost from "../MenuPost";
@@ -25,9 +24,10 @@ import {
 import { PostsRequests } from "../../../../API/PostsRequests";
 import { connect } from "react-redux";
 import { RootState } from "../../../../redux/store";
+import { PostVM } from "../../../../models/view-models/post.vm";
 
 interface OwnProps {
-  post: Post;
+  post: PostVM;
 }
 
 interface PropsFromState {

@@ -1,5 +1,5 @@
-import { MessengerItem } from "./../models/message";
-import { Message } from "../models/message";
+import { MessengerItemVM } from "./../models/view-models/conversation.vm";
+import { MessageVM } from "./../models/view-models/message.vm";
 import { actionsTypes } from "./actionTypes";
 
 export const START_LOAD_CHAT = "START_LOAD_CHAT";
@@ -18,8 +18,8 @@ export interface initialStateType {
   firstName: string;
   lastName: string;
   profileImg: string;
-  messages: Message[];
-  messengers: MessengerItem[];
+  messages: MessageVM[];
+  messengers: MessengerItemVM[];
 }
 
 let initialState: initialStateType = {
@@ -75,7 +75,7 @@ export function chatReducer(
         messengers: action.messengers,
       };
     case ADD_MESSAGE:
-      const newMessage = new Message(
+      const newMessage = new MessageVM(
         action.messageId,
         action.text,
         action.isSender

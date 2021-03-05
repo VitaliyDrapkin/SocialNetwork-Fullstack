@@ -1,21 +1,17 @@
-import { FriendsResponse, Friend, FriendsGroup } from "./../models/friend";
+import { FriendsVM, FriendVM } from "./../models/view-models/friend.vm";
+import { Friends } from "./../models/server-models/friend.model";
 import { getValidToken, instance } from "./ApiSettings";
+import { Friend } from "../models/server-models/friend.model";
 
 export const FriendsRequests = {
-  getFriends: async (
-    userId?: string
-  ): Promise<{
-    friends: Friend[];
-    friendsRequestsSent: Friend[];
-    friendsRequestsReceived: Friend[];
-  }> => {
-    const response = await instance.get<FriendsResponse>(`/friends/data`, {
+  getFriends: async (userId?: string): Promise<FriendsVM> => {
+    const response = await instance.get<Friends>(`/friends/data`, {
       headers: {
         Authorization: `Bearer ${await getValidToken()}`,
       },
     });
     const friends = response.data.friends.map((friend) => {
-      const newFriend = new Friend(
+      const newFriend = new FriendVM(
         friend._id,
         friend.firstName,
         friend.lastName,
@@ -26,7 +22,7 @@ export const FriendsRequests = {
     });
     const friendsRequestsSent = response.data.friendsRequestSent.map(
       (friend) => {
-        const newFriend = new Friend(
+        const newFriend = new FriendVM(
           friend._id,
           friend.firstName,
           friend.lastName,
@@ -38,7 +34,7 @@ export const FriendsRequests = {
     );
     const friendsRequestsReceived = response.data.friendsRequestReceived.map(
       (friend) => {
-        const newFriend = new Friend(
+        const newFriend = new FriendVM(
           friend._id,
           friend.firstName,
           friend.lastName,
@@ -54,8 +50,8 @@ export const FriendsRequests = {
   getNewFriends: async (
     filter: string,
     start: number = 0
-  ): Promise<Friend[]> => {
-    const response = await instance.get<FriendsGroup[]>(
+  ): Promise<FriendVM[]> => {
+    const response = await instance.get<Friend[]>(
       `/friends/search?filter=${filter}&start=${start}`,
       {
         headers: {
@@ -64,7 +60,7 @@ export const FriendsRequests = {
       }
     );
     const friends = response.data.map((friend) => {
-      const newFriend = new Friend(
+      const newFriend = new FriendVM(
         friend._id,
         friend.firstName,
         friend.lastName,

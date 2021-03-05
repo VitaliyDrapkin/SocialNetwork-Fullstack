@@ -4,15 +4,15 @@ import Avatar from "@material-ui/core/Avatar";
 import ClearIcon from "@material-ui/icons/Clear";
 import { dateShowCalculate } from "../../../../services/dateShowCalculate";
 import ModalConfirm from "../../../shared/ModalConfirm/ModalConfirm";
-import { Comment } from "../../../../models/post";
 import { Dispatch } from "react";
 import { connect } from "react-redux";
 import { PostsRequests } from "../../../../API/PostsRequests";
 import { deleteCommentAC, actionsTypes } from "../../../../redux/actionTypes";
 import { RootState } from "../../../../redux/store";
+import { CommentVM } from "../../../../models/view-models/post.vm";
 
 interface OwnProps {
-  comment: Comment;
+  comment: CommentVM;
   postId: string;
 }
 

@@ -1,5 +1,5 @@
+import { PostVM, CommentVM } from './../models/view-models/post.vm';
 import { actionsTypes } from "./actionTypes";
-import { Post, Comment } from "./../models/post";
 
 export const CHANGE_POST_INPUT = "CHANGE_POST_INPUT";
 export const ADD_EMOJI_INPUT = "ADD_EMOJI_INPUT";
@@ -17,7 +17,7 @@ export const ADD_POST_IMAGE = "ADD_POST_IMAGE";
 export const SET_PROFILE_DATA = "SET_PROFILE_DATA";
 
 export interface initialStateType {
-  posts: Post[];
+  posts: PostVM[];
   postInputValue: string;
   postImage: string;
   postImageFile: File | null;
@@ -41,7 +41,7 @@ export function postPageReducer(
         posts: [...action.posts],
       };
     case ADD_NEW_POST:
-      const newPost: Post = {
+      const newPost: PostVM = {
         id: action.postId,
         userId: action.userId,
         userProfileImg: action.profileImage,
@@ -139,7 +139,7 @@ export function postPageReducer(
         lastName: action.userComment.userLastName,
         profileImage: action.userComment.profileImage,
       };
-      const newComment = new Comment(
+      const newComment = new CommentVM(
         action.commentId,
         action.comment,
         action.date,

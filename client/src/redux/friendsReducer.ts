@@ -1,4 +1,4 @@
-import { Friend } from "./../models/friend";
+import { FriendVM } from "../models/view-models/friend.vm";
 import { actionsTypes } from "./actionTypes";
 
 export const START_LOAD_FRIENDS = "START_LOAD_FRIENDS";
@@ -10,10 +10,10 @@ export const DELETE_FRIEND = "DELETE_FRIEND";
 
 export interface initialStateType {
   isLoaded: boolean;
-  friends: Friend[];
-  requestsSent: Friend[];
-  requestsReceived: Friend[];
-  friendsSearch: Friend[];
+  friends: FriendVM[];
+  requestsSent: FriendVM[];
+  requestsReceived: FriendVM[];
+  friendsSearch: FriendVM[];
   filter: string;
 }
 

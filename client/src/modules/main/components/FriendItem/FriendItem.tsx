@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import s from "./FriendItem.module.css";
 import Avatar from "@material-ui/core/Avatar";
-import profilePicture from "../../../../../../assets/images/profilePicture.jpg";
 import { NavLink } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
-import { Friend } from "../../../../models/friend";
 import { useRequestFriends } from "./useRequestFriends";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
 import ModalConfirm from "../../../shared/ModalConfirm/ModalConfirm";
+import { FriendVM } from "../../../../models/view-models/friend.vm";
 
 interface OwnProps {
-  friend: Friend;
+  friend: FriendVM;
   type: string;
   deleteFriend?(friendId: string): Promise<void>;
 }
@@ -22,7 +21,7 @@ function FriendItem(props: OwnProps) {
   const [hoverColorSecond, setHoverColorSecond] = useState(false);
   const [requestConfirmed, setRequestConfirmed] = useState(false);
   const [showConfirmWindow, setShowConfirmWindow] = useState(false);
-  const { requestSent, setRequest, error } = useRequestFriends(
+  const { requestSent, setRequest } = useRequestFriends(
     props.type === "sentRequests"
   );
   return (

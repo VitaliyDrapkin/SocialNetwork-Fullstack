@@ -4,7 +4,6 @@ import noAvatar from "../../../../assets/images/noAvatar.svg";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { Post } from "../../../../models/post";
 import AddPost from "../../components/AddPost";
 import EditPost from "../../components/EditPost";
 import PostItem from "../../components/PostItem";
@@ -24,6 +23,7 @@ import {
 import { ProfileRequests } from "../../../../API/ProfileRequests";
 import { addFileServer } from "../../../../services/uploadFiles";
 import { FriendsRequests } from "../../../../API/FriendsRequests";
+import { PostVM } from "../../../../models/view-models/post.vm";
 
 interface OwnProps {}
 
@@ -34,7 +34,7 @@ interface PropsFromState {
   firstName: string;
   lastName: string;
   profileImg: string;
-  posts: Post[];
+  posts: PostVM[];
   isFriend: boolean;
   isRequestSent: boolean;
 }

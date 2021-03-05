@@ -1,14 +1,14 @@
-import { Post } from "./../models/post";
+import { ProfileVM } from './../models/view-models/profile.vm';
+import { Profile } from '../models/server-models/profile.model';
+import { PostVM } from './../models/view-models/post.vm';
+
 import { store } from "./../redux/store";
-import {
-  ProfileServerResponse,
-  ProfileModel,
-} from "./../models/profileResponse";
+
 import { getValidToken, instance } from "./ApiSettings";
 
 export const ProfileRequests = {
-  getProfile: async (userId: string, ownId: string): Promise<ProfileModel> => {
-    const response = await instance.get<ProfileServerResponse>(
+  getProfile: async (userId: string, ownId: string): Promise<ProfileVM> => {
+    const response = await instance.get<Profile>(
       `/profile/${userId}`,
       {
         headers: {
@@ -17,7 +17,7 @@ export const ProfileRequests = {
       }
     );
     const newPosts = response.data.posts.map((postResponse) => {
-      return new Post(
+      return new PostVM(
         postResponse._id,
         postResponse.userId._id,
         postResponse.userId.profileImage,
