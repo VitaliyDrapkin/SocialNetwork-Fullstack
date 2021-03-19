@@ -1,11 +1,11 @@
-const DOMAIN = "http://localhost:3001/";
+const keys = require("../keys");
 const FILES_FOLDER = "upload/";
 
 const getCorrectUrl = (imgUrl) => {
   if (!imgUrl) {
     return "";
   }
-  const fullImageUrl = DOMAIN + FILES_FOLDER + imgUrl;
+  const fullImageUrl = keys.BASE_URL + FILES_FOLDER + imgUrl;
   return fullImageUrl;
 };
 

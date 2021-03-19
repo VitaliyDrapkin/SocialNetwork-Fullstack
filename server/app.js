@@ -8,6 +8,7 @@ const socketServerCreator = require("./socketIo/serverCreator");
 
 socketServerCreator(httpServer); // Need the http
 
+const keys = require("./keys");
 const usersRoute = require("./routes/users-route");
 const messagesRoute = require("./routes/messages-route");
 const friendsRoute = require("./routes/friends-route");
@@ -47,7 +48,7 @@ server.use(errorHandler);
 
 async function start() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1/Social_Network", {
+    await mongoose.connect(keys.MONGODB_URL, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
