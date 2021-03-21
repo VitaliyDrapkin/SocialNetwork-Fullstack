@@ -6,8 +6,8 @@ upload
 /.pnp
 .pnp.js
 
-keys/key.dev
 # testing
+keys/key.dev
 /coverage
 
 # production
