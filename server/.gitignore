@@ -5,8 +5,9 @@ node_modules
 upload
 /.pnp
 .pnp.js
-keys
 
+
+keys/key.dev.js
 # testing
 /coverage
 
