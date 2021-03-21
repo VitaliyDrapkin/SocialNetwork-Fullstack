@@ -27,7 +27,7 @@ server.use(cookieParser());
 server.use(express.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT || 3001;
-server.use(cors({ origin: "http://localhost:3000", credentials: true }));
+server.use(cors({ origin: keys.CLIENT_URL, credentials: true }));
 
 server.use("/upload", express.static("./upload"));
 server.use("/users", usersRoute);
