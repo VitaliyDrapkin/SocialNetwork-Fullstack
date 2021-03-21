@@ -52,6 +52,7 @@ async function start() {
       useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     });
     console.log(`Successfully connect to MongoDB`);
 
