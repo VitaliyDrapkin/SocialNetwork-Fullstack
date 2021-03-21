@@ -6,6 +6,7 @@ import jwt_decode from "jwt-decode";
 
 export const instance = Axios.create({
   baseURL: "http://localhost:3001/",
+  // baseURL: "https://powerful-bastion-15998.herokuapp.com/",
   withCredentials: true,
 });
 
