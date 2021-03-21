@@ -7,7 +7,6 @@ upload
 .pnp.js
 
 
-keys/key.dev.js
 # testing
 /coverage
 
